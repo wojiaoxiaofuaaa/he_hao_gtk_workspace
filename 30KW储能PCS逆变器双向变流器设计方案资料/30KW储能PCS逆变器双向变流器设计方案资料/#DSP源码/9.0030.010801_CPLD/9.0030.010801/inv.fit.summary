@@ -1,0 +1,11 @@
+Fitter Status : Successful - Mon Oct 14 15:47:58 2013
+Quartus II Version : 7.2 Build 151 09/26/2007 SJ Full Version
+Revision Name : inv
+Top-level Entity Name : inv
+Family : MAX II
+Device : EPM240T100I5
+Timing Models : Final
+Total logic elements : 204 / 240 ( 85 % )
+Total pins : 69 / 80 ( 86 % )
+Total virtual pins : 0
+UFM blocks : 0 / 1 ( 0 % )

@@ -1,0 +1,366 @@
+|inv
+midPWM1AO <= ENINVPWM:inst.ENPWMOUT
+clk => and4sync:inst16.clk
+clk => ILIMIT50US:inst18.clk
+clk => signalsync:inst22.clk
+clk => and4sync:inst10.clk
+clk => and4sync:inst7.clk
+clk => Filter1us:inst42.clk
+clk => Filter10us:inst30.clk
+clk => Filter1us:inst46.clk
+clk => Filter1us:inst47.clk
+clk => and4sync:inst9.clk
+clk => Filter1us:inst48.clk
+clk => Filter1us:inst54.clk
+clk => Filter1us:inst58.clk
+clk => ENINVPWM:inst.clk
+clk => ENINVPWM:inst1.clk
+clk => ENINVPWM:inst2.clk
+clk => ENINVPWM:inst4.clk
+clk => ENINVPWM:inst3.clk
+clk => ENINVPWM:inst5.clk
+EPWM6B => and4sync:inst16.in_put1
+EPWM6B => and4sync:inst16.in_put2
+SGLimit => 19.IN0
+Unlock => signalsync:inst22.in_put1
+15VPower => Filter1us:inst42.in_put
+EmergnecyButtonSta => Filter10us:inst30.in_put
+IGBTHalt3 => 20.IN0
+IGBTHalt2 => 21.IN0
+IGBTHalt1 => 22.IN0
+OVP => 24.IN0
+OCP => 25.IN0
+EPWM1A => ENINVPWM:inst.ENPWMIN
+midPWM1BO <= ENINVPWM:inst1.ENPWMOUT
+EPWM1B => ENINVPWM:inst1.ENPWMIN
+midPWM2AO <= ENINVPWM:inst2.ENPWMOUT
+EPWM2A => ENINVPWM:inst2.ENPWMIN
+midPWM3AO <= ENINVPWM:inst4.ENPWMOUT
+EPWM3A => ENINVPWM:inst4.ENPWMIN
+midPWM2BO <= ENINVPWM:inst3.ENPWMOUT
+EPWM2B => ENINVPWM:inst3.ENPWMIN
+midPWM3BO <= ENINVPWM:inst5.ENPWMOUT
+EPWM3B => ENINVPWM:inst5.ENPWMIN
+Tz <= 16.DB_MAX_OUTPUT_PORT_TYPE
+EPWM_FAN_OUT <= EPWM5A.DB_MAX_OUTPUT_PORT_TYPE
+EPWM5A => EPWM_FAN_OUT.DATAIN
+midAuxBreakSta <= AuxBreakSta.DB_MAX_OUTPUT_PORT_TYPE
+AuxBreakSta => midAuxBreakSta.DATAIN
+midDCSwSta <= DCSwSta.DB_MAX_OUTPUT_PORT_TYPE
+DCSwSta => midDCSwSta.DATAIN
+midMstRltSta <= MasRlySta.DB_MAX_OUTPUT_PORT_TYPE
+MasRlySta => midMstRltSta.DATAIN
+DriverPowCtr <= inst41.DB_MAX_OUTPUT_PORT_TYPE
+midDirverPowCtr => inst41.IN0
+PGRelayCtr <= inst33.DB_MAX_OUTPUT_PORT_TYPE
+midPGR_Ctr => inst33.IN0
+NGRelayCtr <= inst32.DB_MAX_OUTPUT_PORT_TYPE
+midNGR_Ctr => inst32.IN0
+DCBreakCutoff <= inst34.DB_MAX_OUTPUT_PORT_TYPE
+midDCBraskCutoff => inst34.IN0
+mid15VPower <= 26.DB_MAX_OUTPUT_PORT_TYPE
+midEmergnecyButtonSta <= inst23.DB_MAX_OUTPUT_PORT_TYPE
+midIGBTHalt3 <= inst37.DB_MAX_OUTPUT_PORT_TYPE
+midIGBTHalt2 <= inst38.DB_MAX_OUTPUT_PORT_TYPE
+midIGBTHalt1 <= inst40.DB_MAX_OUTPUT_PORT_TYPE
+midOVP <= inst55.DB_MAX_OUTPUT_PORT_TYPE
+midOCP <= inst59.DB_MAX_OUTPUT_PORT_TYPE
+Lock <= inst15.DB_MAX_OUTPUT_PORT_TYPE
+midOut_Node1 <= Out_Node1.DB_MAX_OUTPUT_PORT_TYPE
+Out_Node1 => midOut_Node1.DATAIN
+midOut_Node2 <= Out_Node2.DB_MAX_OUTPUT_PORT_TYPE
+Out_Node2 => midOut_Node2.DATAIN
+Pin18Gnd <= <GND>
+midIn_Node4 <= In_Node4.DB_MAX_OUTPUT_PORT_TYPE
+In_Node4 => midIn_Node4.DATAIN
+MastRlyCtr <= inst11.DB_MAX_OUTPUT_PORT_TYPE
+midMastRlyCtr => inst11.IN0
+MCU_Sta => inst11.IN1
+MCU_Sta => misMCU_Sta.DATAIN
+misMCU_Sta <= MCU_Sta.DB_MAX_OUTPUT_PORT_TYPE
+SlaveRlyCtr <= inst44.DB_MAX_OUTPUT_PORT_TYPE
+midSlaveRlyCtr => inst44.IN0
+ACFanCtr <= midACFanCtr.DB_MAX_OUTPUT_PORT_TYPE
+midACFanCtr => ACFanCtr.DATAIN
+Out_Node3 <= midOut_Node3.DB_MAX_OUTPUT_PORT_TYPE
+midOut_Node3 => Out_Node3.DATAIN
+In_Node2 <= midIn_Node2.DB_MAX_OUTPUT_PORT_TYPE
+midIn_Node2 => In_Node2.DATAIN
+In_Node3 <= midIn_Node3.DB_MAX_OUTPUT_PORT_TYPE
+midIn_Node3 => In_Node3.DATAIN
+
+
+|inv|ENINVPWM:inst
+en => ENPWMOUT~0.OUTPUTSELECT
+clk => ENPWMIN_SG0.CLK
+clk => ENPWMIN_SG1.CLK
+clk => ENPWMOUT~reg0.CLK
+ENPWMIN => ENPWMIN_SG0.DATAIN
+ENPWMIN => process1~0.IN1
+ENPWMOUT <= ENPWMOUT~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|inv|and4sync:inst16
+clk => Filtera[3].CLK
+clk => Filtera[2].CLK
+clk => Filtera[1].CLK
+clk => Filtera[0].CLK
+clk => Filterb[3].CLK
+clk => Filterb[2].CLK
+clk => Filterb[1].CLK
+clk => Filterb[0].CLK
+clk => out_put~reg0.CLK
+in_put1 => Filtera[0].DATAIN
+in_put1 => process1~0.IN1
+in_put2 => Filtera[1].DATAIN
+in_put2 => process1~1.IN1
+in_put3 => Filtera[2].DATAIN
+in_put3 => process1~2.IN1
+in_put4 => Filtera[3].DATAIN
+in_put4 => process1~3.IN1
+out_put <= out_put~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|inv|ILIMIT50US:inst18
+clk => filter.CLK
+clk => current_st.CLK
+clk => midSGlimit.CLK
+clk => next_st.CLK
+clk => SGlimitout~reg0.CLK
+clk => COUNT1[8].CLK
+clk => COUNT1[7].CLK
+clk => COUNT1[6].CLK
+clk => COUNT1[5].CLK
+clk => COUNT1[4].CLK
+clk => COUNT1[3].CLK
+clk => COUNT1[2].CLK
+clk => COUNT1[1].CLK
+clk => COUNT1[0].CLK
+SGlimit => filter.DATAIN
+SGlimit => process1~0.IN1
+SGlimitout <= SGlimitout~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|inv|signalsync:inst22
+clk => Filtera.CLK
+clk => Filterb.CLK
+clk => out_put~reg0.CLK
+in_put1 => Filtera.DATAIN
+in_put1 => process1~0.IN1
+out_put <= out_put~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|inv|and4sync:inst10
+clk => Filtera[3].CLK
+clk => Filtera[2].CLK
+clk => Filtera[1].CLK
+clk => Filtera[0].CLK
+clk => Filterb[3].CLK
+clk => Filterb[2].CLK
+clk => Filterb[1].CLK
+clk => Filterb[0].CLK
+clk => out_put~reg0.CLK
+in_put1 => Filtera[0].DATAIN
+in_put1 => process1~0.IN1
+in_put2 => Filtera[1].DATAIN
+in_put2 => process1~1.IN1
+in_put3 => Filtera[2].DATAIN
+in_put3 => process1~2.IN1
+in_put4 => Filtera[3].DATAIN
+in_put4 => process1~3.IN1
+out_put <= out_put~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|inv|and4sync:inst7
+clk => Filtera[3].CLK
+clk => Filtera[2].CLK
+clk => Filtera[1].CLK
+clk => Filtera[0].CLK
+clk => Filterb[3].CLK
+clk => Filterb[2].CLK
+clk => Filterb[1].CLK
+clk => Filterb[0].CLK
+clk => out_put~reg0.CLK
+in_put1 => Filtera[0].DATAIN
+in_put1 => process1~0.IN1
+in_put2 => Filtera[1].DATAIN
+in_put2 => process1~1.IN1
+in_put3 => Filtera[2].DATAIN
+in_put3 => process1~2.IN1
+in_put4 => Filtera[3].DATAIN
+in_put4 => process1~3.IN1
+out_put <= out_put~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|inv|Filter1us:inst42
+clk => Rshift[2].CLK
+clk => Rshift[1].CLK
+clk => Rshift[0].CLK
+clk => z0.CLK
+clk => Countupdown[3].CLK
+clk => Countupdown[2].CLK
+clk => Countupdown[1].CLK
+clk => Countupdown[0].CLK
+clk => out_put~reg0.CLK
+in_put => Rshift[0].DATAIN
+out_put <= out_put~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|inv|Filter10us:inst30
+clk => Rshift[2].CLK
+clk => Rshift[1].CLK
+clk => Rshift[0].CLK
+clk => z0.CLK
+clk => Countupdown[6].CLK
+clk => Countupdown[5].CLK
+clk => Countupdown[4].CLK
+clk => Countupdown[3].CLK
+clk => Countupdown[2].CLK
+clk => Countupdown[1].CLK
+clk => Countupdown[0].CLK
+clk => out_put~reg0.CLK
+in_put => Rshift[0].DATAIN
+out_put <= out_put~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|inv|Filter1us:inst46
+clk => Rshift[2].CLK
+clk => Rshift[1].CLK
+clk => Rshift[0].CLK
+clk => z0.CLK
+clk => Countupdown[3].CLK
+clk => Countupdown[2].CLK
+clk => Countupdown[1].CLK
+clk => Countupdown[0].CLK
+clk => out_put~reg0.CLK
+in_put => Rshift[0].DATAIN
+out_put <= out_put~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|inv|Filter1us:inst47
+clk => Rshift[2].CLK
+clk => Rshift[1].CLK
+clk => Rshift[0].CLK
+clk => z0.CLK
+clk => Countupdown[3].CLK
+clk => Countupdown[2].CLK
+clk => Countupdown[1].CLK
+clk => Countupdown[0].CLK
+clk => out_put~reg0.CLK
+in_put => Rshift[0].DATAIN
+out_put <= out_put~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|inv|and4sync:inst9
+clk => Filtera[3].CLK
+clk => Filtera[2].CLK
+clk => Filtera[1].CLK
+clk => Filtera[0].CLK
+clk => Filterb[3].CLK
+clk => Filterb[2].CLK
+clk => Filterb[1].CLK
+clk => Filterb[0].CLK
+clk => out_put~reg0.CLK
+in_put1 => Filtera[0].DATAIN
+in_put1 => process1~0.IN1
+in_put2 => Filtera[1].DATAIN
+in_put2 => process1~1.IN1
+in_put3 => Filtera[2].DATAIN
+in_put3 => process1~2.IN1
+in_put4 => Filtera[3].DATAIN
+in_put4 => process1~3.IN1
+out_put <= out_put~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|inv|Filter1us:inst48
+clk => Rshift[2].CLK
+clk => Rshift[1].CLK
+clk => Rshift[0].CLK
+clk => z0.CLK
+clk => Countupdown[3].CLK
+clk => Countupdown[2].CLK
+clk => Countupdown[1].CLK
+clk => Countupdown[0].CLK
+clk => out_put~reg0.CLK
+in_put => Rshift[0].DATAIN
+out_put <= out_put~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|inv|Filter1us:inst54
+clk => Rshift[2].CLK
+clk => Rshift[1].CLK
+clk => Rshift[0].CLK
+clk => z0.CLK
+clk => Countupdown[3].CLK
+clk => Countupdown[2].CLK
+clk => Countupdown[1].CLK
+clk => Countupdown[0].CLK
+clk => out_put~reg0.CLK
+in_put => Rshift[0].DATAIN
+out_put <= out_put~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|inv|Filter1us:inst58
+clk => Rshift[2].CLK
+clk => Rshift[1].CLK
+clk => Rshift[0].CLK
+clk => z0.CLK
+clk => Countupdown[3].CLK
+clk => Countupdown[2].CLK
+clk => Countupdown[1].CLK
+clk => Countupdown[0].CLK
+clk => out_put~reg0.CLK
+in_put => Rshift[0].DATAIN
+out_put <= out_put~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|inv|ENINVPWM:inst1
+en => ENPWMOUT~0.OUTPUTSELECT
+clk => ENPWMIN_SG0.CLK
+clk => ENPWMIN_SG1.CLK
+clk => ENPWMOUT~reg0.CLK
+ENPWMIN => ENPWMIN_SG0.DATAIN
+ENPWMIN => process1~0.IN1
+ENPWMOUT <= ENPWMOUT~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|inv|ENINVPWM:inst2
+en => ENPWMOUT~0.OUTPUTSELECT
+clk => ENPWMIN_SG0.CLK
+clk => ENPWMIN_SG1.CLK
+clk => ENPWMOUT~reg0.CLK
+ENPWMIN => ENPWMIN_SG0.DATAIN
+ENPWMIN => process1~0.IN1
+ENPWMOUT <= ENPWMOUT~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|inv|ENINVPWM:inst4
+en => ENPWMOUT~0.OUTPUTSELECT
+clk => ENPWMIN_SG0.CLK
+clk => ENPWMIN_SG1.CLK
+clk => ENPWMOUT~reg0.CLK
+ENPWMIN => ENPWMIN_SG0.DATAIN
+ENPWMIN => process1~0.IN1
+ENPWMOUT <= ENPWMOUT~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|inv|ENINVPWM:inst3
+en => ENPWMOUT~0.OUTPUTSELECT
+clk => ENPWMIN_SG0.CLK
+clk => ENPWMIN_SG1.CLK
+clk => ENPWMOUT~reg0.CLK
+ENPWMIN => ENPWMIN_SG0.DATAIN
+ENPWMIN => process1~0.IN1
+ENPWMOUT <= ENPWMOUT~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|inv|ENINVPWM:inst5
+en => ENPWMOUT~0.OUTPUTSELECT
+clk => ENPWMIN_SG0.CLK
+clk => ENPWMIN_SG1.CLK
+clk => ENPWMOUT~reg0.CLK
+ENPWMIN => ENPWMIN_SG0.DATAIN
+ENPWMIN => process1~0.IN1
+ENPWMOUT <= ENPWMOUT~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+

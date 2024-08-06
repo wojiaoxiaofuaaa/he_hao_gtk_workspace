@@ -1,0 +1,1 @@
+hex2000 -romwidth 16 -memwidth 16 -i -o .\Release\grid_invter_hv_scibbot.hex .\Release\grid_invter_hv.out

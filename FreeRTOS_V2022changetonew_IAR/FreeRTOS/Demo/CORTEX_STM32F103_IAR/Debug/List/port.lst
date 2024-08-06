@@ -1,0 +1,746 @@
+###############################################################################
+#
+# IAR ANSI C/C++ Compiler V8.32.1.169/W32 for ARM         02/May/2024  10:28:29
+# Copyright 1999-2018 IAR Systems AB.
+#
+#    Cpu mode     =  
+#    Endian       =  little
+#    Source file  =  
+#        E:\code\free_rtos_revision\FreeRTOS_V2022changetonew_IAR\FreeRTOS\Source\portable\IAR\ARM_CM3\port.c
+#    Command line =  
+#        -f C:\Users\4444\AppData\Local\Temp\EWFB84.tmp
+#        (E:\code\free_rtos_revision\FreeRTOS_V2022changetonew_IAR\FreeRTOS\Source\portable\IAR\ARM_CM3\port.c
+#        -D VECT_TAB_FLASH -D IAR_ARM_CM3 -lcN
+#        E:\code\free_rtos_revision\FreeRTOS_V2022changetonew_IAR\FreeRTOS\Demo\CORTEX_STM32F103_IAR\Debug\List
+#        --diag_suppress Pa082,pe191 -o
+#        E:\code\free_rtos_revision\FreeRTOS_V2022changetonew_IAR\FreeRTOS\Demo\CORTEX_STM32F103_IAR\Debug\Obj
+#        --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa
+#        --no_clustering --no_scheduling --debug --endian=little
+#        --cpu=Cortex-M3 -e --fpu=None --dlib_config
+#        D:\tool\digital_tool_keil_common_use\keil\IAR\arm\inc\c\DLib_Config_Full.h
+#        -I
+#        E:\code\free_rtos_revision\FreeRTOS_V2022changetonew_IAR\FreeRTOS\Demo\CORTEX_STM32F103_IAR\.\
+#        -I
+#        E:\code\free_rtos_revision\FreeRTOS_V2022changetonew_IAR\FreeRTOS\Demo\CORTEX_STM32F103_IAR\STM32F10xFWLib\inc\
+#        -I
+#        E:\code\free_rtos_revision\FreeRTOS_V2022changetonew_IAR\FreeRTOS\Demo\CORTEX_STM32F103_IAR\..\..\Source\include\
+#        -I
+#        E:\code\free_rtos_revision\FreeRTOS_V2022changetonew_IAR\FreeRTOS\Demo\CORTEX_STM32F103_IAR\..\common\include\
+#        -Ol --use_c++_inline --require_prototypes)
+#    Locale       =  C
+#    List file    =  
+#        E:\code\free_rtos_revision\FreeRTOS_V2022changetonew_IAR\FreeRTOS\Demo\CORTEX_STM32F103_IAR\Debug\List\port.lst
+#    Object file  =  
+#        E:\code\free_rtos_revision\FreeRTOS_V2022changetonew_IAR\FreeRTOS\Demo\CORTEX_STM32F103_IAR\Debug\Obj\port.o
+#
+###############################################################################
+
+E:\code\free_rtos_revision\FreeRTOS_V2022changetonew_IAR\FreeRTOS\Source\portable\IAR\ARM_CM3\port.c
+      1          /*
+      2           * FreeRTOS Kernel V10.5.1
+      3           * Copyright (C) 2021 Amazon.com, Inc. or its affiliates.  All Rights Reserved.
+      4           *
+      5           * SPDX-License-Identifier: MIT
+      6           *
+      7           * Permission is hereby granted, free of charge, to any person obtaining a copy of
+      8           * this software and associated documentation files (the "Software"), to deal in
+      9           * the Software without restriction, including without limitation the rights to
+     10           * use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
+     11           * the Software, and to permit persons to whom the Software is furnished to do so,
+     12           * subject to the following conditions:
+     13           *
+     14           * The above copyright notice and this permission notice shall be included in all
+     15           * copies or substantial portions of the Software.
+     16           *
+     17           * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+     18           * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
+     19           * FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+     20           * COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
+     21           * IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+     22           * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+     23           *
+     24           * https://www.FreeRTOS.org
+     25           * https://github.com/FreeRTOS
+     26           *
+     27           */
+     28          
+     29          /*-----------------------------------------------------------
+     30          * Implementation of functions defined in portable.h for the ARM CM3 port.
+     31          *----------------------------------------------------------*/
+     32          
+     33          /* IAR includes. */
+     34          #include <intrinsics.h>
+     35          
+     36          /* Scheduler includes. */
+     37          #include "FreeRTOS.h"
+     38          #include "task.h"
+     39          
+     40          #if ( configMAX_SYSCALL_INTERRUPT_PRIORITY == 0 )
+     41              #error configMAX_SYSCALL_INTERRUPT_PRIORITY must not be set to 0.  See http: /*www.FreeRTOS.org/RTOS-Cortex-M3-M4.html */
+     42          #endif
+     43          
+     44          /* Constants required to manipulate the core.  Registers first... */
+     45          #define portNVIC_SYSTICK_CTRL_REG             ( *( ( volatile uint32_t * ) 0xe000e010 ) )
+     46          #define portNVIC_SYSTICK_LOAD_REG             ( *( ( volatile uint32_t * ) 0xe000e014 ) )
+     47          #define portNVIC_SYSTICK_CURRENT_VALUE_REG    ( *( ( volatile uint32_t * ) 0xe000e018 ) )
+     48          #define portNVIC_SHPR3_REG                    ( *( ( volatile uint32_t * ) 0xe000ed20 ) )
+     49          /* ...then bits in the registers. */
+     50          #define portNVIC_SYSTICK_CLK_BIT              ( 1UL << 2UL )
+     51          #define portNVIC_SYSTICK_INT_BIT              ( 1UL << 1UL )
+     52          #define portNVIC_SYSTICK_ENABLE_BIT           ( 1UL << 0UL )
+     53          #define portNVIC_SYSTICK_COUNT_FLAG_BIT       ( 1UL << 16UL )
+     54          #define portNVIC_PENDSVCLEAR_BIT              ( 1UL << 27UL )
+     55          #define portNVIC_PEND_SYSTICK_SET_BIT         ( 1UL << 26UL )
+     56          #define portNVIC_PEND_SYSTICK_CLEAR_BIT       ( 1UL << 25UL )
+     57          
+     58          #define portNVIC_PENDSV_PRI                   ( ( ( uint32_t ) configKERNEL_INTERRUPT_PRIORITY ) << 16UL )
+     59          #define portNVIC_SYSTICK_PRI                  ( ( ( uint32_t ) configKERNEL_INTERRUPT_PRIORITY ) << 24UL )
+     60          
+     61          /* Constants required to check the validity of an interrupt priority. */
+     62          #define portFIRST_USER_INTERRUPT_NUMBER       ( 16 )
+     63          #define portNVIC_IP_REGISTERS_OFFSET_16       ( 0xE000E3F0 )
+     64          #define portAIRCR_REG                         ( *( ( volatile uint32_t * ) 0xE000ED0C ) )
+     65          #define portMAX_8_BIT_VALUE                   ( ( uint8_t ) 0xff )
+     66          #define portTOP_BIT_OF_BYTE                   ( ( uint8_t ) 0x80 )
+     67          #define portMAX_PRIGROUP_BITS                 ( ( uint8_t ) 7 )
+     68          #define portPRIORITY_GROUP_MASK               ( 0x07UL << 8UL )
+     69          #define portPRIGROUP_SHIFT                    ( 8UL )
+     70          
+     71          /* Masks off all bits but the VECTACTIVE bits in the ICSR register. */
+     72          #define portVECTACTIVE_MASK                   ( 0xFFUL )
+     73          
+     74          /* Constants required to set up the initial stack. */
+     75          #define portINITIAL_XPSR                      ( 0x01000000 )
+     76          
+     77          /* The systick is a 24-bit counter. */
+     78          #define portMAX_24_BIT_NUMBER                 ( 0xffffffUL )
+     79          
+     80          /* A fiddle factor to estimate the number of SysTick counts that would have
+     81           * occurred while the SysTick counter is stopped during tickless idle
+     82           * calculations. */
+     83          #define portMISSED_COUNTS_FACTOR              ( 94UL )
+     84          
+     85          /* For strict compliance with the Cortex-M spec the task start address should
+     86           * have bit-0 clear, as it is loaded into the PC on exit from an ISR. */
+     87          #define portSTART_ADDRESS_MASK                ( ( StackType_t ) 0xfffffffeUL )
+     88          
+     89          /* For backward compatibility, ensure configKERNEL_INTERRUPT_PRIORITY is
+     90           * defined.  The value 255 should also ensure backward compatibility.
+     91           * FreeRTOS.org versions prior to V4.3.0 did not include this definition. */
+     92          #ifndef configKERNEL_INTERRUPT_PRIORITY
+     93              #define configKERNEL_INTERRUPT_PRIORITY    255
+     94          #endif
+     95          
+     96          /* Let the user override the default SysTick clock rate.  If defined by the
+     97           * user, this symbol must equal the SysTick clock rate when the CLK bit is 0 in the
+     98           * configuration register. */
+     99          #ifndef configSYSTICK_CLOCK_HZ
+    100              #define configSYSTICK_CLOCK_HZ             ( configCPU_CLOCK_HZ )
+    101              /* Ensure the SysTick is clocked at the same frequency as the core. */
+    102              #define portNVIC_SYSTICK_CLK_BIT_CONFIG    ( portNVIC_SYSTICK_CLK_BIT )
+    103          #else
+    104              /* Select the option to clock SysTick not at the same frequency as the core. */
+    105              #define portNVIC_SYSTICK_CLK_BIT_CONFIG    ( 0 )
+    106          #endif
+    107          
+    108          /*
+    109           * Setup the timer to generate the tick interrupts.  The implementation in this
+    110           * file is weak to allow application writers to change the timer used to
+    111           * generate the tick interrupt.
+    112           */
+    113          void vPortSetupTimerInterrupt( void );
+    114          
+    115          /*
+    116           * Exception handlers.
+    117           */
+    118          void xPortSysTickHandler( void );
+    119          
+    120          /*
+    121           * Start first task is a separate function so it can be tested in isolation.
+    122           */
+    123          extern void vPortStartFirstTask( void );
+    124          
+    125          /*
+    126           * Used to catch tasks that attempt to return from their implementing function.
+    127           */
+    128          static void prvTaskExitError( void );
+    129          
+    130          /*-----------------------------------------------------------*/
+    131          
+    132          /* Each task maintains its own interrupt status in the critical nesting
+    133           * variable. */
+    134          static UBaseType_t uxCriticalNesting = 0xaaaaaaaa;
+    135          
+    136          /*
+    137           * The number of SysTick increments that make up one tick period.
+    138           */
+    139          #if ( configUSE_TICKLESS_IDLE == 1 )
+    140              static uint32_t ulTimerCountsForOneTick = 0;
+    141          #endif /* configUSE_TICKLESS_IDLE */
+    142          
+    143          /*
+    144           * The maximum number of tick periods that can be suppressed is limited by the
+    145           * 24 bit resolution of the SysTick timer.
+    146           */
+    147          #if ( configUSE_TICKLESS_IDLE == 1 )
+    148              static uint32_t xMaximumPossibleSuppressedTicks = 0;
+    149          #endif /* configUSE_TICKLESS_IDLE */
+    150          
+    151          /*
+    152           * Compensate for the CPU cycles that pass while the SysTick is stopped (low
+    153           * power functionality only.
+    154           */
+    155          #if ( configUSE_TICKLESS_IDLE == 1 )
+    156              static uint32_t ulStoppedTimerCompensation = 0;
+    157          #endif /* configUSE_TICKLESS_IDLE */
+    158          
+    159          /*
+    160           * Used by the portASSERT_IF_INTERRUPT_PRIORITY_INVALID() macro to ensure
+    161           * FreeRTOS API functions are not called from interrupts that have been assigned
+    162           * a priority above configMAX_SYSCALL_INTERRUPT_PRIORITY.
+    163           */
+    164          #if ( configASSERT_DEFINED == 1 )
+    165              static uint8_t ucMaxSysCallPriority = 0;
+    166              static uint32_t ulMaxPRIGROUPValue = 0;
+    167              static const volatile uint8_t * const pcInterruptPriorityRegisters = ( const volatile uint8_t * const ) portNVIC_IP_REGISTERS_OFFSET_16;
+    168          #endif /* configASSERT_DEFINED */
+    169          
+    170          /*-----------------------------------------------------------*/
+    171          
+    172          /*
+    173           * See header file for description.
+    174           */
+    175          StackType_t * pxPortInitialiseStack( StackType_t * pxTopOfStack,
+    176                                               TaskFunction_t pxCode,
+    177                                               void * pvParameters )
+    178          {
+    179              /* Simulate the stack frame as it would be created by a context switch
+    180               * interrupt. */
+    181              pxTopOfStack--;                                                      /* Offset added to account for the way the MCU uses the stack on entry/exit of interrupts. */
+    182              *pxTopOfStack = portINITIAL_XPSR;                                    /* xPSR */
+    183              pxTopOfStack--;
+    184              *pxTopOfStack = ( ( StackType_t ) pxCode ) & portSTART_ADDRESS_MASK; /* PC */
+    185              pxTopOfStack--;
+    186              *pxTopOfStack = ( StackType_t ) prvTaskExitError;                    /* LR */
+    187              pxTopOfStack -= 5;                                                   /* R12, R3, R2 and R1. */
+    188              *pxTopOfStack = ( StackType_t ) pvParameters;                        /* R0 */
+    189              pxTopOfStack -= 8;                                                   /* R11, R10, R9, R8, R7, R6, R5 and R4. */
+    190          
+    191              return pxTopOfStack;
+    192          }
+    193          /*-----------------------------------------------------------*/
+    194          
+    195          static void prvTaskExitError( void )
+    196          {
+    197              /* A function that implements a task must not exit or attempt to return to
+    198               * its caller as there is nothing to return to.  If a task wants to exit it
+    199               * should instead call vTaskDelete( NULL ).
+    200               *
+    201               * Artificially force an assert() to be triggered if configASSERT() is
+    202               * defined, then stop here so application writers can catch the error. */
+    203              configASSERT( uxCriticalNesting == ~0UL );
+    204              portDISABLE_INTERRUPTS();
+    205          
+    206              for( ; ; )
+    207              {
+    208              }
+    209          }
+    210          /*-----------------------------------------------------------*/
+    211          
+    212          /*
+    213           * See header file for description.
+    214           */
+    215          BaseType_t xPortStartScheduler( void )
+    216          {
+    217              /* configMAX_SYSCALL_INTERRUPT_PRIORITY must not be set to 0.
+    218               * See https://www.FreeRTOS.org/RTOS-Cortex-M3-M4.html */
+    219              configASSERT( configMAX_SYSCALL_INTERRUPT_PRIORITY );
+    220          
+    221              #if ( configASSERT_DEFINED == 1 )
+    222              {
+    223                  volatile uint32_t ulOriginalPriority;
+    224                  volatile uint8_t * const pucFirstUserPriorityRegister = ( volatile uint8_t * const ) ( portNVIC_IP_REGISTERS_OFFSET_16 + portFIRST_USER_INTERRUPT_NUMBER );
+    225                  volatile uint8_t ucMaxPriorityValue;
+    226          
+    227                  /* Determine the maximum priority from which ISR safe FreeRTOS API
+    228                   * functions can be called.  ISR safe functions are those that end in
+    229                   * "FromISR".  FreeRTOS maintains separate thread and ISR API functions to
+    230                   * ensure interrupt entry is as fast and simple as possible.
+    231                   *
+    232                   * Save the interrupt priority value that is about to be clobbered. */
+    233                  ulOriginalPriority = *pucFirstUserPriorityRegister;
+    234          
+    235                  /* Determine the number of priority bits available.  First write to all
+    236                   * possible bits. */
+    237                  *pucFirstUserPriorityRegister = portMAX_8_BIT_VALUE;
+    238          
+    239                  /* Read the value back to see how many bits stuck. */
+    240                  ucMaxPriorityValue = *pucFirstUserPriorityRegister;
+    241          
+    242                  /* Use the same mask on the maximum system call priority. */
+    243                  ucMaxSysCallPriority = configMAX_SYSCALL_INTERRUPT_PRIORITY & ucMaxPriorityValue;
+    244          
+    245                  /* Calculate the maximum acceptable priority group value for the number
+    246                   * of bits read back. */
+    247                  ulMaxPRIGROUPValue = portMAX_PRIGROUP_BITS;
+    248          
+    249                  while( ( ucMaxPriorityValue & portTOP_BIT_OF_BYTE ) == portTOP_BIT_OF_BYTE )
+    250                  {
+    251                      ulMaxPRIGROUPValue--;
+    252                      ucMaxPriorityValue <<= ( uint8_t ) 0x01;
+    253                  }
+    254          
+    255                  #ifdef __NVIC_PRIO_BITS
+    256                  {
+    257                      /* Check the CMSIS configuration that defines the number of
+    258                       * priority bits matches the number of priority bits actually queried
+    259                       * from the hardware. */
+    260                      configASSERT( ( portMAX_PRIGROUP_BITS - ulMaxPRIGROUPValue ) == __NVIC_PRIO_BITS );
+    261                  }
+    262                  #endif
+    263          
+    264                  #ifdef configPRIO_BITS
+    265                  {
+    266                      /* Check the FreeRTOS configuration that defines the number of
+    267                       * priority bits matches the number of priority bits actually queried
+    268                       * from the hardware. */
+    269                      configASSERT( ( portMAX_PRIGROUP_BITS - ulMaxPRIGROUPValue ) == configPRIO_BITS );
+    270                  }
+    271                  #endif
+    272          
+    273                  /* Shift the priority group value back to its position within the AIRCR
+    274                   * register. */
+    275                  ulMaxPRIGROUPValue <<= portPRIGROUP_SHIFT;
+    276                  ulMaxPRIGROUPValue &= portPRIORITY_GROUP_MASK;
+    277          
+    278                  /* Restore the clobbered interrupt priority register to its original
+    279                   * value. */
+    280                  *pucFirstUserPriorityRegister = ulOriginalPriority;
+    281              }
+    282              #endif /* configASSERT_DEFINED */
+    283          
+    284              /* Make PendSV and SysTick the lowest priority interrupts. */
+    285              portNVIC_SHPR3_REG |= portNVIC_PENDSV_PRI;
+    286              portNVIC_SHPR3_REG |= portNVIC_SYSTICK_PRI;
+    287          
+    288              /* Start the timer that generates the tick ISR.  Interrupts are disabled
+    289               * here already. */
+    290              vPortSetupTimerInterrupt();
+    291          
+    292              /* Initialise the critical nesting count ready for the first task. */
+    293              uxCriticalNesting = 0;
+    294          
+    295              /* Start the first task. */
+    296              vPortStartFirstTask();
+    297          
+    298              /* Should not get here! */
+    299              return 0;
+    300          }
+    301          /*-----------------------------------------------------------*/
+    302          
+    303          void vPortEndScheduler( void )
+    304          {
+    305              /* Not implemented in ports where there is nothing to return to.
+    306               * Artificially force an assert. */
+    307              configASSERT( uxCriticalNesting == 1000UL );
+    308          }
+    309          /*-----------------------------------------------------------*/
+    310          
+    311          void vPortEnterCritical( void )
+    312          {
+    313              portDISABLE_INTERRUPTS();
+    314              uxCriticalNesting++;
+    315          
+    316              /* This is not the interrupt safe version of the enter critical function so
+    317               * assert() if it is being called from an interrupt context.  Only API
+    318               * functions that end in "FromISR" can be used in an interrupt.  Only assert if
+    319               * the critical nesting count is 1 to protect against recursive calls if the
+    320               * assert function also uses a critical section. */
+    321              if( uxCriticalNesting == 1 )
+    322              {
+    323                  configASSERT( ( portNVIC_INT_CTRL_REG & portVECTACTIVE_MASK ) == 0 );
+    324              }
+    325          }
+    326          /*-----------------------------------------------------------*/
+    327          
+    328          void vPortExitCritical( void )
+    329          {
+    330              configASSERT( uxCriticalNesting );
+    331              uxCriticalNesting--;
+    332          
+    333              if( uxCriticalNesting == 0 )
+    334              {
+    335                  portENABLE_INTERRUPTS();
+    336              }
+    337          }
+    338          /*-----------------------------------------------------------*/
+    339          
+    340          void xPortSysTickHandler( void )
+    341          {
+    342              /* The SysTick runs at the lowest interrupt priority, so when this interrupt
+    343               * executes all interrupts must be unmasked.  There is therefore no need to
+    344               * save and then restore the interrupt mask value as its value is already
+    345               * known. */
+    346              portDISABLE_INTERRUPTS();
+    347              {
+    348                  /* Increment the RTOS tick. */
+    349                  if( xTaskIncrementTick() != pdFALSE )
+    350                  {
+    351                      /* A context switch is required.  Context switching is performed in
+    352                       * the PendSV interrupt.  Pend the PendSV interrupt. */
+    353                      portNVIC_INT_CTRL_REG = portNVIC_PENDSVSET_BIT;
+    354                  }
+    355              }
+    356              portENABLE_INTERRUPTS();
+    357          }
+    358          /*-----------------------------------------------------------*/
+    359          
+    360          #if ( configUSE_TICKLESS_IDLE == 1 )
+    361          
+    362              __weak void vPortSuppressTicksAndSleep( TickType_t xExpectedIdleTime )
+    363              {
+    364                  uint32_t ulReloadValue, ulCompleteTickPeriods, ulCompletedSysTickDecrements, ulSysTickDecrementsLeft;
+    365                  TickType_t xModifiableIdleTime;
+    366          
+    367                  /* Make sure the SysTick reload value does not overflow the counter. */
+    368                  if( xExpectedIdleTime > xMaximumPossibleSuppressedTicks )
+    369                  {
+    370                      xExpectedIdleTime = xMaximumPossibleSuppressedTicks;
+    371                  }
+    372          
+    373                  /* Enter a critical section but don't use the taskENTER_CRITICAL()
+    374                   * method as that will mask interrupts that should exit sleep mode. */
+    375                  __disable_interrupt();
+    376                  __DSB();
+    377                  __ISB();
+    378          
+    379                  /* If a context switch is pending or a task is waiting for the scheduler
+    380                   * to be unsuspended then abandon the low power entry. */
+    381                  if( eTaskConfirmSleepModeStatus() == eAbortSleep )
+    382                  {
+    383                      /* Re-enable interrupts - see comments above the __disable_interrupt()
+    384                       * call above. */
+    385                      __enable_interrupt();
+    386                  }
+    387                  else
+    388                  {
+    389                      /* Stop the SysTick momentarily.  The time the SysTick is stopped for
+    390                       * is accounted for as best it can be, but using the tickless mode will
+    391                       * inevitably result in some tiny drift of the time maintained by the
+    392                       * kernel with respect to calendar time. */
+    393                      portNVIC_SYSTICK_CTRL_REG = ( portNVIC_SYSTICK_CLK_BIT_CONFIG | portNVIC_SYSTICK_INT_BIT );
+    394          
+    395                      /* Use the SysTick current-value register to determine the number of
+    396                       * SysTick decrements remaining until the next tick interrupt.  If the
+    397                       * current-value register is zero, then there are actually
+    398                       * ulTimerCountsForOneTick decrements remaining, not zero, because the
+    399                       * SysTick requests the interrupt when decrementing from 1 to 0. */
+    400                      ulSysTickDecrementsLeft = portNVIC_SYSTICK_CURRENT_VALUE_REG;
+    401          
+    402                      if( ulSysTickDecrementsLeft == 0 )
+    403                      {
+    404                          ulSysTickDecrementsLeft = ulTimerCountsForOneTick;
+    405                      }
+    406          
+    407                      /* Calculate the reload value required to wait xExpectedIdleTime
+    408                       * tick periods.  -1 is used because this code normally executes part
+    409                       * way through the first tick period.  But if the SysTick IRQ is now
+    410                       * pending, then clear the IRQ, suppressing the first tick, and correct
+    411                       * the reload value to reflect that the second tick period is already
+    412                       * underway.  The expected idle time is always at least two ticks. */
+    413                      ulReloadValue = ulSysTickDecrementsLeft + ( ulTimerCountsForOneTick * ( xExpectedIdleTime - 1UL ) );
+    414          
+    415                      if( ( portNVIC_INT_CTRL_REG & portNVIC_PEND_SYSTICK_SET_BIT ) != 0 )
+    416                      {
+    417                          portNVIC_INT_CTRL_REG = portNVIC_PEND_SYSTICK_CLEAR_BIT;
+    418                          ulReloadValue -= ulTimerCountsForOneTick;
+    419                      }
+    420          
+    421                      if( ulReloadValue > ulStoppedTimerCompensation )
+    422                      {
+    423                          ulReloadValue -= ulStoppedTimerCompensation;
+    424                      }
+    425          
+    426                      /* Set the new reload value. */
+    427                      portNVIC_SYSTICK_LOAD_REG = ulReloadValue;
+    428          
+    429                      /* Clear the SysTick count flag and set the count value back to
+    430                       * zero. */
+    431                      portNVIC_SYSTICK_CURRENT_VALUE_REG = 0UL;
+    432          
+    433                      /* Restart SysTick. */
+    434                      portNVIC_SYSTICK_CTRL_REG |= portNVIC_SYSTICK_ENABLE_BIT;
+    435          
+    436                      /* Sleep until something happens.  configPRE_SLEEP_PROCESSING() can
+    437                       * set its parameter to 0 to indicate that its implementation contains
+    438                       * its own wait for interrupt or wait for event instruction, and so wfi
+    439                       * should not be executed again.  However, the original expected idle
+    440                       * time variable must remain unmodified, so a copy is taken. */
+    441                      xModifiableIdleTime = xExpectedIdleTime;
+    442                      configPRE_SLEEP_PROCESSING( xModifiableIdleTime );
+    443          
+    444                      if( xModifiableIdleTime > 0 )
+    445                      {
+    446                          __DSB();
+    447                          __WFI();
+    448                          __ISB();
+    449                      }
+    450          
+    451                      configPOST_SLEEP_PROCESSING( xExpectedIdleTime );
+    452          
+    453                      /* Re-enable interrupts to allow the interrupt that brought the MCU
+    454                       * out of sleep mode to execute immediately.  See comments above
+    455                       * the __disable_interrupt() call above. */
+    456                      __enable_interrupt();
+    457                      __DSB();
+    458                      __ISB();
+    459          
+    460                      /* Disable interrupts again because the clock is about to be stopped
+    461                       * and interrupts that execute while the clock is stopped will increase
+    462                       * any slippage between the time maintained by the RTOS and calendar
+    463                       * time. */
+    464                      __disable_interrupt();
+    465                      __DSB();
+    466                      __ISB();
+    467          
+    468                      /* Disable the SysTick clock without reading the
+    469                       * portNVIC_SYSTICK_CTRL_REG register to ensure the
+    470                       * portNVIC_SYSTICK_COUNT_FLAG_BIT is not cleared if it is set.  Again,
+    471                       * the time the SysTick is stopped for is accounted for as best it can
+    472                       * be, but using the tickless mode will inevitably result in some tiny
+    473                       * drift of the time maintained by the kernel with respect to calendar
+    474                       * time*/
+    475                      portNVIC_SYSTICK_CTRL_REG = ( portNVIC_SYSTICK_CLK_BIT_CONFIG | portNVIC_SYSTICK_INT_BIT );
+    476          
+    477                      /* Determine whether the SysTick has already counted to zero. */
+    478                      if( ( portNVIC_SYSTICK_CTRL_REG & portNVIC_SYSTICK_COUNT_FLAG_BIT ) != 0 )
+    479                      {
+    480                          uint32_t ulCalculatedLoadValue;
+    481          
+    482                          /* The tick interrupt ended the sleep (or is now pending), and
+    483                           * a new tick period has started.  Reset portNVIC_SYSTICK_LOAD_REG
+    484                           * with whatever remains of the new tick period. */
+    485                          ulCalculatedLoadValue = ( ulTimerCountsForOneTick - 1UL ) - ( ulReloadValue - portNVIC_SYSTICK_CURRENT_VALUE_REG );
+    486          
+    487                          /* Don't allow a tiny value, or values that have somehow
+    488                           * underflowed because the post sleep hook did something
+    489                           * that took too long or because the SysTick current-value register
+    490                           * is zero. */
+    491                          if( ( ulCalculatedLoadValue <= ulStoppedTimerCompensation ) || ( ulCalculatedLoadValue > ulTimerCountsForOneTick ) )
+    492                          {
+    493                              ulCalculatedLoadValue = ( ulTimerCountsForOneTick - 1UL );
+    494                          }
+    495          
+    496                          portNVIC_SYSTICK_LOAD_REG = ulCalculatedLoadValue;
+    497          
+    498                          /* As the pending tick will be processed as soon as this
+    499                           * function exits, the tick value maintained by the tick is stepped
+    500                           * forward by one less than the time spent waiting. */
+    501                          ulCompleteTickPeriods = xExpectedIdleTime - 1UL;
+    502                      }
+    503                      else
+    504                      {
+    505                          /* Something other than the tick interrupt ended the sleep. */
+    506          
+    507                          /* Use the SysTick current-value register to determine the
+    508                           * number of SysTick decrements remaining until the expected idle
+    509                           * time would have ended. */
+    510                          ulSysTickDecrementsLeft = portNVIC_SYSTICK_CURRENT_VALUE_REG;
+    511                          #if ( portNVIC_SYSTICK_CLK_BIT_CONFIG != portNVIC_SYSTICK_CLK_BIT )
+    512                          {
+    513                              /* If the SysTick is not using the core clock, the current-
+    514                               * value register might still be zero here.  In that case, the
+    515                               * SysTick didn't load from the reload register, and there are
+    516                               * ulReloadValue decrements remaining in the expected idle
+    517                               * time, not zero. */
+    518                              if( ulSysTickDecrementsLeft == 0 )
+    519                              {
+    520                                  ulSysTickDecrementsLeft = ulReloadValue;
+    521                              }
+    522                          }
+    523                          #endif /* portNVIC_SYSTICK_CLK_BIT_CONFIG */
+    524          
+    525                          /* Work out how long the sleep lasted rounded to complete tick
+    526                           * periods (not the ulReload value which accounted for part
+    527                           * ticks). */
+    528                          ulCompletedSysTickDecrements = ( xExpectedIdleTime * ulTimerCountsForOneTick ) - ulSysTickDecrementsLeft;
+    529          
+    530                          /* How many complete tick periods passed while the processor
+    531                           * was waiting? */
+    532                          ulCompleteTickPeriods = ulCompletedSysTickDecrements / ulTimerCountsForOneTick;
+    533          
+    534                          /* The reload value is set to whatever fraction of a single tick
+    535                           * period remains. */
+    536                          portNVIC_SYSTICK_LOAD_REG = ( ( ulCompleteTickPeriods + 1UL ) * ulTimerCountsForOneTick ) - ulCompletedSysTickDecrements;
+    537                      }
+    538          
+    539                      /* Restart SysTick so it runs from portNVIC_SYSTICK_LOAD_REG again,
+    540                       * then set portNVIC_SYSTICK_LOAD_REG back to its standard value.  If
+    541                       * the SysTick is not using the core clock, temporarily configure it to
+    542                       * use the core clock.  This configuration forces the SysTick to load
+    543                       * from portNVIC_SYSTICK_LOAD_REG immediately instead of at the next
+    544                       * cycle of the other clock.  Then portNVIC_SYSTICK_LOAD_REG is ready
+    545                       * to receive the standard value immediately. */
+    546                      portNVIC_SYSTICK_CURRENT_VALUE_REG = 0UL;
+    547                      portNVIC_SYSTICK_CTRL_REG = portNVIC_SYSTICK_CLK_BIT | portNVIC_SYSTICK_INT_BIT | portNVIC_SYSTICK_ENABLE_BIT;
+    548                      #if ( portNVIC_SYSTICK_CLK_BIT_CONFIG == portNVIC_SYSTICK_CLK_BIT )
+    549                      {
+    550                          portNVIC_SYSTICK_LOAD_REG = ulTimerCountsForOneTick - 1UL;
+    551                      }
+    552                      #else
+    553                      {
+    554                          /* The temporary usage of the core clock has served its purpose,
+    555                           * as described above.  Resume usage of the other clock. */
+    556                          portNVIC_SYSTICK_CTRL_REG = portNVIC_SYSTICK_CLK_BIT | portNVIC_SYSTICK_INT_BIT;
+    557          
+    558                          if( ( portNVIC_SYSTICK_CTRL_REG & portNVIC_SYSTICK_COUNT_FLAG_BIT ) != 0 )
+    559                          {
+    560                              /* The partial tick period already ended.  Be sure the SysTick
+    561                               * counts it only once. */
+    562                              portNVIC_SYSTICK_CURRENT_VALUE_REG = 0;
+    563                          }
+    564          
+    565                          portNVIC_SYSTICK_LOAD_REG = ulTimerCountsForOneTick - 1UL;
+    566                          portNVIC_SYSTICK_CTRL_REG = portNVIC_SYSTICK_CLK_BIT_CONFIG | portNVIC_SYSTICK_INT_BIT | portNVIC_SYSTICK_ENABLE_BIT;
+    567                      }
+    568                      #endif /* portNVIC_SYSTICK_CLK_BIT_CONFIG */
+    569          
+    570                      /* Step the tick to account for any tick periods that elapsed. */
+    571                      vTaskStepTick( ulCompleteTickPeriods );
+    572          
+    573                      /* Exit with interrupts enabled. */
+    574                      __enable_interrupt();
+    575                  }
+    576              }
+    577          
+    578          #endif /* configUSE_TICKLESS_IDLE */
+    579          /*-----------------------------------------------------------*/
+    580          
+    581          /*
+    582           * Setup the systick timer to generate the tick interrupts at the required
+    583           * frequency.
+    584           */
+    585          __weak void vPortSetupTimerInterrupt( void )
+    586          {
+    587              /* Calculate the constants required to configure the tick interrupt. */
+    588              #if ( configUSE_TICKLESS_IDLE == 1 )
+    589              {
+    590                  ulTimerCountsForOneTick = ( configSYSTICK_CLOCK_HZ / configTICK_RATE_HZ );
+    591                  xMaximumPossibleSuppressedTicks = portMAX_24_BIT_NUMBER / ulTimerCountsForOneTick;
+    592                  ulStoppedTimerCompensation = portMISSED_COUNTS_FACTOR / ( configCPU_CLOCK_HZ / configSYSTICK_CLOCK_HZ );
+    593              }
+    594              #endif /* configUSE_TICKLESS_IDLE */
+    595          
+    596              /* Stop and clear the SysTick. */
+    597              portNVIC_SYSTICK_CTRL_REG = 0UL;
+    598              portNVIC_SYSTICK_CURRENT_VALUE_REG = 0UL;
+    599          
+    600              /* Configure SysTick to interrupt at the requested rate. */
+    601              portNVIC_SYSTICK_LOAD_REG = ( configSYSTICK_CLOCK_HZ / configTICK_RATE_HZ ) - 1UL;
+    602              portNVIC_SYSTICK_CTRL_REG = ( portNVIC_SYSTICK_CLK_BIT_CONFIG | portNVIC_SYSTICK_INT_BIT | portNVIC_SYSTICK_ENABLE_BIT );
+    603          }
+    604          /*-----------------------------------------------------------*/
+    605          
+    606          #if ( configASSERT_DEFINED == 1 )
+    607          
+    608              void vPortValidateInterruptPriority( void )
+    609              {
+    610                  uint32_t ulCurrentInterrupt;
+    611                  uint8_t ucCurrentPriority;
+    612          
+    613                  /* Obtain the number of the currently executing interrupt. */
+    614                  __asm volatile ( "mrs %0, ipsr" : "=r" ( ulCurrentInterrupt )::"memory" );
+    615          
+    616                  /* Is the interrupt number a user defined interrupt? */
+    617                  if( ulCurrentInterrupt >= portFIRST_USER_INTERRUPT_NUMBER )
+    618                  {
+    619                      /* Look up the interrupt's priority. */
+    620                      ucCurrentPriority = pcInterruptPriorityRegisters[ ulCurrentInterrupt ];
+    621          
+    622                      /* The following assertion will fail if a service routine (ISR) for
+    623                       * an interrupt that has been assigned a priority above
+    624                       * configMAX_SYSCALL_INTERRUPT_PRIORITY calls an ISR safe FreeRTOS API
+    625                       * function.  ISR safe FreeRTOS API functions must *only* be called
+    626                       * from interrupts that have been assigned a priority at or below
+    627                       * configMAX_SYSCALL_INTERRUPT_PRIORITY.
+    628                       *
+    629                       * Numerically low interrupt priority numbers represent logically high
+    630                       * interrupt priorities, therefore the priority of the interrupt must
+    631                       * be set to a value equal to or numerically *higher* than
+    632                       * configMAX_SYSCALL_INTERRUPT_PRIORITY.
+    633                       *
+    634                       * Interrupts that	use the FreeRTOS API must not be left at their
+    635                       * default priority of	zero as that is the highest possible priority,
+    636                       * which is guaranteed to be above configMAX_SYSCALL_INTERRUPT_PRIORITY,
+    637                       * and	therefore also guaranteed to be invalid.
+    638                       *
+    639                       * FreeRTOS maintains separate thread and ISR API functions to ensure
+    640                       * interrupt entry is as fast and simple as possible.
+    641                       *
+    642                       * The following links provide detailed information:
+    643                       * https://www.FreeRTOS.org/RTOS-Cortex-M3-M4.html
+    644                       * https://www.FreeRTOS.org/FAQHelp.html */
+    645                      configASSERT( ucCurrentPriority >= ucMaxSysCallPriority );
+    646                  }
+    647          
+    648                  /* Priority grouping:  The interrupt controller (NVIC) allows the bits
+    649                   * that define each interrupt's priority to be split between bits that
+    650                   * define the interrupt's pre-emption priority bits and bits that define
+    651                   * the interrupt's sub-priority.  For simplicity all bits must be defined
+    652                   * to be pre-emption priority bits.  The following assertion will fail if
+    653                   * this is not the case (if some bits represent a sub-priority).
+    654                   *
+    655                   * If the application only uses CMSIS libraries for interrupt
+    656                   * configuration then the correct setting can be achieved on all Cortex-M
+    657                   * devices by calling NVIC_SetPriorityGrouping( 0 ); before starting the
+    658                   * scheduler.  Note however that some vendor specific peripheral libraries
+    659                   * assume a non-zero priority group setting, in which cases using a value
+    660                   * of zero will result in unpredictable behaviour. */
+    661                  configASSERT( ( portAIRCR_REG & portPRIORITY_GROUP_MASK ) <= ulMaxPRIGROUPValue );
+    662              }
+    663          
+    664          #endif /* configASSERT_DEFINED */
+
+   Maximum stack usage in bytes:
+
+   .cstack Function
+   ------- --------
+       0   prvTaskExitError
+       0   pxPortInitialiseStack
+       0   vPortEndScheduler
+       0   vPortEnterCritical
+       0   vPortExitCritical
+       0   vPortSetupTimerInterrupt
+       8   xPortStartScheduler
+         8   -> vPortSetupTimerInterrupt
+         8   -> vPortStartFirstTask
+       8   xPortSysTickHandler
+         8   -> xTaskIncrementTick
+
+
+   Section sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+       4  ??DataTable4
+       4  ??DataTable4_1
+       4  ??DataTable4_2
+      16  prvTaskExitError
+      32  pxPortInitialiseStack
+       4  uxCriticalNesting
+       2  vPortEndScheduler
+      24  vPortEnterCritical
+      22  vPortExitCritical
+      40  vPortSetupTimerInterrupt
+      38  xPortStartScheduler
+      40  xPortSysTickHandler
+
+ 
+   4 bytes in section .data
+ 226 bytes in section .text
+ 
+ 186 bytes of CODE memory (+ 40 bytes shared)
+   4 bytes of DATA memory
+
+Errors: none
+Warnings: none

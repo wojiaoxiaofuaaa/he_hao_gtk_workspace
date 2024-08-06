@@ -1,0 +1,139 @@
+# Copyright (C) 1991-2007 Altera Corporation
+# Your use of Altera Corporation's design tools, logic functions 
+# and other software and tools, and its AMPP partner logic 
+# functions, and any output files from any of the foregoing 
+# (including device programming or simulation files), and any 
+# associated documentation or information are expressly subject 
+# to the terms and conditions of the Altera Program License 
+# Subscription Agreement, Altera MegaCore Function License 
+# Agreement, or other applicable license agreement, including, 
+# without limitation, that your use is for the sole purpose of 
+# programming logic devices manufactured by Altera and sold by 
+# Altera or its authorized distributors.  Please refer to the 
+# applicable agreement for further details.
+
+
+# The default values for assignments are stored in the file
+#		inv_assignment_defaults.qdf
+# If this file doesn't exist, and for assignments not listed, see file
+#		assignment_defaults.qdf
+
+# Altera recommends that you do not modify this file. This
+# file is updated automatically by the Quartus II software
+# and any changes you make may be lost or overwritten.
+
+
+set_global_assignment -name FAMILY "MAX II"
+set_global_assignment -name DEVICE EPM240T100I5
+set_global_assignment -name TOP_LEVEL_ENTITY inv
+set_global_assignment -name ORIGINAL_QUARTUS_VERSION 7.2
+set_global_assignment -name PROJECT_CREATION_TIME_DATE "10:45:54  OCTOBER 31, 2009"
+set_global_assignment -name LAST_QUARTUS_VERSION 7.2
+set_global_assignment -name USE_GENERATED_PHYSICAL_CONSTRAINTS OFF -section_id eda_palace
+set_global_assignment -name SIMULATION_MODE FUNCTIONAL
+set_global_assignment -name INCREMENTAL_COMPILATION OFF
+set_global_assignment -name LL_ROOT_REGION ON -section_id "Root Region"
+set_global_assignment -name LL_MEMBER_STATE LOCKED -section_id "Root Region"
+set_global_assignment -name FITTER_EFFORT "STANDARD FIT"
+set_global_assignment -name AUTO_RESTART_CONFIGURATION OFF
+set_global_assignment -name RESERVE_ALL_UNUSED_PINS "AS INPUT TRI-STATED"
+set_global_assignment -name RESERVE_ALL_UNUSED_PINS_NO_OUTPUT_GND "AS INPUT TRI-STATED"
+set_global_assignment -name ADD_DEFAULT_PINS_TO_SIMULATION_OUTPUT_WAVEFORMS ON
+set_location_assignment PIN_78 -to EPWM1A
+set_location_assignment PIN_77 -to EPWM1B
+set_location_assignment PIN_76 -to EPWM2A
+set_location_assignment PIN_75 -to EPWM2B
+set_location_assignment PIN_74 -to EPWM3A
+set_location_assignment PIN_73 -to EPWM3B
+set_location_assignment PIN_70 -to EPWM5A
+set_location_assignment PIN_53 -to EPWM_FAN_OUT
+set_location_assignment PIN_4 -to In_Node2
+set_location_assignment PIN_26 -to midPWM1AO
+set_location_assignment PIN_21 -to midPWM1BO
+set_location_assignment PIN_28 -to midPWM2AO
+set_location_assignment PIN_27 -to midPWM2BO
+set_location_assignment PIN_30 -to midPWM3AO
+set_location_assignment PIN_29 -to midPWM3BO
+set_location_assignment PIN_83 -to NGRelayCtr
+set_location_assignment PIN_2 -to Out_Node1
+set_location_assignment PIN_1 -to Out_Node2
+set_location_assignment PIN_82 -to PGRelayCtr
+set_location_assignment PIN_66 -to Tz
+set_location_assignment PIN_96 -to Unlock
+set_global_assignment -name ENABLE_LOGIC_ANALYZER_INTERFACE OFF
+set_global_assignment -name IGNORE_CLOCK_SETTINGS OFF
+set_location_assignment PIN_67 -to EPWM6B
+set_global_assignment -name INCREMENTAL_VECTOR_INPUT_SOURCE inv.vwf
+set_location_assignment PIN_12 -to clk
+set_instance_assignment -name GLOBAL_SIGNAL "GLOBAL CLOCK" -to clk
+set_global_assignment -name VHDL_FILE boostLimit.vhd
+set_global_assignment -name VHDL_FILE boost.vhd
+set_global_assignment -name BDF_FILE inv.bdf
+set_global_assignment -name VECTOR_WAVEFORM_FILE inv.vwf
+set_global_assignment -name VHDL_FILE hubu.vhd
+set_global_assignment -name VHDL_FILE ENINVPWM.vhd
+set_global_assignment -name FMAX_REQUIREMENT "10 MHz" -section_id clk
+set_instance_assignment -name CLOCK_SETTINGS clk -to clk
+set_global_assignment -name POWER_USE_TA_VALUE 26
+set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "NO HEAT SINK WITH STILL AIR"
+set_global_assignment -name POWER_EXT_SUPPLY_VOLTAGE_TO_REGULATOR 3.3V
+set_global_assignment -name VHDL_FILE SYNCFILTER.vhd
+set_global_assignment -name FMAX_REQUIREMENT "10 MHz"
+set_location_assignment LC_X3_Y3_N1 -to "ENINVPWM:inst5|ENPWMIN_SG0"
+set_global_assignment -name ENABLE_DA_RULE "C101, C102, C103, C104, C105, C106, R101, R102, R103, R104, R105, T101, T102, A101, A102, A103, A104, A105, A106, A107, A108, A109, A110, S101, S102, S103, S104, D101, D102, D103, H101, H102, M101, M102, M103, M104, M105"
+set_global_assignment -name ENABLE_DRC_SETTINGS ON
+set_global_assignment -name VHDL_FILE and2sync.vhd
+set_global_assignment -name MIN_CORE_JUNCTION_TEMP "-40"
+set_global_assignment -name MAX_CORE_JUNCTION_TEMP 100
+set_global_assignment -name VHDL_FILE and4sync.vhd
+set_location_assignment PIN_57 -to SGLimit
+set_global_assignment -name VHDL_FILE ILIMIT50US.vhd
+set_global_assignment -name VHDL_FILE signalsync.vhd
+set_global_assignment -name VHDL_FILE EmergencyFilter.vhd
+set_global_assignment -name VHDL_FILE Filter10us.vhd
+set_global_assignment -name VHDL_FILE Filter1us.vhd
+set_location_assignment PIN_71 -to midAuxBreakSta
+set_location_assignment PIN_55 -to AuxBreakSta
+set_location_assignment PIN_69 -to midOCP
+set_location_assignment PIN_56 -to OCP
+set_location_assignment PIN_68 -to mid15VPower
+set_location_assignment PIN_17 -to 15VPower
+set_location_assignment PIN_41 -to IGBTHalt3
+set_location_assignment PIN_86 -to midIGBTHalt3
+set_location_assignment PIN_43 -to EmergnecyButtonSta
+set_location_assignment PIN_84 -to midEmergnecyButtonSta
+set_location_assignment PIN_20 -to OVP
+set_location_assignment PIN_7 -to midOVP
+set_location_assignment PIN_58 -to IGBTHalt1
+set_location_assignment PIN_81 -to midIGBTHalt1
+set_location_assignment PIN_42 -to IGBTHalt2
+set_location_assignment PIN_87 -to midIGBTHalt2
+set_location_assignment PIN_6 -to midMastRlyCtr
+set_location_assignment PIN_49 -to MastRlyCtr
+set_location_assignment PIN_50 -to SlaveRlyCtr
+set_location_assignment PIN_5 -to midSlaveRlyCtr
+set_location_assignment PIN_52 -to ACFanCtr
+set_location_assignment PIN_8 -to midACFanCtr
+set_location_assignment PIN_38 -to midIn_Node2
+set_location_assignment PIN_34 -to midOut_Node1
+set_location_assignment PIN_33 -to midOut_Node2
+set_location_assignment PIN_40 -to DCSwSta
+set_location_assignment PIN_100 -to midDCSwSta
+set_location_assignment PIN_64 -to MCU_Sta
+set_location_assignment PIN_99 -to misMCU_Sta
+set_location_assignment PIN_44 -to MasRlySta
+set_location_assignment PIN_98 -to midMstRltSta
+set_location_assignment PIN_97 -to midDirverPowCtr
+set_location_assignment PIN_48 -to DriverPowCtr
+set_location_assignment PIN_95 -to midPGR_Ctr
+set_location_assignment PIN_92 -to midNGR_Ctr
+set_location_assignment PIN_51 -to DCBreakCutoff
+set_location_assignment PIN_91 -to midDCBraskCutoff
+set_location_assignment PIN_47 -to Lock
+set_location_assignment PIN_18 -to Pin18Gnd
+set_location_assignment PIN_35 -to In_Node4
+set_location_assignment PIN_85 -to midIn_Node4
+set_location_assignment PIN_3 -to In_Node3
+set_location_assignment PIN_36 -to midIn_Node3
+set_location_assignment PIN_89 -to midOut_Node3
+set_location_assignment PIN_54 -to Out_Node3

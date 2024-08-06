@@ -1,0 +1,24 @@
+LIBRARY IEEE;
+USE IEEE.STD_LOGIC_1164.ALL;
+USE IEEE.STD_LOGIC_UNSIGNED.ALL;
+ENTITY  syncclk IS
+PORT ( clk   :IN STD_LOGIC;--10KHz 
+       syncclkin  : IN STD_LOGIC;      
+	   syncclkout  : OUT STD_LOGIC         
+     );
+END;
+ARCHITECTURE syncclk OF syncclk IS 
+SIGNAL ENPWMIN_SG0,ENPWMIN_SG1 : STD_LOGIC;
+TYPE STATES IS (ST0, ST1);
+SIGNAL current_st, next_st :STATES;
+BEGIN
+
+process(clk)
+begin
+    IF RISING_EDGE(clk) THEN
+        current_st <= next_st;
+        ENPWMIN_SG0 <= ENPWMIN;
+    end if;
+end process;
+
+END;

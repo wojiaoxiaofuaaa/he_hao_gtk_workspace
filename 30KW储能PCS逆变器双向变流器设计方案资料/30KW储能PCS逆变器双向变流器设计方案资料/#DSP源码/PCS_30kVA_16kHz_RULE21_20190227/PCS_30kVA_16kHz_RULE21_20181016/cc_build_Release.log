@@ -1,0 +1,9 @@
+-------------------------  grid_invter.pjt - Release  -------------------------
+[PROTECT.c] "C:\CCStudio_v3.3PLA\C2000\cgtools\bin\cl2000" -pdsw225 -fr"D:/test_programme/RULE21TEST0213/PCS_2018_11_05/PCS_30kVA_16kHz_RULE21_20181016/Release" -d"LARGE_MODEL" -ml -v28 -@"../Release.lkf" "PROTECT.c"
+"PROTECT.c", line 2695: warning: variable "dwtemp64" was set but never used
+
+[Linking...] "C:\CCStudio_v3.3PLA\C2000\cgtools\bin\cl2000" -@"Release.lkf"
+<Linking>
+
+Build Complete,
+  0 Errors, 1 Warnings, 0 Remarks.

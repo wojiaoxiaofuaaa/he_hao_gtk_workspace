@@ -1,0 +1,268 @@
+###############################################################################
+#
+# IAR ANSI C/C++ Compiler V8.32.1.169/W32 for ARM         02/May/2024  10:32:05
+# Copyright 1999-2018 IAR Systems AB.
+#
+#    Cpu mode     =  
+#    Endian       =  little
+#    Source file  =  
+#        E:\code\free_rtos_revision\FreeRTOS_V2022changetonew_IAR\FreeRTOS\Demo\CORTEX_STM32F103_IAR\serial\serial.c
+#    Command line =  
+#        -f C:\Users\4444\AppData\Local\Temp\EW453C.tmp
+#        (E:\code\free_rtos_revision\FreeRTOS_V2022changetonew_IAR\FreeRTOS\Demo\CORTEX_STM32F103_IAR\serial\serial.c
+#        -D VECT_TAB_FLASH -D IAR_ARM_CM3 -lcN
+#        E:\code\free_rtos_revision\FreeRTOS_V2022changetonew_IAR\FreeRTOS\Demo\CORTEX_STM32F103_IAR\Debug\List
+#        --diag_suppress Pa082,pe191 -o
+#        E:\code\free_rtos_revision\FreeRTOS_V2022changetonew_IAR\FreeRTOS\Demo\CORTEX_STM32F103_IAR\Debug\Obj
+#        --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa
+#        --no_clustering --no_scheduling --debug --endian=little
+#        --cpu=Cortex-M3 -e --fpu=None --dlib_config
+#        D:\tool\digital_tool_keil_common_use\keil\IAR\arm\inc\c\DLib_Config_Full.h
+#        -I
+#        E:\code\free_rtos_revision\FreeRTOS_V2022changetonew_IAR\FreeRTOS\Demo\CORTEX_STM32F103_IAR\.\
+#        -I
+#        E:\code\free_rtos_revision\FreeRTOS_V2022changetonew_IAR\FreeRTOS\Demo\CORTEX_STM32F103_IAR\STM32F10xFWLib\inc\
+#        -I
+#        E:\code\free_rtos_revision\FreeRTOS_V2022changetonew_IAR\FreeRTOS\Demo\CORTEX_STM32F103_IAR\..\..\Source\include\
+#        -I
+#        E:\code\free_rtos_revision\FreeRTOS_V2022changetonew_IAR\FreeRTOS\Demo\CORTEX_STM32F103_IAR\..\common\include\
+#        -Ol --use_c++_inline --require_prototypes)
+#    Locale       =  C
+#    List file    =  
+#        E:\code\free_rtos_revision\FreeRTOS_V2022changetonew_IAR\FreeRTOS\Demo\CORTEX_STM32F103_IAR\Debug\List\serial.lst
+#    Object file  =  
+#        E:\code\free_rtos_revision\FreeRTOS_V2022changetonew_IAR\FreeRTOS\Demo\CORTEX_STM32F103_IAR\Debug\Obj\serial.o
+#
+###############################################################################
+
+E:\code\free_rtos_revision\FreeRTOS_V2022changetonew_IAR\FreeRTOS\Demo\CORTEX_STM32F103_IAR\serial\serial.c
+      1          /*
+      2           * FreeRTOS V202212.01
+      3           * Copyright (C) 2020 Amazon.com, Inc. or its affiliates.  All Rights Reserved.
+      4           *
+      5           * Permission is hereby granted, free of charge, to any person obtaining a copy of
+      6           * this software and associated documentation files (the "Software"), to deal in
+      7           * the Software without restriction, including without limitation the rights to
+      8           * use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
+      9           * the Software, and to permit persons to whom the Software is furnished to do so,
+     10           * subject to the following conditions:
+     11           *
+     12           * The above copyright notice and this permission notice shall be included in all
+     13           * copies or substantial portions of the Software.
+     14           *
+     15           * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+     16           * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
+     17           * FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+     18           * COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
+     19           * IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+     20           * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+     21           *
+     22           * https://www.FreeRTOS.org
+     23           * https://github.com/FreeRTOS
+     24           *
+     25           */
+     26          
+     27          /*
+     28          	BASIC INTERRUPT DRIVEN SERIAL PORT DRIVER FOR UART0.
+     29          */
+     30          
+     31          /* Scheduler includes. */
+     32          #include "FreeRTOS.h"
+     33          #include "queue.h"
+     34          #include "semphr.h"
+     35          
+     36          /* Library includes. */
+     37          #include "stm32f10x_lib.h"
+     38          
+     39          /* Demo application includes. */
+     40          #include "serial.h"
+     41          /*-----------------------------------------------------------*/
+     42          
+     43          /* Misc defines. */
+     44          #define serINVALID_QUEUE				( ( QueueHandle_t ) 0 )
+     45          #define serNO_BLOCK						( ( TickType_t ) 0 )
+     46          #define serTX_BLOCK_TIME				( 40 / portTICK_PERIOD_MS )
+     47          
+     48          /*-----------------------------------------------------------*/
+     49          
+     50          /* The queue used to hold received characters. */
+     51          static QueueHandle_t xRxedChars;
+     52          static QueueHandle_t xCharsForTx;
+     53          
+     54          /*-----------------------------------------------------------*/
+     55          
+     56          /* UART interrupt handler. */
+     57          void vUARTInterruptHandler( void );
+     58          
+     59          /*-----------------------------------------------------------*/
+     60          
+     61          /*
+     62           * See the serial2.h header file.
+     63           */
+     64          xComPortHandle xSerialPortInitMinimal( unsigned long ulWantedBaud, unsigned portBASE_TYPE uxQueueLength )
+     65          {
+     66          xComPortHandle xReturn;
+     67          USART_InitTypeDef USART_InitStructure;
+     68          NVIC_InitTypeDef NVIC_InitStructure;
+     69          GPIO_InitTypeDef GPIO_InitStructure;
+     70          
+     71          	/* Create the queues used to hold Rx/Tx characters. */
+     72          	xRxedChars = xQueueCreate( uxQueueLength, ( unsigned portBASE_TYPE ) sizeof( signed char ) );
+     73          	xCharsForTx = xQueueCreate( uxQueueLength + 1, ( unsigned portBASE_TYPE ) sizeof( signed char ) );
+     74          
+     75          	/* If the queue/semaphore was created correctly then setup the serial port
+     76          	hardware. */
+     77          	if( ( xRxedChars != serINVALID_QUEUE ) && ( xCharsForTx != serINVALID_QUEUE ) )
+     78          	{
+     79          		/* Enable USART1 clock */
+     80          		RCC_APB2PeriphClockCmd( RCC_APB2Periph_USART1 | RCC_APB2Periph_GPIOA, ENABLE );
+     81          
+     82          		/* Configure USART1 Rx (PA10) as input floating */
+     83          		GPIO_InitStructure.GPIO_Pin = GPIO_Pin_10;
+     84          		GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN_FLOATING;
+     85          		GPIO_Init( GPIOA, &GPIO_InitStructure );
+     86          
+     87          		/* Configure USART1 Tx (PA9) as alternate function push-pull */
+     88          		GPIO_InitStructure.GPIO_Pin = GPIO_Pin_9;
+     89          		GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
+     90          		GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF_PP;
+     91          		GPIO_Init( GPIOA, &GPIO_InitStructure );
+     92          
+     93          		USART_InitStructure.USART_BaudRate = ulWantedBaud;
+     94          		USART_InitStructure.USART_WordLength = USART_WordLength_8b;
+     95          		USART_InitStructure.USART_StopBits = USART_StopBits_1;
+     96          		USART_InitStructure.USART_Parity = USART_Parity_No ;
+     97          		USART_InitStructure.USART_HardwareFlowControl = USART_HardwareFlowControl_None;
+     98          		USART_InitStructure.USART_Mode = USART_Mode_Rx | USART_Mode_Tx;
+     99          		USART_InitStructure.USART_Clock = USART_Clock_Disable;
+    100          		USART_InitStructure.USART_CPOL = USART_CPOL_Low;
+    101          		USART_InitStructure.USART_CPHA = USART_CPHA_2Edge;
+    102          		USART_InitStructure.USART_LastBit = USART_LastBit_Disable;
+    103          
+    104          		USART_Init( USART1, &USART_InitStructure );
+    105          
+    106          		USART_ITConfig( USART1, USART_IT_RXNE, ENABLE );
+    107          
+    108          		NVIC_InitStructure.NVIC_IRQChannel = USART1_IRQChannel;
+    109          		NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = configLIBRARY_KERNEL_INTERRUPT_PRIORITY;
+    110          		NVIC_InitStructure.NVIC_IRQChannelSubPriority = 0;
+    111          		NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
+    112          		NVIC_Init( &NVIC_InitStructure );
+    113          
+    114          		USART_Cmd( USART1, ENABLE );
+    115          	}
+    116          	else
+    117          	{
+    118          		xReturn = ( xComPortHandle ) 0;
+    119          	}
+    120          
+    121          	/* This demo file only supports a single port but we have to return
+    122          	something to comply with the standard demo header file. */
+    123          	return xReturn;
+    124          }
+    125          /*-----------------------------------------------------------*/
+    126          
+    127          signed portBASE_TYPE xSerialGetChar( xComPortHandle pxPort, signed char *pcRxedChar, TickType_t xBlockTime )
+    128          {
+    129          	/* The port handle is not required as this driver only supports one port. */
+    130          	( void ) pxPort;
+    131          
+    132          	/* Get the next character from the buffer.  Return false if no characters
+    133          	are available, or arrive before xBlockTime expires. */
+    134          	if( xQueueReceive( xRxedChars, pcRxedChar, xBlockTime ) )
+    135          	{
+    136          		return pdTRUE;
+    137          	}
+    138          	else
+    139          	{
+    140          		return pdFALSE;
+    141          	}
+    142          }
+    143          /*-----------------------------------------------------------*/
+    144          
+    145          void vSerialPutString( xComPortHandle pxPort, const signed char * const pcString, unsigned short usStringLength )
+    146          {
+    147          signed char *pxNext;
+    148          
+    149          	/* A couple of parameters that this port does not use. */
+    150          	( void ) usStringLength;
+    151          	( void ) pxPort;
+    152          
+    153          	/* NOTE: This implementation does not handle the queue being full as no
+    154          	block time is used! */
+    155          
+    156          	/* The port handle is not required as this driver only supports UART1. */
+    157          	( void ) pxPort;
+    158          
+    159          	/* Send each character in the string, one at a time. */
+    160          	pxNext = ( signed char * ) pcString;
+    161          	while( *pxNext )
+    162          	{
+    163          		xSerialPutChar( pxPort, *pxNext, serNO_BLOCK );
+    164          		pxNext++;
+    165          	}
+    166          }
+    167          /*-----------------------------------------------------------*/
+    168          
+    169          signed portBASE_TYPE xSerialPutChar( xComPortHandle pxPort, signed char cOutChar, TickType_t xBlockTime )
+    170          {
+    171          signed portBASE_TYPE xReturn;
+    172          
+    173          	if( xQueueSend( xCharsForTx, &cOutChar, xBlockTime ) == pdPASS )
+    174          	{
+    175          		xReturn = pdPASS;
+    176          		USART_ITConfig( USART1, USART_IT_TXE, ENABLE );
+    177          	}
+    178          	else
+    179          	{
+    180          		xReturn = pdFAIL;
+    181          	}
+    182          
+    183          	return xReturn;
+    184          }
+    185          /*-----------------------------------------------------------*/
+    186          
+    187          void vSerialClose( xComPortHandle xPort )
+    188          {
+    189          	/* Not supported as not required by the demo application. */
+    190          }
+    191          /*-----------------------------------------------------------*/
+    192          
+    193          void vUARTInterruptHandler( void )
+    194          {
+    195          portBASE_TYPE xHigherPriorityTaskWoken = pdFALSE;
+    196          char cChar;
+    197          
+    198          	if( USART_GetITStatus( USART1, USART_IT_TXE ) == SET )
+    199          	{
+    200          		/* The interrupt was caused by the THR becoming empty.  Are there any
+    201          		more characters to transmit? */
+    202          		if( xQueueReceiveFromISR( xCharsForTx, &cChar, &xHigherPriorityTaskWoken ) == pdTRUE )
+    203          		{
+    204          			/* A character was retrieved from the queue so can be sent to the
+    205          			THR now. */
+    206          			USART_SendData( USART1, cChar );
+    207          		}
+    208          		else
+    209          		{
+    210          			USART_ITConfig( USART1, USART_IT_TXE, DISABLE );
+    211          		}
+    212          	}
+    213          
+    214          	if( USART_GetITStatus( USART1, USART_IT_RXNE ) == SET )
+    215          	{
+    216          		cChar = USART_ReceiveData( USART1 );
+    217          		xQueueSendFromISR( xRxedChars, &cChar, &xHigherPriorityTaskWoken );
+    218          	}
+    219          
+    220          	portEND_SWITCHING_ISR( xHigherPriorityTaskWoken );
+    221          }
+    222          
+    223          
+    224          
+    225          
+    226          
+    227          
+
+Errors: 9
+Warnings: none

@@ -1,0 +1,8 @@
+---- wDCPwmCarrTmp Matches (7 in 1 files) ----
+suwInvAndDCPwmKCal in SYSCTR.c (FunSrc) : INT16S wDCPwmCarrTmp;
+suwInvAndDCPwmKCal in SYSCTR.c (FunSrc) :     wDCPwmCarrTmp = ((INT32S)8192<<11)/wBusVoltFiltPrev;
+suwInvAndDCPwmKCal in SYSCTR.c (FunSrc) : 	if(wDCPwmCarrTmp > 10486)
+suwInvAndDCPwmKCal in SYSCTR.c (FunSrc) : 		wDCPwmCarrTmp = 10486;
+suwInvAndDCPwmKCal in SYSCTR.c (FunSrc) : 	else if(wDCPwmCarrTmp < 1103)
+suwInvAndDCPwmKCal in SYSCTR.c (FunSrc) : 		wDCPwmCarrTmp = 1103;
+suwInvAndDCPwmKCal in SYSCTR.c (FunSrc) : 	wDCPwmCarrFrwd = wDCPwmCarrTmp;

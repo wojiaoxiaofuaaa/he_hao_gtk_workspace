@@ -1,0 +1,41 @@
+LIBRARY IEEE;
+USE IEEE.STD_LOGIC_1164.ALL;
+USE IEEE.STD_LOGIC_UNSIGNED.ALL;
+ENTITY  tz IS
+PORT ( clk   :IN STD_LOGIC;--10KHz 
+       underVlot : IN STD_LOGIC;
+       fo  : IN STD_LOGIC; 
+       unlock  : IN STD_LOGIC; 
+	   Q      : OUT STD_LOGIC         
+     );
+END;
+ARCHITECTURE tz OF tz IS 
+SIGNAL underVlot_SG0 : STD_LOGIC;
+SIGNAL fo_SG0 : STD_LOGIC;
+SIGNAL unlock_SG0 : STD_LOGIC;
+BEGIN
+
+process(clk)
+begin
+    IF RISING_EDGE(clk) THEN
+        underVlot_SG0 <= underVlot;
+        fo_SG0 <= fo;
+        unlock_SG0 <= unlock;
+    end if;
+end process;
+
+process(clk,underVlot_SG0,fo_SG0,unlock_SG0)
+begin
+    IF RISING_EDGE(clk) THEN
+        IF unlock_SG0 = '0' THEN
+            Q <= '0';
+        ELSIF underVlot_SG0 = '0' THEN
+            Q <= '1'; 
+        ELSIF fo_SG0 = '0' THEN
+            Q <= '1';
+        end if;        
+    end if;
+end process;
+
+
+END;

@@ -1,0 +1,8 @@
+--------------------------  grid_invter.pjt - Debug  --------------------------
+[SYSCTR.c] "C:\CCStudio_v3.3PLA\C2000\cgtools\bin\cl2000" -g -pdsw225 -fr"D:/test_programme/RULE21TEST0213/PCS_2018_11_05/PCS_30kVA_16kHz_RULE21_20181016/Debug" -d"_DEBUG" -d"LARGE_MODEL" -ml -v28 -@"../Debug.lkf" "SYSCTR.c"
+
+[Linking...] "C:\CCStudio_v3.3PLA\C2000\cgtools\bin\cl2000" -@"Debug.lkf"
+<Linking>
+
+Build Complete,
+  0 Errors, 0 Warnings, 0 Remarks.

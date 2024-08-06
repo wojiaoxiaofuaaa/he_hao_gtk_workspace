@@ -1,0 +1,745 @@
+Classic Timing Analyzer report for inv
+Mon Oct 14 15:48:01 2013
+Quartus II Version 7.2 Build 151 09/26/2007 SJ Full Version
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Timing Analyzer Summary
+  3. Timing Analyzer Settings
+  4. Clock Settings Summary
+  5. Clock Setup: 'clk'
+  6. Clock Hold: 'clk'
+  7. tsu
+  8. tco
+  9. tpd
+ 10. th
+ 11. Timing Analyzer Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2007 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Timing Analyzer Summary                                                                                                                                                                                             ;
++------------------------------+-----------+-----------------------------------+----------------------------------+-----------------------------+------------------------------+------------+----------+--------------+
+; Type                         ; Slack     ; Required Time                     ; Actual Time                      ; From                        ; To                           ; From Clock ; To Clock ; Failed Paths ;
++------------------------------+-----------+-----------------------------------+----------------------------------+-----------------------------+------------------------------+------------+----------+--------------+
+; Worst-case tsu               ; N/A       ; None                              ; 4.357 ns                         ; EPWM2B                      ; ENINVPWM:inst3|ENPWMIN_SG1   ; --         ; clk      ; 0            ;
+; Worst-case tco               ; N/A       ; None                              ; 8.205 ns                         ; ENINVPWM:inst1|ENPWMOUT     ; midPWM1BO                    ; clk        ; --       ; 0            ;
+; Worst-case tpd               ; N/A       ; None                              ; 10.118 ns                        ; midMastRlyCtr               ; MastRlyCtr                   ; --         ; --       ; 0            ;
+; Worst-case th                ; N/A       ; None                              ; -1.869 ns                        ; EmergnecyButtonSta          ; Filter10us:inst30|Rshift[0]  ; --         ; clk      ; 0            ;
+; Clock Setup: 'clk'           ; 92.139 ns ; 10.00 MHz ( period = 100.000 ns ) ; 127.21 MHz ( period = 7.861 ns ) ; ILIMIT50US:inst18|COUNT1[4] ; ILIMIT50US:inst18|COUNT1[5]  ; clk        ; clk      ; 0            ;
+; Clock Hold: 'clk'            ; 1.389 ns  ; 10.00 MHz ( period = 100.000 ns ) ; N/A                              ; ILIMIT50US:inst18|next_st   ; ILIMIT50US:inst18|current_st ; clk        ; clk      ; 0            ;
+; Total number of failed paths ;           ;                                   ;                                  ;                             ;                              ;            ;          ; 0            ;
++------------------------------+-----------+-----------------------------------+----------------------------------+-----------------------------+------------------------------+------------+----------+--------------+
+
+
++----------------------------------------------------------------------------------------------------------------+
+; Timing Analyzer Settings                                                                                       ;
++----------------------------------------------------------------+--------------------+------+-----+-------------+
+; Option                                                         ; Setting            ; From ; To  ; Entity Name ;
++----------------------------------------------------------------+--------------------+------+-----+-------------+
+; Device Name                                                    ; EPM240T100I5       ;      ;     ;             ;
+; Timing Models                                                  ; Final              ;      ;     ;             ;
+; Default hold multicycle                                        ; Same as Multicycle ;      ;     ;             ;
+; Cut paths between unrelated clock domains                      ; On                 ;      ;     ;             ;
+; Cut off read during write signal paths                         ; On                 ;      ;     ;             ;
+; Cut off feedback from I/O pins                                 ; On                 ;      ;     ;             ;
+; Report Combined Fast/Slow Timing                               ; Off                ;      ;     ;             ;
+; fmax Requirement                                               ; 10 MHz             ;      ;     ;             ;
+; Ignore Clock Settings                                          ; Off                ;      ;     ;             ;
+; Analyze latches as synchronous elements                        ; On                 ;      ;     ;             ;
+; Enable Recovery/Removal analysis                               ; Off                ;      ;     ;             ;
+; Enable Clock Latency                                           ; Off                ;      ;     ;             ;
+; Use TimeQuest Timing Analyzer                                  ; Off                ;      ;     ;             ;
+; Minimum Core Junction Temperature                              ; -40                ;      ;     ;             ;
+; Maximum Core Junction Temperature                              ; 100                ;      ;     ;             ;
+; Number of source nodes to report per destination node          ; 10                 ;      ;     ;             ;
+; Number of destination nodes to report                          ; 10                 ;      ;     ;             ;
+; Number of paths to report                                      ; 200                ;      ;     ;             ;
+; Report Minimum Timing Checks                                   ; Off                ;      ;     ;             ;
+; Use Fast Timing Models                                         ; Off                ;      ;     ;             ;
+; Report IO Paths Separately                                     ; Off                ;      ;     ;             ;
+; Perform Multicorner Analysis                                   ; Off                ;      ;     ;             ;
+; Reports the worst-case path for each clock domain and analysis ; Off                ;      ;     ;             ;
+; Clock Settings                                                 ; clk                ;      ; clk ;             ;
++----------------------------------------------------------------+--------------------+------+-----+-------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Clock Settings Summary                                                                                                                                                             ;
++-----------------+--------------------+----------+------------------+---------------+--------------+----------+-----------------------+---------------------+--------+--------------+
+; Clock Node Name ; Clock Setting Name ; Type     ; Fmax Requirement ; Early Latency ; Late Latency ; Based on ; Multiply Base Fmax by ; Divide Base Fmax by ; Offset ; Phase offset ;
++-----------------+--------------------+----------+------------------+---------------+--------------+----------+-----------------------+---------------------+--------+--------------+
+; clk             ; clk                ; User Pin ; 10.0 MHz         ; 0.000 ns      ; 0.000 ns     ; --       ; N/A                   ; N/A                 ; N/A    ;              ;
++-----------------+--------------------+----------+------------------+---------------+--------------+----------+-----------------------+---------------------+--------+--------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Clock Setup: 'clk'                                                                                                                                                                                                                                                              ;
++-----------------------------------------+-----------------------------------------------------+----------------------------------+----------------------------------+------------+----------+-----------------------------+---------------------------+-------------------------+
+; Slack                                   ; Actual fmax (period)                                ; From                             ; To                               ; From Clock ; To Clock ; Required Setup Relationship ; Required Longest P2P Time ; Actual Longest P2P Time ;
++-----------------------------------------+-----------------------------------------------------+----------------------------------+----------------------------------+------------+----------+-----------------------------+---------------------------+-------------------------+
+; 92.139 ns                               ; 127.21 MHz ( period = 7.861 ns )                    ; ILIMIT50US:inst18|COUNT1[4]      ; ILIMIT50US:inst18|COUNT1[5]      ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 7.152 ns                ;
+; 92.139 ns                               ; 127.21 MHz ( period = 7.861 ns )                    ; ILIMIT50US:inst18|COUNT1[4]      ; ILIMIT50US:inst18|COUNT1[6]      ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 7.152 ns                ;
+; 92.139 ns                               ; 127.21 MHz ( period = 7.861 ns )                    ; ILIMIT50US:inst18|COUNT1[4]      ; ILIMIT50US:inst18|COUNT1[7]      ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 7.152 ns                ;
+; 92.139 ns                               ; 127.21 MHz ( period = 7.861 ns )                    ; ILIMIT50US:inst18|COUNT1[4]      ; ILIMIT50US:inst18|COUNT1[8]      ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 7.152 ns                ;
+; 92.281 ns                               ; 129.55 MHz ( period = 7.719 ns )                    ; ILIMIT50US:inst18|COUNT1[5]      ; ILIMIT50US:inst18|COUNT1[5]      ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 7.010 ns                ;
+; 92.281 ns                               ; 129.55 MHz ( period = 7.719 ns )                    ; ILIMIT50US:inst18|COUNT1[5]      ; ILIMIT50US:inst18|COUNT1[6]      ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 7.010 ns                ;
+; 92.281 ns                               ; 129.55 MHz ( period = 7.719 ns )                    ; ILIMIT50US:inst18|COUNT1[5]      ; ILIMIT50US:inst18|COUNT1[7]      ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 7.010 ns                ;
+; 92.281 ns                               ; 129.55 MHz ( period = 7.719 ns )                    ; ILIMIT50US:inst18|COUNT1[5]      ; ILIMIT50US:inst18|COUNT1[8]      ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 7.010 ns                ;
+; 92.455 ns                               ; 132.54 MHz ( period = 7.545 ns )                    ; ILIMIT50US:inst18|COUNT1[2]      ; ILIMIT50US:inst18|COUNT1[5]      ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 6.836 ns                ;
+; 92.455 ns                               ; 132.54 MHz ( period = 7.545 ns )                    ; ILIMIT50US:inst18|COUNT1[2]      ; ILIMIT50US:inst18|COUNT1[6]      ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 6.836 ns                ;
+; 92.455 ns                               ; 132.54 MHz ( period = 7.545 ns )                    ; ILIMIT50US:inst18|COUNT1[2]      ; ILIMIT50US:inst18|COUNT1[7]      ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 6.836 ns                ;
+; 92.455 ns                               ; 132.54 MHz ( period = 7.545 ns )                    ; ILIMIT50US:inst18|COUNT1[2]      ; ILIMIT50US:inst18|COUNT1[8]      ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 6.836 ns                ;
+; 92.606 ns                               ; 135.24 MHz ( period = 7.394 ns )                    ; ILIMIT50US:inst18|COUNT1[4]      ; ILIMIT50US:inst18|COUNT1[4]      ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 6.685 ns                ;
+; 92.679 ns                               ; 136.59 MHz ( period = 7.321 ns )                    ; Filter1us:inst42|Countupdown[2]  ; Filter1us:inst42|Countupdown[1]  ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 6.612 ns                ;
+; 92.729 ns                               ; 137.53 MHz ( period = 7.271 ns )                    ; ILIMIT50US:inst18|COUNT1[4]      ; ILIMIT50US:inst18|COUNT1[3]      ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 6.562 ns                ;
+; 92.748 ns                               ; 137.89 MHz ( period = 7.252 ns )                    ; ILIMIT50US:inst18|COUNT1[5]      ; ILIMIT50US:inst18|COUNT1[4]      ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 6.543 ns                ;
+; 92.852 ns                               ; 139.90 MHz ( period = 7.148 ns )                    ; ILIMIT50US:inst18|COUNT1[4]      ; ILIMIT50US:inst18|COUNT1[2]      ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 6.439 ns                ;
+; 92.871 ns                               ; 140.27 MHz ( period = 7.129 ns )                    ; ILIMIT50US:inst18|COUNT1[5]      ; ILIMIT50US:inst18|COUNT1[3]      ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 6.420 ns                ;
+; 92.922 ns                               ; 141.28 MHz ( period = 7.078 ns )                    ; ILIMIT50US:inst18|COUNT1[2]      ; ILIMIT50US:inst18|COUNT1[4]      ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 6.369 ns                ;
+; 92.924 ns                               ; 141.32 MHz ( period = 7.076 ns )                    ; Filter10us:inst30|Countupdown[3] ; Filter10us:inst30|Countupdown[6] ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 6.367 ns                ;
+; 92.924 ns                               ; 141.32 MHz ( period = 7.076 ns )                    ; Filter10us:inst30|Countupdown[3] ; Filter10us:inst30|Countupdown[4] ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 6.367 ns                ;
+; 92.924 ns                               ; 141.32 MHz ( period = 7.076 ns )                    ; Filter10us:inst30|Countupdown[3] ; Filter10us:inst30|Countupdown[5] ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 6.367 ns                ;
+; 92.970 ns                               ; 142.25 MHz ( period = 7.030 ns )                    ; Filter1us:inst42|Countupdown[1]  ; Filter1us:inst42|Countupdown[1]  ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 6.321 ns                ;
+; 92.975 ns                               ; 142.35 MHz ( period = 7.025 ns )                    ; ILIMIT50US:inst18|COUNT1[4]      ; ILIMIT50US:inst18|COUNT1[1]      ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 6.316 ns                ;
+; 92.994 ns                               ; 142.73 MHz ( period = 7.006 ns )                    ; ILIMIT50US:inst18|COUNT1[5]      ; ILIMIT50US:inst18|COUNT1[2]      ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 6.297 ns                ;
+; 93.006 ns                               ; 142.98 MHz ( period = 6.994 ns )                    ; ILIMIT50US:inst18|COUNT1[3]      ; ILIMIT50US:inst18|COUNT1[5]      ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 6.285 ns                ;
+; 93.006 ns                               ; 142.98 MHz ( period = 6.994 ns )                    ; ILIMIT50US:inst18|COUNT1[3]      ; ILIMIT50US:inst18|COUNT1[6]      ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 6.285 ns                ;
+; 93.006 ns                               ; 142.98 MHz ( period = 6.994 ns )                    ; ILIMIT50US:inst18|COUNT1[3]      ; ILIMIT50US:inst18|COUNT1[7]      ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 6.285 ns                ;
+; 93.006 ns                               ; 142.98 MHz ( period = 6.994 ns )                    ; ILIMIT50US:inst18|COUNT1[3]      ; ILIMIT50US:inst18|COUNT1[8]      ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 6.285 ns                ;
+; 93.045 ns                               ; 143.78 MHz ( period = 6.955 ns )                    ; ILIMIT50US:inst18|COUNT1[2]      ; ILIMIT50US:inst18|COUNT1[3]      ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 6.246 ns                ;
+; 93.072 ns                               ; 144.34 MHz ( period = 6.928 ns )                    ; Filter1us:inst54|Countupdown[1]  ; Filter1us:inst54|Countupdown[3]  ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 6.219 ns                ;
+; 93.081 ns                               ; 144.53 MHz ( period = 6.919 ns )                    ; Filter1us:inst54|Countupdown[1]  ; Filter1us:inst54|Countupdown[1]  ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 6.210 ns                ;
+; 93.103 ns                               ; 144.99 MHz ( period = 6.897 ns )                    ; Filter1us:inst58|Countupdown[2]  ; Filter1us:inst58|Countupdown[1]  ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 6.188 ns                ;
+; 93.110 ns                               ; 145.14 MHz ( period = 6.890 ns )                    ; Filter1us:inst42|Countupdown[2]  ; Filter1us:inst42|Countupdown[3]  ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 6.181 ns                ;
+; 93.117 ns                               ; 145.29 MHz ( period = 6.883 ns )                    ; ILIMIT50US:inst18|COUNT1[5]      ; ILIMIT50US:inst18|COUNT1[1]      ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 6.174 ns                ;
+; 93.155 ns                               ; 146.09 MHz ( period = 6.845 ns )                    ; Filter1us:inst58|Countupdown[2]  ; Filter1us:inst58|Countupdown[2]  ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 6.136 ns                ;
+; 93.159 ns                               ; 146.18 MHz ( period = 6.841 ns )                    ; Filter1us:inst58|Countupdown[1]  ; Filter1us:inst58|Countupdown[1]  ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 6.132 ns                ;
+; 93.168 ns                               ; 146.37 MHz ( period = 6.832 ns )                    ; ILIMIT50US:inst18|COUNT1[2]      ; ILIMIT50US:inst18|COUNT1[2]      ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 6.123 ns                ;
+; 93.211 ns                               ; 147.30 MHz ( period = 6.789 ns )                    ; Filter1us:inst58|Countupdown[1]  ; Filter1us:inst58|Countupdown[2]  ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 6.080 ns                ;
+; 93.228 ns                               ; 147.67 MHz ( period = 6.772 ns )                    ; Filter1us:inst47|Countupdown[1]  ; Filter1us:inst47|Countupdown[1]  ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 6.063 ns                ;
+; 93.253 ns                               ; 148.21 MHz ( period = 6.747 ns )                    ; Filter1us:inst48|Countupdown[3]  ; Filter1us:inst48|Countupdown[3]  ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 6.038 ns                ;
+; 93.267 ns                               ; 148.52 MHz ( period = 6.733 ns )                    ; Filter10us:inst30|Countupdown[4] ; Filter10us:inst30|Countupdown[6] ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 6.024 ns                ;
+; 93.267 ns                               ; 148.52 MHz ( period = 6.733 ns )                    ; Filter10us:inst30|Countupdown[4] ; Filter10us:inst30|Countupdown[4] ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 6.024 ns                ;
+; 93.267 ns                               ; 148.52 MHz ( period = 6.733 ns )                    ; Filter10us:inst30|Countupdown[4] ; Filter10us:inst30|Countupdown[5] ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 6.024 ns                ;
+; 93.291 ns                               ; 149.05 MHz ( period = 6.709 ns )                    ; ILIMIT50US:inst18|COUNT1[2]      ; ILIMIT50US:inst18|COUNT1[1]      ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 6.000 ns                ;
+; 93.294 ns                               ; 149.12 MHz ( period = 6.706 ns )                    ; Filter1us:inst58|Countupdown[3]  ; Filter1us:inst58|Countupdown[1]  ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 5.997 ns                ;
+; 93.319 ns                               ; 149.68 MHz ( period = 6.681 ns )                    ; Filter10us:inst30|Countupdown[3] ; Filter10us:inst30|Countupdown[0] ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 5.972 ns                ;
+; 93.319 ns                               ; 149.68 MHz ( period = 6.681 ns )                    ; Filter10us:inst30|Countupdown[3] ; Filter10us:inst30|Countupdown[1] ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 5.972 ns                ;
+; 93.319 ns                               ; 149.68 MHz ( period = 6.681 ns )                    ; Filter10us:inst30|Countupdown[3] ; Filter10us:inst30|Countupdown[2] ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 5.972 ns                ;
+; 93.319 ns                               ; 149.68 MHz ( period = 6.681 ns )                    ; Filter10us:inst30|Countupdown[3] ; Filter10us:inst30|Countupdown[3] ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 5.972 ns                ;
+; 93.346 ns                               ; 150.29 MHz ( period = 6.654 ns )                    ; Filter1us:inst58|Countupdown[3]  ; Filter1us:inst58|Countupdown[2]  ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 5.945 ns                ;
+; 93.352 ns                               ; 150.42 MHz ( period = 6.648 ns )                    ; Filter1us:inst42|Countupdown[3]  ; Filter1us:inst42|Countupdown[1]  ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 5.939 ns                ;
+; 93.359 ns                               ; 150.58 MHz ( period = 6.641 ns )                    ; Filter1us:inst46|Countupdown[1]  ; Filter1us:inst46|Countupdown[2]  ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 5.932 ns                ;
+; 93.401 ns                               ; 151.54 MHz ( period = 6.599 ns )                    ; Filter1us:inst42|Countupdown[1]  ; Filter1us:inst42|Countupdown[3]  ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 5.890 ns                ;
+; 93.406 ns                               ; 151.65 MHz ( period = 6.594 ns )                    ; Filter1us:inst54|Countupdown[3]  ; Filter1us:inst54|Countupdown[3]  ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 5.885 ns                ;
+; 93.409 ns                               ; 151.72 MHz ( period = 6.591 ns )                    ; Filter1us:inst47|Countupdown[3]  ; Filter1us:inst47|Countupdown[1]  ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 5.882 ns                ;
+; 93.410 ns                               ; 151.75 MHz ( period = 6.590 ns )                    ; Filter1us:inst48|Countupdown[1]  ; Filter1us:inst48|Countupdown[3]  ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 5.881 ns                ;
+; 93.415 ns                               ; 151.86 MHz ( period = 6.585 ns )                    ; Filter1us:inst54|Countupdown[3]  ; Filter1us:inst54|Countupdown[1]  ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 5.876 ns                ;
+; 93.458 ns                               ; 152.86 MHz ( period = 6.542 ns )                    ; Filter1us:inst47|Countupdown[1]  ; Filter1us:inst47|Countupdown[3]  ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 5.833 ns                ;
+; 93.466 ns                               ; 153.05 MHz ( period = 6.534 ns )                    ; Filter1us:inst54|Countupdown[1]  ; Filter1us:inst54|Countupdown[2]  ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 5.825 ns                ;
+; 93.473 ns                               ; 153.21 MHz ( period = 6.527 ns )                    ; ILIMIT50US:inst18|COUNT1[3]      ; ILIMIT50US:inst18|COUNT1[4]      ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 5.818 ns                ;
+; 93.486 ns                               ; 153.52 MHz ( period = 6.514 ns )                    ; Filter10us:inst30|z0             ; Filter10us:inst30|Countupdown[6] ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 5.805 ns                ;
+; 93.486 ns                               ; 153.52 MHz ( period = 6.514 ns )                    ; Filter10us:inst30|z0             ; Filter10us:inst30|Countupdown[4] ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 5.805 ns                ;
+; 93.486 ns                               ; 153.52 MHz ( period = 6.514 ns )                    ; Filter10us:inst30|z0             ; Filter10us:inst30|Countupdown[5] ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 5.805 ns                ;
+; 93.508 ns                               ; 154.04 MHz ( period = 6.492 ns )                    ; Filter1us:inst46|Countupdown[1]  ; Filter1us:inst46|Countupdown[3]  ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 5.783 ns                ;
+; 93.509 ns                               ; 154.06 MHz ( period = 6.491 ns )                    ; Filter1us:inst42|Countupdown[2]  ; Filter1us:inst42|Countupdown[2]  ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 5.782 ns                ;
+; 93.523 ns                               ; 154.39 MHz ( period = 6.477 ns )                    ; Filter1us:inst58|Countupdown[2]  ; Filter1us:inst58|Countupdown[3]  ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 5.768 ns                ;
+; 93.524 ns                               ; 154.42 MHz ( period = 6.476 ns )                    ; Filter1us:inst46|Countupdown[1]  ; Filter1us:inst46|Countupdown[1]  ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 5.767 ns                ;
+; 93.527 ns                               ; 154.49 MHz ( period = 6.473 ns )                    ; Filter1us:inst46|Countupdown[2]  ; Filter1us:inst46|Countupdown[2]  ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 5.764 ns                ;
+; 93.573 ns                               ; 155.59 MHz ( period = 6.427 ns )                    ; Filter1us:inst47|Countupdown[1]  ; Filter1us:inst47|Countupdown[2]  ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 5.718 ns                ;
+; 93.579 ns                               ; 155.74 MHz ( period = 6.421 ns )                    ; Filter1us:inst58|Countupdown[1]  ; Filter1us:inst58|Countupdown[3]  ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 5.712 ns                ;
+; 93.596 ns                               ; 156.15 MHz ( period = 6.404 ns )                    ; ILIMIT50US:inst18|COUNT1[3]      ; ILIMIT50US:inst18|COUNT1[3]      ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 5.695 ns                ;
+; 93.609 ns                               ; 156.47 MHz ( period = 6.391 ns )                    ; ILIMIT50US:inst18|COUNT1[4]      ; ILIMIT50US:inst18|next_st        ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 5.682 ns                ;
+; 93.612 ns                               ; 156.54 MHz ( period = 6.388 ns )                    ; ILIMIT50US:inst18|COUNT1[4]      ; ILIMIT50US:inst18|SGlimitout     ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 5.679 ns                ;
+; 93.637 ns                               ; 157.16 MHz ( period = 6.363 ns )                    ; Filter10us:inst30|Countupdown[5] ; Filter10us:inst30|Countupdown[0] ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 5.654 ns                ;
+; 93.637 ns                               ; 157.16 MHz ( period = 6.363 ns )                    ; Filter10us:inst30|Countupdown[5] ; Filter10us:inst30|Countupdown[1] ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 5.654 ns                ;
+; 93.637 ns                               ; 157.16 MHz ( period = 6.363 ns )                    ; Filter10us:inst30|Countupdown[5] ; Filter10us:inst30|Countupdown[2] ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 5.654 ns                ;
+; 93.637 ns                               ; 157.16 MHz ( period = 6.363 ns )                    ; Filter10us:inst30|Countupdown[5] ; Filter10us:inst30|Countupdown[6] ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 5.654 ns                ;
+; 93.637 ns                               ; 157.16 MHz ( period = 6.363 ns )                    ; Filter10us:inst30|Countupdown[5] ; Filter10us:inst30|Countupdown[3] ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 5.654 ns                ;
+; 93.637 ns                               ; 157.16 MHz ( period = 6.363 ns )                    ; Filter10us:inst30|Countupdown[5] ; Filter10us:inst30|Countupdown[4] ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 5.654 ns                ;
+; 93.637 ns                               ; 157.16 MHz ( period = 6.363 ns )                    ; Filter10us:inst30|Countupdown[5] ; Filter10us:inst30|Countupdown[5] ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 5.654 ns                ;
+; 93.639 ns                               ; 157.21 MHz ( period = 6.361 ns )                    ; Filter1us:inst47|Countupdown[3]  ; Filter1us:inst47|Countupdown[3]  ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 5.652 ns                ;
+; 93.661 ns                               ; 157.75 MHz ( period = 6.339 ns )                    ; Filter10us:inst30|Countupdown[2] ; Filter10us:inst30|Countupdown[6] ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 5.630 ns                ;
+; 93.661 ns                               ; 157.75 MHz ( period = 6.339 ns )                    ; Filter10us:inst30|Countupdown[2] ; Filter10us:inst30|Countupdown[4] ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 5.630 ns                ;
+; 93.661 ns                               ; 157.75 MHz ( period = 6.339 ns )                    ; Filter10us:inst30|Countupdown[2] ; Filter10us:inst30|Countupdown[5] ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 5.630 ns                ;
+; 93.662 ns                               ; 157.78 MHz ( period = 6.338 ns )                    ; Filter10us:inst30|Countupdown[4] ; Filter10us:inst30|Countupdown[0] ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 5.629 ns                ;
+; 93.662 ns                               ; 157.78 MHz ( period = 6.338 ns )                    ; Filter10us:inst30|Countupdown[4] ; Filter10us:inst30|Countupdown[1] ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 5.629 ns                ;
+; 93.662 ns                               ; 157.78 MHz ( period = 6.338 ns )                    ; Filter10us:inst30|Countupdown[4] ; Filter10us:inst30|Countupdown[2] ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 5.629 ns                ;
+; 93.662 ns                               ; 157.78 MHz ( period = 6.338 ns )                    ; Filter10us:inst30|Countupdown[4] ; Filter10us:inst30|Countupdown[3] ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 5.629 ns                ;
+; 93.672 ns                               ; 158.03 MHz ( period = 6.328 ns )                    ; Filter1us:inst48|Countupdown[3]  ; Filter1us:inst48|Countupdown[2]  ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 5.619 ns                ;
+; 93.676 ns                               ; 158.13 MHz ( period = 6.324 ns )                    ; Filter1us:inst46|Countupdown[2]  ; Filter1us:inst46|Countupdown[3]  ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 5.615 ns                ;
+; 93.692 ns                               ; 158.53 MHz ( period = 6.308 ns )                    ; Filter1us:inst46|Countupdown[2]  ; Filter1us:inst46|Countupdown[1]  ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 5.599 ns                ;
+; 93.714 ns                               ; 159.08 MHz ( period = 6.286 ns )                    ; Filter1us:inst58|Countupdown[3]  ; Filter1us:inst58|Countupdown[3]  ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 5.577 ns                ;
+; 93.719 ns                               ; 159.21 MHz ( period = 6.281 ns )                    ; ILIMIT50US:inst18|COUNT1[3]      ; ILIMIT50US:inst18|COUNT1[2]      ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 5.572 ns                ;
+; 93.751 ns                               ; 160.03 MHz ( period = 6.249 ns )                    ; ILIMIT50US:inst18|COUNT1[5]      ; ILIMIT50US:inst18|next_st        ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 5.540 ns                ;
+; 93.754 ns                               ; 160.10 MHz ( period = 6.246 ns )                    ; Filter1us:inst47|Countupdown[3]  ; Filter1us:inst47|Countupdown[2]  ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 5.537 ns                ;
+; 93.754 ns                               ; 160.10 MHz ( period = 6.246 ns )                    ; ILIMIT50US:inst18|COUNT1[5]      ; ILIMIT50US:inst18|SGlimitout     ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 5.537 ns                ;
+; 93.756 ns                               ; 160.15 MHz ( period = 6.244 ns )                    ; Filter1us:inst54|Countupdown[2]  ; Filter1us:inst54|Countupdown[2]  ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 5.535 ns                ;
+; 93.771 ns                               ; 160.54 MHz ( period = 6.229 ns )                    ; Filter1us:inst48|Countupdown[3]  ; Filter1us:inst48|Countupdown[1]  ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 5.520 ns                ;
+; 93.771 ns                               ; 160.54 MHz ( period = 6.229 ns )                    ; Filter1us:inst47|Countupdown[2]  ; Filter1us:inst47|Countupdown[1]  ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 5.520 ns                ;
+; 93.781 ns                               ; 160.80 MHz ( period = 6.219 ns )                    ; Filter1us:inst54|Countupdown[2]  ; Filter1us:inst54|Countupdown[3]  ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 5.510 ns                ;
+; 93.783 ns                               ; 160.85 MHz ( period = 6.217 ns )                    ; Filter1us:inst42|Countupdown[3]  ; Filter1us:inst42|Countupdown[3]  ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 5.508 ns                ;
+; 93.790 ns                               ; 161.03 MHz ( period = 6.210 ns )                    ; Filter1us:inst54|Countupdown[2]  ; Filter1us:inst54|Countupdown[1]  ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 5.501 ns                ;
+; 93.800 ns                               ; 161.29 MHz ( period = 6.200 ns )                    ; Filter1us:inst54|Countupdown[3]  ; Filter1us:inst54|Countupdown[2]  ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 5.491 ns                ;
+; 93.800 ns                               ; 161.29 MHz ( period = 6.200 ns )                    ; Filter1us:inst48|Countupdown[2]  ; Filter1us:inst48|Countupdown[3]  ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 5.491 ns                ;
+; 93.800 ns                               ; 161.29 MHz ( period = 6.200 ns )                    ; Filter1us:inst42|Countupdown[1]  ; Filter1us:inst42|Countupdown[2]  ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 5.491 ns                ;
+; 93.809 ns                               ; 161.52 MHz ( period = 6.191 ns )                    ; Filter1us:inst54|Countupdown[2]  ; Filter1us:inst54|out_put         ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 5.482 ns                ;
+; 93.822 ns                               ; 161.86 MHz ( period = 6.178 ns )                    ; ILIMIT50US:inst18|COUNT1[4]      ; ILIMIT50US:inst18|COUNT1[0]      ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 5.469 ns                ;
+; 93.829 ns                               ; 162.05 MHz ( period = 6.171 ns )                    ; Filter1us:inst48|Countupdown[1]  ; Filter1us:inst48|Countupdown[2]  ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 5.462 ns                ;
+; 93.842 ns                               ; 162.39 MHz ( period = 6.158 ns )                    ; ILIMIT50US:inst18|COUNT1[3]      ; ILIMIT50US:inst18|COUNT1[1]      ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 5.449 ns                ;
+; 93.861 ns                               ; 162.89 MHz ( period = 6.139 ns )                    ; Filter10us:inst30|Countupdown[1] ; Filter10us:inst30|Countupdown[0] ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 5.430 ns                ;
+; 93.861 ns                               ; 162.89 MHz ( period = 6.139 ns )                    ; Filter10us:inst30|Countupdown[1] ; Filter10us:inst30|Countupdown[1] ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 5.430 ns                ;
+; 93.861 ns                               ; 162.89 MHz ( period = 6.139 ns )                    ; Filter10us:inst30|Countupdown[1] ; Filter10us:inst30|Countupdown[2] ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 5.430 ns                ;
+; 93.861 ns                               ; 162.89 MHz ( period = 6.139 ns )                    ; Filter10us:inst30|Countupdown[1] ; Filter10us:inst30|Countupdown[6] ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 5.430 ns                ;
+; 93.861 ns                               ; 162.89 MHz ( period = 6.139 ns )                    ; Filter10us:inst30|Countupdown[1] ; Filter10us:inst30|Countupdown[3] ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 5.430 ns                ;
+; 93.861 ns                               ; 162.89 MHz ( period = 6.139 ns )                    ; Filter10us:inst30|Countupdown[1] ; Filter10us:inst30|Countupdown[4] ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 5.430 ns                ;
+; 93.861 ns                               ; 162.89 MHz ( period = 6.139 ns )                    ; Filter10us:inst30|Countupdown[1] ; Filter10us:inst30|Countupdown[5] ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 5.430 ns                ;
+; 93.888 ns                               ; 163.61 MHz ( period = 6.112 ns )                    ; Filter10us:inst30|Countupdown[3] ; Filter10us:inst30|out_put        ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 5.403 ns                ;
+; 93.895 ns                               ; 163.80 MHz ( period = 6.105 ns )                    ; Filter1us:inst46|Countupdown[3]  ; Filter1us:inst46|Countupdown[2]  ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 5.396 ns                ;
+; 93.925 ns                               ; 164.61 MHz ( period = 6.075 ns )                    ; ILIMIT50US:inst18|COUNT1[2]      ; ILIMIT50US:inst18|next_st        ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 5.366 ns                ;
+; 93.928 ns                               ; 164.69 MHz ( period = 6.072 ns )                    ; Filter1us:inst48|Countupdown[1]  ; Filter1us:inst48|Countupdown[1]  ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 5.363 ns                ;
+; 93.928 ns                               ; 164.69 MHz ( period = 6.072 ns )                    ; ILIMIT50US:inst18|COUNT1[2]      ; ILIMIT50US:inst18|SGlimitout     ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 5.363 ns                ;
+; 93.953 ns                               ; 165.37 MHz ( period = 6.047 ns )                    ; Filter10us:inst30|z0             ; Filter10us:inst30|Countupdown[3] ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 5.338 ns                ;
+; 93.964 ns                               ; 165.67 MHz ( period = 6.036 ns )                    ; ILIMIT50US:inst18|COUNT1[5]      ; ILIMIT50US:inst18|COUNT1[0]      ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 5.327 ns                ;
+; 93.997 ns                               ; 166.58 MHz ( period = 6.003 ns )                    ; ILIMIT50US:inst18|COUNT1[8]      ; ILIMIT50US:inst18|COUNT1[5]      ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 5.294 ns                ;
+; 93.997 ns                               ; 166.58 MHz ( period = 6.003 ns )                    ; ILIMIT50US:inst18|COUNT1[8]      ; ILIMIT50US:inst18|COUNT1[6]      ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 5.294 ns                ;
+; 93.997 ns                               ; 166.58 MHz ( period = 6.003 ns )                    ; ILIMIT50US:inst18|COUNT1[8]      ; ILIMIT50US:inst18|COUNT1[7]      ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 5.294 ns                ;
+; 93.997 ns                               ; 166.58 MHz ( period = 6.003 ns )                    ; ILIMIT50US:inst18|COUNT1[8]      ; ILIMIT50US:inst18|COUNT1[8]      ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 5.294 ns                ;
+; 94.001 ns                               ; 166.69 MHz ( period = 5.999 ns )                    ; Filter1us:inst47|Countupdown[2]  ; Filter1us:inst47|Countupdown[3]  ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 5.290 ns                ;
+; 94.012 ns                               ; 167.00 MHz ( period = 5.988 ns )                    ; Filter1us:inst47|Countupdown[2]  ; Filter1us:inst47|Countupdown[2]  ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 5.279 ns                ;
+; 94.013 ns                               ; 167.03 MHz ( period = 5.987 ns )                    ; Filter1us:inst42|Countupdown[2]  ; Filter1us:inst42|Countupdown[0]  ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 5.278 ns                ;
+; 94.020 ns                               ; 167.22 MHz ( period = 5.980 ns )                    ; Filter1us:inst48|Countupdown[3]  ; Filter1us:inst48|Countupdown[0]  ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 5.271 ns                ;
+; 94.024 ns                               ; 167.34 MHz ( period = 5.976 ns )                    ; Filter10us:inst30|Countupdown[6] ; Filter10us:inst30|Countupdown[0] ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 5.267 ns                ;
+; 94.024 ns                               ; 167.34 MHz ( period = 5.976 ns )                    ; Filter10us:inst30|Countupdown[6] ; Filter10us:inst30|Countupdown[1] ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 5.267 ns                ;
+; 94.024 ns                               ; 167.34 MHz ( period = 5.976 ns )                    ; Filter10us:inst30|Countupdown[6] ; Filter10us:inst30|Countupdown[2] ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 5.267 ns                ;
+; 94.024 ns                               ; 167.34 MHz ( period = 5.976 ns )                    ; Filter10us:inst30|Countupdown[6] ; Filter10us:inst30|Countupdown[6] ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 5.267 ns                ;
+; 94.024 ns                               ; 167.34 MHz ( period = 5.976 ns )                    ; Filter10us:inst30|Countupdown[6] ; Filter10us:inst30|Countupdown[3] ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 5.267 ns                ;
+; 94.024 ns                               ; 167.34 MHz ( period = 5.976 ns )                    ; Filter10us:inst30|Countupdown[6] ; Filter10us:inst30|Countupdown[4] ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 5.267 ns                ;
+; 94.024 ns                               ; 167.34 MHz ( period = 5.976 ns )                    ; Filter10us:inst30|Countupdown[6] ; Filter10us:inst30|Countupdown[5] ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 5.267 ns                ;
+; 94.043 ns                               ; 167.87 MHz ( period = 5.957 ns )                    ; Filter1us:inst58|Countupdown[2]  ; Filter1us:inst58|out_put         ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 5.248 ns                ;
+; 94.044 ns                               ; 167.90 MHz ( period = 5.956 ns )                    ; Filter1us:inst46|Countupdown[3]  ; Filter1us:inst46|Countupdown[3]  ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 5.247 ns                ;
+; 94.052 ns                               ; 168.12 MHz ( period = 5.948 ns )                    ; Filter1us:inst54|Countupdown[3]  ; Filter1us:inst54|out_put         ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 5.239 ns                ;
+; 94.056 ns                               ; 168.24 MHz ( period = 5.944 ns )                    ; Filter10us:inst30|Countupdown[2] ; Filter10us:inst30|Countupdown[0] ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 5.235 ns                ;
+; 94.056 ns                               ; 168.24 MHz ( period = 5.944 ns )                    ; Filter10us:inst30|Countupdown[2] ; Filter10us:inst30|Countupdown[1] ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 5.235 ns                ;
+; 94.056 ns                               ; 168.24 MHz ( period = 5.944 ns )                    ; Filter10us:inst30|Countupdown[2] ; Filter10us:inst30|Countupdown[2] ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 5.235 ns                ;
+; 94.056 ns                               ; 168.24 MHz ( period = 5.944 ns )                    ; Filter10us:inst30|Countupdown[2] ; Filter10us:inst30|Countupdown[3] ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 5.235 ns                ;
+; 94.060 ns                               ; 168.35 MHz ( period = 5.940 ns )                    ; Filter1us:inst46|Countupdown[3]  ; Filter1us:inst46|Countupdown[1]  ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 5.231 ns                ;
+; 94.076 ns                               ; 168.80 MHz ( period = 5.924 ns )                    ; Filter10us:inst30|z0             ; Filter10us:inst30|Countupdown[2] ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 5.215 ns                ;
+; 94.099 ns                               ; 169.46 MHz ( period = 5.901 ns )                    ; Filter1us:inst58|Countupdown[1]  ; Filter1us:inst58|out_put         ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 5.192 ns                ;
+; 94.138 ns                               ; 170.59 MHz ( period = 5.862 ns )                    ; ILIMIT50US:inst18|COUNT1[2]      ; ILIMIT50US:inst18|COUNT1[0]      ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 5.153 ns                ;
+; 94.162 ns                               ; 171.29 MHz ( period = 5.838 ns )                    ; ILIMIT50US:inst18|COUNT1[7]      ; ILIMIT50US:inst18|COUNT1[5]      ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 5.129 ns                ;
+; 94.162 ns                               ; 171.29 MHz ( period = 5.838 ns )                    ; ILIMIT50US:inst18|COUNT1[7]      ; ILIMIT50US:inst18|COUNT1[6]      ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 5.129 ns                ;
+; 94.162 ns                               ; 171.29 MHz ( period = 5.838 ns )                    ; ILIMIT50US:inst18|COUNT1[7]      ; ILIMIT50US:inst18|COUNT1[7]      ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 5.129 ns                ;
+; 94.162 ns                               ; 171.29 MHz ( period = 5.838 ns )                    ; ILIMIT50US:inst18|COUNT1[7]      ; ILIMIT50US:inst18|COUNT1[8]      ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 5.129 ns                ;
+; 94.172 ns                               ; 171.59 MHz ( period = 5.828 ns )                    ; Filter1us:inst47|Countupdown[1]  ; Filter1us:inst47|Countupdown[0]  ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 5.119 ns                ;
+; 94.177 ns                               ; 171.73 MHz ( period = 5.823 ns )                    ; Filter1us:inst48|Countupdown[1]  ; Filter1us:inst48|Countupdown[0]  ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 5.114 ns                ;
+; 94.180 ns                               ; 171.82 MHz ( period = 5.820 ns )                    ; Filter1us:inst54|Countupdown[2]  ; Filter1us:inst54|Countupdown[0]  ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 5.111 ns                ;
+; 94.182 ns                               ; 171.88 MHz ( period = 5.818 ns )                    ; Filter1us:inst42|Countupdown[3]  ; Filter1us:inst42|Countupdown[2]  ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 5.109 ns                ;
+; 94.182 ns                               ; 171.88 MHz ( period = 5.818 ns )                    ; Filter1us:inst54|Countupdown[1]  ; Filter1us:inst54|out_put         ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 5.109 ns                ;
+; 94.199 ns                               ; 172.38 MHz ( period = 5.801 ns )                    ; Filter10us:inst30|z0             ; Filter10us:inst30|Countupdown[1] ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 5.092 ns                ;
+; 94.206 ns                               ; 172.59 MHz ( period = 5.794 ns )                    ; Filter10us:inst30|Countupdown[5] ; Filter10us:inst30|out_put        ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 5.085 ns                ;
+; 94.219 ns                               ; 172.98 MHz ( period = 5.781 ns )                    ; Filter1us:inst48|Countupdown[2]  ; Filter1us:inst48|Countupdown[2]  ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 5.072 ns                ;
+; 94.221 ns                               ; 173.04 MHz ( period = 5.779 ns )                    ; Filter1us:inst58|Countupdown[2]  ; Filter1us:inst58|Countupdown[0]  ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 5.070 ns                ;
+; 94.231 ns                               ; 173.34 MHz ( period = 5.769 ns )                    ; Filter10us:inst30|Countupdown[4] ; Filter10us:inst30|out_put        ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 5.060 ns                ;
+; 94.240 ns                               ; 173.61 MHz ( period = 5.760 ns )                    ; Filter1us:inst46|Countupdown[1]  ; Filter1us:inst46|Countupdown[0]  ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 5.051 ns                ;
+; 94.240 ns                               ; 173.61 MHz ( period = 5.760 ns )                    ; Filter1us:inst58|Countupdown[3]  ; Filter1us:inst58|out_put         ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 5.051 ns                ;
+; 94.263 ns                               ; 174.31 MHz ( period = 5.737 ns )                    ; Filter1us:inst46|Countupdown[0]  ; Filter1us:inst46|Countupdown[2]  ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 5.028 ns                ;
+; 94.277 ns                               ; 174.73 MHz ( period = 5.723 ns )                    ; Filter1us:inst58|Countupdown[1]  ; Filter1us:inst58|Countupdown[0]  ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 5.014 ns                ;
+; 94.304 ns                               ; 175.56 MHz ( period = 5.696 ns )                    ; Filter1us:inst42|Countupdown[1]  ; Filter1us:inst42|Countupdown[0]  ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 4.987 ns                ;
+; 94.305 ns                               ; 175.59 MHz ( period = 5.695 ns )                    ; Filter1us:inst47|Countupdown[2]  ; Filter1us:inst47|out_put         ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 4.986 ns                ;
+; 94.318 ns                               ; 175.99 MHz ( period = 5.682 ns )                    ; Filter1us:inst48|Countupdown[2]  ; Filter1us:inst48|Countupdown[1]  ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 4.973 ns                ;
+; 94.322 ns                               ; 176.12 MHz ( period = 5.678 ns )                    ; ILIMIT50US:inst18|COUNT1[6]      ; ILIMIT50US:inst18|COUNT1[5]      ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 4.969 ns                ;
+; 94.322 ns                               ; 176.12 MHz ( period = 5.678 ns )                    ; ILIMIT50US:inst18|COUNT1[6]      ; ILIMIT50US:inst18|COUNT1[6]      ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 4.969 ns                ;
+; 94.322 ns                               ; 176.12 MHz ( period = 5.678 ns )                    ; ILIMIT50US:inst18|COUNT1[6]      ; ILIMIT50US:inst18|COUNT1[7]      ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 4.969 ns                ;
+; 94.322 ns                               ; 176.12 MHz ( period = 5.678 ns )                    ; ILIMIT50US:inst18|COUNT1[6]      ; ILIMIT50US:inst18|COUNT1[8]      ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 4.969 ns                ;
+; 94.331 ns                               ; 176.40 MHz ( period = 5.669 ns )                    ; Filter1us:inst46|Countupdown[0]  ; Filter1us:inst46|Countupdown[1]  ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 4.960 ns                ;
+; 94.353 ns                               ; 177.09 MHz ( period = 5.647 ns )                    ; Filter1us:inst47|Countupdown[3]  ; Filter1us:inst47|Countupdown[0]  ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 4.938 ns                ;
+; 94.391 ns                               ; 178.28 MHz ( period = 5.609 ns )                    ; Filter10us:inst30|Countupdown[0] ; Filter10us:inst30|Countupdown[0] ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 4.900 ns                ;
+; 94.391 ns                               ; 178.28 MHz ( period = 5.609 ns )                    ; Filter10us:inst30|Countupdown[0] ; Filter10us:inst30|Countupdown[1] ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 4.900 ns                ;
+; 94.391 ns                               ; 178.28 MHz ( period = 5.609 ns )                    ; Filter10us:inst30|Countupdown[0] ; Filter10us:inst30|Countupdown[2] ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 4.900 ns                ;
+; 94.391 ns                               ; 178.28 MHz ( period = 5.609 ns )                    ; Filter10us:inst30|Countupdown[0] ; Filter10us:inst30|Countupdown[6] ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 4.900 ns                ;
+; 94.391 ns                               ; 178.28 MHz ( period = 5.609 ns )                    ; Filter10us:inst30|Countupdown[0] ; Filter10us:inst30|Countupdown[3] ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 4.900 ns                ;
+; 94.391 ns                               ; 178.28 MHz ( period = 5.609 ns )                    ; Filter10us:inst30|Countupdown[0] ; Filter10us:inst30|Countupdown[4] ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 4.900 ns                ;
+; 94.391 ns                               ; 178.28 MHz ( period = 5.609 ns )                    ; Filter10us:inst30|Countupdown[0] ; Filter10us:inst30|Countupdown[5] ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 4.900 ns                ;
+; 94.397 ns                               ; 178.48 MHz ( period = 5.603 ns )                    ; Filter1us:inst58|Countupdown[0]  ; Filter1us:inst58|Countupdown[1]  ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 4.894 ns                ;
+; 94.408 ns                               ; 178.83 MHz ( period = 5.592 ns )                    ; Filter1us:inst46|Countupdown[2]  ; Filter1us:inst46|Countupdown[0]  ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 4.883 ns                ;
+; 94.412 ns                               ; 178.95 MHz ( period = 5.588 ns )                    ; Filter1us:inst58|Countupdown[3]  ; Filter1us:inst58|Countupdown[0]  ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 4.879 ns                ;
+; 94.416 ns                               ; 179.08 MHz ( period = 5.584 ns )                    ; Filter1us:inst46|Countupdown[1]  ; Filter1us:inst46|out_put         ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 4.875 ns                ;
+; 94.423 ns                               ; 179.31 MHz ( period = 5.577 ns )                    ; Filter1us:inst54|Countupdown[3]  ; Filter1us:inst54|Countupdown[0]  ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 4.868 ns                ;
+; 94.430 ns                               ; 179.53 MHz ( period = 5.570 ns )                    ; Filter10us:inst30|Countupdown[1] ; Filter10us:inst30|out_put        ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 4.861 ns                ;
+; 94.449 ns                               ; 180.15 MHz ( period = 5.551 ns )                    ; Filter1us:inst58|Countupdown[0]  ; Filter1us:inst58|Countupdown[2]  ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 4.842 ns                ;
+; 94.464 ns                               ; 180.64 MHz ( period = 5.536 ns )                    ; ILIMIT50US:inst18|COUNT1[8]      ; ILIMIT50US:inst18|COUNT1[4]      ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 4.827 ns                ;
+; 94.472 ns                               ; 180.90 MHz ( period = 5.528 ns )                    ; Filter1us:inst54|Countupdown[1]  ; Filter1us:inst54|Countupdown[0]  ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 4.819 ns                ;
+; 94.476 ns                               ; 181.03 MHz ( period = 5.524 ns )                    ; ILIMIT50US:inst18|COUNT1[3]      ; ILIMIT50US:inst18|next_st        ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 4.815 ns                ;
+; 94.478 ns                               ; 181.09 MHz ( period = 5.522 ns )                    ; Filter1us:inst42|Countupdown[0]  ; Filter1us:inst42|Countupdown[1]  ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 4.813 ns                ;
+; 94.479 ns                               ; 181.13 MHz ( period = 5.521 ns )                    ; ILIMIT50US:inst18|COUNT1[3]      ; ILIMIT50US:inst18|SGlimitout     ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 4.812 ns                ;
+; 94.490 ns                               ; 181.49 MHz ( period = 5.510 ns )                    ; ILIMIT50US:inst18|COUNT1[0]      ; ILIMIT50US:inst18|COUNT1[5]      ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 4.801 ns                ;
+; 94.490 ns                               ; 181.49 MHz ( period = 5.510 ns )                    ; ILIMIT50US:inst18|COUNT1[0]      ; ILIMIT50US:inst18|COUNT1[6]      ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 4.801 ns                ;
+; 94.490 ns                               ; 181.49 MHz ( period = 5.510 ns )                    ; ILIMIT50US:inst18|COUNT1[0]      ; ILIMIT50US:inst18|COUNT1[7]      ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 4.801 ns                ;
+; 94.490 ns                               ; 181.49 MHz ( period = 5.510 ns )                    ; ILIMIT50US:inst18|COUNT1[0]      ; ILIMIT50US:inst18|COUNT1[8]      ; clk        ; clk      ; 100.000 ns                  ; 99.291 ns                 ; 4.801 ns                ;
+; Timing analysis restricted to 200 rows. ; To change the limit use Settings (Assignments menu) ;                                  ;                                  ;            ;          ;                             ;                           ;                         ;
++-----------------------------------------+-----------------------------------------------------+----------------------------------+----------------------------------+------------+----------+-----------------------------+---------------------------+-------------------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Clock Hold: 'clk'                                                                                                                                                                                                                             ;
++-----------------------------------------+-----------------------------------------------------+----------------------------------+------------+----------+----------------------------+----------------------------+--------------------------+
+; Minimum Slack                           ; From                                                ; To                               ; From Clock ; To Clock ; Required Hold Relationship ; Required Shortest P2P Time ; Actual Shortest P2P Time ;
++-----------------------------------------+-----------------------------------------------------+----------------------------------+------------+----------+----------------------------+----------------------------+--------------------------+
+; 1.389 ns                                ; ILIMIT50US:inst18|next_st                           ; ILIMIT50US:inst18|current_st     ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 1.234 ns                 ;
+; 1.409 ns                                ; Filter1us:inst42|Rshift[0]                          ; Filter1us:inst42|Rshift[1]       ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 1.254 ns                 ;
+; 1.412 ns                                ; Filter1us:inst46|Rshift[0]                          ; Filter1us:inst46|Rshift[1]       ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 1.257 ns                 ;
+; 1.421 ns                                ; ILIMIT50US:inst18|SGlimitout                        ; and4sync:inst16|Filtera[2]       ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 1.266 ns                 ;
+; 1.433 ns                                ; Filter1us:inst46|out_put                            ; and4sync:inst7|Filtera[2]        ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 1.278 ns                 ;
+; 1.435 ns                                ; Filter1us:inst58|Rshift[0]                          ; Filter1us:inst58|Rshift[1]       ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 1.280 ns                 ;
+; 1.442 ns                                ; Filter1us:inst58|Rshift[1]                          ; Filter1us:inst58|Rshift[2]       ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 1.287 ns                 ;
+; 1.650 ns                                ; ENINVPWM:inst2|ENPWMIN_SG0                          ; ENINVPWM:inst2|ENPWMIN_SG1       ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 1.495 ns                 ;
+; 1.652 ns                                ; signalsync:inst22|Filtera                           ; signalsync:inst22|Filterb        ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 1.497 ns                 ;
+; 1.655 ns                                ; and4sync:inst7|Filtera[3]                           ; and4sync:inst7|Filterb[3]        ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 1.500 ns                 ;
+; 1.660 ns                                ; and4sync:inst9|Filtera[3]                           ; and4sync:inst9|Filterb[3]        ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 1.505 ns                 ;
+; 1.660 ns                                ; Filter1us:inst58|Rshift[2]                          ; Filter1us:inst58|z0              ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 1.505 ns                 ;
+; 1.660 ns                                ; ENINVPWM:inst3|ENPWMIN_SG1                          ; ENINVPWM:inst3|ENPWMIN_SG1       ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 1.505 ns                 ;
+; 1.660 ns                                ; and4sync:inst16|Filterb[2]                          ; and4sync:inst16|Filterb[2]       ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 1.505 ns                 ;
+; 1.662 ns                                ; Filter10us:inst30|out_put                           ; and4sync:inst7|Filtera[1]        ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 1.507 ns                 ;
+; 1.663 ns                                ; and4sync:inst7|Filtera[2]                           ; and4sync:inst7|Filterb[2]        ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 1.508 ns                 ;
+; 1.665 ns                                ; ENINVPWM:inst3|ENPWMIN_SG1                          ; ENINVPWM:inst3|ENPWMOUT          ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 1.510 ns                 ;
+; 1.665 ns                                ; and4sync:inst16|Filterb[2]                          ; and4sync:inst16|out_put          ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 1.510 ns                 ;
+; 1.668 ns                                ; and4sync:inst9|out_put                              ; and4sync:inst10|Filterb[2]       ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 1.513 ns                 ;
+; 1.669 ns                                ; Filter1us:inst42|Rshift[1]                          ; Filter1us:inst42|z0              ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 1.514 ns                 ;
+; 1.669 ns                                ; and4sync:inst10|Filterb[0]                          ; and4sync:inst10|Filterb[0]       ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 1.514 ns                 ;
+; 1.670 ns                                ; ILIMIT50US:inst18|COUNT1[8]                         ; ILIMIT50US:inst18|COUNT1[8]      ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 1.515 ns                 ;
+; 1.670 ns                                ; Filter1us:inst42|Rshift[1]                          ; Filter1us:inst42|Rshift[2]       ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 1.515 ns                 ;
+; 1.670 ns                                ; Filter1us:inst46|Rshift[1]                          ; Filter1us:inst46|z0              ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 1.515 ns                 ;
+; 1.671 ns                                ; Filter1us:inst54|Rshift[2]                          ; Filter1us:inst54|z0              ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 1.516 ns                 ;
+; 1.673 ns                                ; Filter1us:inst46|Rshift[1]                          ; Filter1us:inst46|Rshift[2]       ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 1.518 ns                 ;
+; 1.673 ns                                ; and4sync:inst10|Filterb[0]                          ; and4sync:inst10|out_put          ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 1.518 ns                 ;
+; 1.674 ns                                ; and4sync:inst9|Filtera[0]                           ; and4sync:inst9|Filterb[0]        ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 1.519 ns                 ;
+; 1.674 ns                                ; and4sync:inst9|out_put                              ; and4sync:inst10|Filtera[2]       ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 1.519 ns                 ;
+; 1.676 ns                                ; ENINVPWM:inst|ENPWMIN_SG1                           ; ENINVPWM:inst|ENPWMOUT           ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 1.521 ns                 ;
+; 1.677 ns                                ; and4sync:inst7|Filterb[1]                           ; and4sync:inst7|Filterb[1]        ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 1.522 ns                 ;
+; 1.680 ns                                ; Filter1us:inst54|Rshift[1]                          ; Filter1us:inst54|Rshift[2]       ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 1.525 ns                 ;
+; 1.681 ns                                ; ENINVPWM:inst5|ENPWMIN_SG1                          ; ENINVPWM:inst5|ENPWMOUT          ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 1.526 ns                 ;
+; 1.683 ns                                ; Filter10us:inst30|Rshift[1]                         ; Filter10us:inst30|z0             ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 1.528 ns                 ;
+; 1.684 ns                                ; Filter10us:inst30|Rshift[1]                         ; Filter10us:inst30|Rshift[2]      ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 1.529 ns                 ;
+; 1.684 ns                                ; and4sync:inst7|Filterb[1]                           ; and4sync:inst7|out_put           ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 1.529 ns                 ;
+; 1.685 ns                                ; ENINVPWM:inst2|ENPWMIN_SG1                          ; ENINVPWM:inst2|ENPWMOUT          ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 1.530 ns                 ;
+; 1.687 ns                                ; Filter1us:inst54|out_put                            ; Filter1us:inst54|out_put         ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 1.532 ns                 ;
+; 1.689 ns                                ; Filter1us:inst54|out_put                            ; and4sync:inst9|Filtera[2]        ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 1.534 ns                 ;
+; 1.691 ns                                ; and4sync:inst16|Filterb[0]                          ; and4sync:inst16|Filterb[0]       ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 1.536 ns                 ;
+; 1.694 ns                                ; Filter1us:inst48|Rshift[0]                          ; Filter1us:inst48|Rshift[1]       ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 1.539 ns                 ;
+; 1.694 ns                                ; Filter1us:inst47|Rshift[1]                          ; Filter1us:inst47|Rshift[2]       ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 1.539 ns                 ;
+; 1.696 ns                                ; Filter1us:inst54|out_put                            ; and4sync:inst9|Filterb[2]        ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 1.541 ns                 ;
+; 1.700 ns                                ; Filter1us:inst47|Rshift[1]                          ; Filter1us:inst47|z0              ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 1.545 ns                 ;
+; 1.705 ns                                ; ILIMIT50US:inst18|midSGlimit                        ; ILIMIT50US:inst18|SGlimitout     ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 1.550 ns                 ;
+; 1.710 ns                                ; ILIMIT50US:inst18|midSGlimit                        ; ILIMIT50US:inst18|next_st        ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 1.555 ns                 ;
+; 1.712 ns                                ; Filter1us:inst48|Rshift[1]                          ; Filter1us:inst48|Rshift[2]       ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 1.557 ns                 ;
+; 1.717 ns                                ; Filter1us:inst48|Rshift[1]                          ; Filter1us:inst48|z0              ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 1.562 ns                 ;
+; 1.737 ns                                ; Filter1us:inst58|z0                                 ; Filter1us:inst58|out_put         ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 1.582 ns                 ;
+; 1.738 ns                                ; Filter1us:inst48|z0                                 ; Filter1us:inst48|out_put         ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 1.583 ns                 ;
+; 1.742 ns                                ; Filter1us:inst48|z0                                 ; Filter1us:inst48|Countupdown[0]  ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 1.587 ns                 ;
+; 1.833 ns                                ; Filter1us:inst48|out_put                            ; and4sync:inst9|Filtera[0]        ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 1.678 ns                 ;
+; 1.904 ns                                ; and4sync:inst10|Filtera[2]                          ; and4sync:inst10|Filterb[2]       ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 1.749 ns                 ;
+; 1.911 ns                                ; ILIMIT50US:inst18|filter                            ; ILIMIT50US:inst18|midSGlimit     ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 1.756 ns                 ;
+; 1.919 ns                                ; and4sync:inst9|Filterb[3]                           ; and4sync:inst9|Filterb[3]        ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 1.764 ns                 ;
+; 1.919 ns                                ; Filter1us:inst46|z0                                 ; Filter1us:inst46|z0              ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 1.764 ns                 ;
+; 1.920 ns                                ; ENINVPWM:inst|ENPWMIN_SG0                           ; ENINVPWM:inst|ENPWMIN_SG1        ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 1.765 ns                 ;
+; 1.922 ns                                ; Filter1us:inst48|Rshift[2]                          ; Filter1us:inst48|z0              ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 1.767 ns                 ;
+; 1.925 ns                                ; and4sync:inst9|Filterb[2]                           ; and4sync:inst9|Filterb[2]        ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 1.770 ns                 ;
+; 1.926 ns                                ; and4sync:inst16|Filterb[3]                          ; and4sync:inst16|Filterb[3]       ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 1.771 ns                 ;
+; 1.941 ns                                ; Filter1us:inst47|out_put                            ; Filter1us:inst47|out_put         ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 1.786 ns                 ;
+; 1.943 ns                                ; and4sync:inst16|Filtera[2]                          ; and4sync:inst16|Filterb[2]       ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 1.788 ns                 ;
+; 1.946 ns                                ; Filter1us:inst54|z0                                 ; Filter1us:inst54|z0              ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 1.791 ns                 ;
+; 1.948 ns                                ; Filter1us:inst54|z0                                 ; Filter1us:inst54|out_put         ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 1.793 ns                 ;
+; 1.951 ns                                ; Filter1us:inst46|out_put                            ; and4sync:inst7|Filterb[2]        ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 1.796 ns                 ;
+; 1.951 ns                                ; Filter1us:inst54|Countupdown[0]                     ; Filter1us:inst54|Countupdown[0]  ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 1.796 ns                 ;
+; 1.963 ns                                ; Filter1us:inst42|out_put                            ; Filter1us:inst42|out_put         ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 1.808 ns                 ;
+; 1.966 ns                                ; Filter1us:inst54|Countupdown[0]                     ; Filter1us:inst54|Countupdown[1]  ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 1.811 ns                 ;
+; 1.966 ns                                ; Filter1us:inst58|Rshift[0]                          ; Filter1us:inst58|z0              ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 1.811 ns                 ;
+; 1.970 ns                                ; Filter1us:inst47|Countupdown[3]                     ; Filter1us:inst47|Countupdown[3]  ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 1.815 ns                 ;
+; 1.972 ns                                ; Filter1us:inst47|Countupdown[0]                     ; Filter1us:inst47|Countupdown[0]  ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 1.817 ns                 ;
+; 1.975 ns                                ; Filter1us:inst42|z0                                 ; Filter1us:inst42|z0              ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 1.820 ns                 ;
+; 1.977 ns                                ; Filter1us:inst42|Countupdown[0]                     ; Filter1us:inst42|Countupdown[0]  ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 1.822 ns                 ;
+; 1.991 ns                                ; Filter1us:inst42|Countupdown[0]                     ; Filter1us:inst42|Countupdown[1]  ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 1.836 ns                 ;
+; 2.061 ns                                ; ENINVPWM:inst4|ENPWMIN_SG1                          ; ENINVPWM:inst4|ENPWMIN_SG1       ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 1.906 ns                 ;
+; 2.100 ns                                ; Filter1us:inst47|z0                                 ; Filter1us:inst47|Countupdown[1]  ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 1.945 ns                 ;
+; 2.105 ns                                ; Filter1us:inst48|z0                                 ; Filter1us:inst48|Countupdown[3]  ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 1.950 ns                 ;
+; 2.109 ns                                ; Filter1us:inst42|Rshift[2]                          ; Filter1us:inst42|z0              ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 1.954 ns                 ;
+; 2.109 ns                                ; ENINVPWM:inst3|ENPWMIN_SG0                          ; ENINVPWM:inst3|ENPWMIN_SG1       ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 1.954 ns                 ;
+; 2.118 ns                                ; and4sync:inst10|Filtera[0]                          ; and4sync:inst10|Filterb[0]       ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 1.963 ns                 ;
+; 2.119 ns                                ; Filter10us:inst30|Rshift[2]                         ; Filter10us:inst30|z0             ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 1.964 ns                 ;
+; 2.120 ns                                ; Filter1us:inst46|Rshift[2]                          ; Filter1us:inst46|z0              ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 1.965 ns                 ;
+; 2.122 ns                                ; Filter1us:inst47|Rshift[2]                          ; Filter1us:inst47|z0              ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 1.967 ns                 ;
+; 2.122 ns                                ; ENINVPWM:inst5|ENPWMIN_SG0                          ; ENINVPWM:inst5|ENPWMIN_SG1       ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 1.967 ns                 ;
+; 2.123 ns                                ; and4sync:inst16|Filtera[3]                          ; and4sync:inst16|Filterb[3]       ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 1.968 ns                 ;
+; 2.126 ns                                ; ILIMIT50US:inst18|COUNT1[1]                         ; ILIMIT50US:inst18|COUNT1[1]      ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 1.971 ns                 ;
+; 2.126 ns                                ; and4sync:inst9|Filtera[2]                           ; and4sync:inst9|Filterb[2]        ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 1.971 ns                 ;
+; 2.126 ns                                ; ENINVPWM:inst4|ENPWMIN_SG0                          ; ENINVPWM:inst4|ENPWMIN_SG1       ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 1.971 ns                 ;
+; 2.127 ns                                ; ILIMIT50US:inst18|COUNT1[7]                         ; ILIMIT50US:inst18|COUNT1[7]      ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 1.972 ns                 ;
+; 2.127 ns                                ; ILIMIT50US:inst18|COUNT1[2]                         ; ILIMIT50US:inst18|COUNT1[2]      ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 1.972 ns                 ;
+; 2.128 ns                                ; Filter10us:inst30|out_put                           ; Filter10us:inst30|out_put        ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 1.973 ns                 ;
+; 2.134 ns                                ; ENINVPWM:inst1|ENPWMIN_SG0                          ; ENINVPWM:inst1|ENPWMIN_SG1       ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 1.979 ns                 ;
+; 2.135 ns                                ; Filter1us:inst46|Countupdown[0]                     ; Filter1us:inst46|Countupdown[0]  ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 1.980 ns                 ;
+; 2.135 ns                                ; and4sync:inst10|Filterb[2]                          ; and4sync:inst10|Filterb[2]       ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 1.980 ns                 ;
+; 2.135 ns                                ; ENINVPWM:inst|ENPWMIN_SG1                           ; ENINVPWM:inst|ENPWMIN_SG1        ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 1.980 ns                 ;
+; 2.144 ns                                ; and4sync:inst7|Filterb[0]                           ; and4sync:inst7|Filterb[0]        ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 1.989 ns                 ;
+; 2.144 ns                                ; and4sync:inst9|Filterb[0]                           ; and4sync:inst9|Filterb[0]        ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 1.989 ns                 ;
+; 2.146 ns                                ; Filter10us:inst30|Countupdown[0]                    ; Filter10us:inst30|Countupdown[0] ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 1.991 ns                 ;
+; 2.146 ns                                ; Filter10us:inst30|Countupdown[6]                    ; Filter10us:inst30|Countupdown[6] ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 1.991 ns                 ;
+; 2.146 ns                                ; and4sync:inst7|Filterb[0]                           ; and4sync:inst7|out_put           ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 1.991 ns                 ;
+; 2.149 ns                                ; Filter1us:inst48|Countupdown[3]                     ; Filter1us:inst48|Countupdown[3]  ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 1.994 ns                 ;
+; 2.149 ns                                ; and4sync:inst9|Filterb[0]                           ; and4sync:inst9|out_put           ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 1.994 ns                 ;
+; 2.153 ns                                ; Filter1us:inst48|out_put                            ; Filter1us:inst48|out_put         ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 1.998 ns                 ;
+; 2.153 ns                                ; and4sync:inst16|Filtera[0]                          ; and4sync:inst16|Filterb[0]       ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 1.998 ns                 ;
+; 2.164 ns                                ; Filter1us:inst42|Countupdown[3]                     ; Filter1us:inst42|Countupdown[3]  ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 2.009 ns                 ;
+; 2.166 ns                                ; Filter1us:inst48|Countupdown[0]                     ; Filter1us:inst48|Countupdown[0]  ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 2.011 ns                 ;
+; 2.168 ns                                ; Filter1us:inst58|Countupdown[3]                     ; Filter1us:inst58|Countupdown[3]  ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 2.013 ns                 ;
+; 2.170 ns                                ; and4sync:inst16|Filterb[0]                          ; and4sync:inst16|out_put          ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 2.015 ns                 ;
+; 2.172 ns                                ; ILIMIT50US:inst18|midSGlimit                        ; ILIMIT50US:inst18|midSGlimit     ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 2.017 ns                 ;
+; 2.172 ns                                ; Filter1us:inst48|Rshift[0]                          ; Filter1us:inst48|z0              ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 2.017 ns                 ;
+; 2.195 ns                                ; Filter1us:inst58|z0                                 ; Filter1us:inst58|z0              ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 2.040 ns                 ;
+; 2.197 ns                                ; Filter1us:inst58|z0                                 ; Filter1us:inst58|Countupdown[1]  ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 2.042 ns                 ;
+; 2.200 ns                                ; Filter1us:inst42|z0                                 ; Filter1us:inst42|out_put         ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 2.045 ns                 ;
+; 2.201 ns                                ; Filter1us:inst58|z0                                 ; Filter1us:inst58|Countupdown[0]  ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 2.046 ns                 ;
+; 2.230 ns                                ; ILIMIT50US:inst18|COUNT1[3]                         ; ILIMIT50US:inst18|COUNT1[3]      ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 2.075 ns                 ;
+; 2.231 ns                                ; and4sync:inst7|Filterb[3]                           ; and4sync:inst7|Filterb[3]        ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 2.076 ns                 ;
+; 2.239 ns                                ; ILIMIT50US:inst18|COUNT1[5]                         ; ILIMIT50US:inst18|COUNT1[5]      ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 2.084 ns                 ;
+; 2.239 ns                                ; and4sync:inst9|Filterb[3]                           ; and4sync:inst9|out_put           ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 2.084 ns                 ;
+; 2.240 ns                                ; ILIMIT50US:inst18|COUNT1[4]                         ; ILIMIT50US:inst18|COUNT1[4]      ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 2.085 ns                 ;
+; 2.240 ns                                ; ENINVPWM:inst1|ENPWMIN_SG1                          ; ENINVPWM:inst1|ENPWMIN_SG1       ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 2.085 ns                 ;
+; 2.241 ns                                ; and4sync:inst7|Filterb[2]                           ; and4sync:inst7|Filterb[2]        ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 2.086 ns                 ;
+; 2.241 ns                                ; Filter10us:inst30|Countupdown[2]                    ; Filter10us:inst30|Countupdown[2] ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 2.086 ns                 ;
+; 2.245 ns                                ; Filter10us:inst30|z0                                ; Filter10us:inst30|Countupdown[6] ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 2.090 ns                 ;
+; 2.246 ns                                ; Filter1us:inst42|Rshift[0]                          ; Filter1us:inst42|z0              ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 2.091 ns                 ;
+; 2.246 ns                                ; ENINVPWM:inst1|ENPWMIN_SG1                          ; ENINVPWM:inst1|ENPWMOUT          ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 2.091 ns                 ;
+; 2.247 ns                                ; and4sync:inst7|Filterb[2]                           ; and4sync:inst7|out_put           ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 2.092 ns                 ;
+; 2.247 ns                                ; Filter1us:inst46|Rshift[0]                          ; Filter1us:inst46|z0              ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 2.092 ns                 ;
+; 2.248 ns                                ; and4sync:inst7|Filtera[0]                           ; and4sync:inst7|Filterb[0]        ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 2.093 ns                 ;
+; 2.248 ns                                ; ENINVPWM:inst2|ENPWMIN_SG1                          ; ENINVPWM:inst2|ENPWMIN_SG1       ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 2.093 ns                 ;
+; 2.249 ns                                ; ILIMIT50US:inst18|COUNT1[6]                         ; ILIMIT50US:inst18|COUNT1[6]      ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 2.094 ns                 ;
+; 2.250 ns                                ; ENINVPWM:inst5|ENPWMIN_SG1                          ; ENINVPWM:inst5|ENPWMIN_SG1       ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 2.095 ns                 ;
+; 2.251 ns                                ; Filter10us:inst30|z0                                ; Filter10us:inst30|z0             ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 2.096 ns                 ;
+; 2.251 ns                                ; Filter1us:inst54|Rshift[1]                          ; Filter1us:inst54|z0              ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 2.096 ns                 ;
+; 2.257 ns                                ; signalsync:inst22|Filterb                           ; signalsync:inst22|Filterb        ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 2.102 ns                 ;
+; 2.259 ns                                ; Filter1us:inst46|out_put                            ; Filter1us:inst46|out_put         ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 2.104 ns                 ;
+; 2.264 ns                                ; ILIMIT50US:inst18|current_st                        ; ILIMIT50US:inst18|next_st        ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 2.109 ns                 ;
+; 2.266 ns                                ; ILIMIT50US:inst18|current_st                        ; ILIMIT50US:inst18|SGlimitout     ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 2.111 ns                 ;
+; 2.269 ns                                ; ILIMIT50US:inst18|SGlimitout                        ; and4sync:inst16|Filterb[2]       ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 2.114 ns                 ;
+; 2.274 ns                                ; Filter1us:inst54|Countupdown[3]                     ; Filter1us:inst54|Countupdown[3]  ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 2.119 ns                 ;
+; 2.282 ns                                ; Filter10us:inst30|Countupdown[4]                    ; Filter10us:inst30|Countupdown[4] ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 2.127 ns                 ;
+; 2.283 ns                                ; Filter1us:inst46|Countupdown[3]                     ; Filter1us:inst46|Countupdown[3]  ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 2.128 ns                 ;
+; 2.284 ns                                ; Filter10us:inst30|Countupdown[3]                    ; Filter10us:inst30|Countupdown[3] ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 2.129 ns                 ;
+; 2.288 ns                                ; Filter1us:inst58|Rshift[1]                          ; Filter1us:inst58|z0              ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 2.133 ns                 ;
+; 2.294 ns                                ; Filter1us:inst58|Countupdown[0]                     ; Filter1us:inst58|Countupdown[0]  ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 2.139 ns                 ;
+; 2.294 ns                                ; Filter10us:inst30|Countupdown[5]                    ; Filter10us:inst30|Countupdown[5] ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 2.139 ns                 ;
+; 2.296 ns                                ; Filter1us:inst47|z0                                 ; Filter1us:inst47|z0              ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 2.141 ns                 ;
+; 2.298 ns                                ; Filter1us:inst47|z0                                 ; Filter1us:inst47|out_put         ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 2.143 ns                 ;
+; 2.301 ns                                ; Filter1us:inst47|z0                                 ; Filter1us:inst47|Countupdown[0]  ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 2.146 ns                 ;
+; 2.315 ns                                ; Filter1us:inst48|z0                                 ; Filter1us:inst48|z0              ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 2.160 ns                 ;
+; 2.323 ns                                ; Filter1us:inst58|z0                                 ; Filter1us:inst58|Countupdown[2]  ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 2.168 ns                 ;
+; 2.328 ns                                ; Filter1us:inst58|z0                                 ; Filter1us:inst58|Countupdown[3]  ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 2.173 ns                 ;
+; 2.351 ns                                ; Filter1us:inst48|out_put                            ; and4sync:inst9|Filterb[0]        ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 2.196 ns                 ;
+; 2.387 ns                                ; Filter10us:inst30|out_put                           ; and4sync:inst7|Filterb[1]        ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 2.232 ns                 ;
+; 2.448 ns                                ; Filter1us:inst47|Rshift[0]                          ; Filter1us:inst47|Rshift[1]       ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 2.293 ns                 ;
+; 2.448 ns                                ; signalsync:inst22|Filterb                           ; signalsync:inst22|out_put        ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 2.293 ns                 ;
+; 2.480 ns                                ; Filter1us:inst54|Rshift[0]                          ; Filter1us:inst54|Rshift[1]       ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 2.325 ns                 ;
+; 2.494 ns                                ; and4sync:inst7|Filtera[1]                           ; and4sync:inst7|Filterb[1]        ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 2.339 ns                 ;
+; 2.517 ns                                ; and4sync:inst7|out_put                              ; and4sync:inst10|Filtera[0]       ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 2.362 ns                 ;
+; 2.518 ns                                ; Filter10us:inst30|Rshift[0]                         ; Filter10us:inst30|Rshift[1]      ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 2.363 ns                 ;
+; 2.570 ns                                ; Filter1us:inst48|z0                                 ; Filter1us:inst48|Countupdown[1]  ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 2.415 ns                 ;
+; 2.570 ns                                ; Filter1us:inst48|z0                                 ; Filter1us:inst48|Countupdown[2]  ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 2.415 ns                 ;
+; 2.570 ns                                ; Filter1us:inst47|z0                                 ; Filter1us:inst47|Countupdown[2]  ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 2.415 ns                 ;
+; 2.571 ns                                ; Filter1us:inst47|z0                                 ; Filter1us:inst47|Countupdown[3]  ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 2.416 ns                 ;
+; 2.605 ns                                ; Filter10us:inst30|Countupdown[1]                    ; Filter10us:inst30|Countupdown[1] ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 2.450 ns                 ;
+; 2.624 ns                                ; Filter1us:inst54|z0                                 ; Filter1us:inst54|Countupdown[0]  ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 2.469 ns                 ;
+; 2.627 ns                                ; Filter1us:inst54|z0                                 ; Filter1us:inst54|Countupdown[2]  ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 2.472 ns                 ;
+; 2.628 ns                                ; Filter1us:inst54|z0                                 ; Filter1us:inst54|Countupdown[1]  ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 2.473 ns                 ;
+; 2.630 ns                                ; Filter1us:inst54|z0                                 ; Filter1us:inst54|Countupdown[3]  ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 2.475 ns                 ;
+; 2.636 ns                                ; Filter1us:inst58|out_put                            ; and4sync:inst9|Filtera[3]        ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 2.481 ns                 ;
+; 2.647 ns                                ; and4sync:inst16|out_put                             ; ENINVPWM:inst4|ENPWMOUT          ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 2.492 ns                 ;
+; 2.665 ns                                ; Filter1us:inst58|out_put                            ; Filter1us:inst58|out_put         ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 2.510 ns                 ;
+; 2.718 ns                                ; Filter10us:inst30|z0                                ; Filter10us:inst30|Countupdown[4] ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 2.563 ns                 ;
+; 2.718 ns                                ; Filter10us:inst30|z0                                ; Filter10us:inst30|Countupdown[5] ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 2.563 ns                 ;
+; 2.722 ns                                ; Filter10us:inst30|z0                                ; Filter10us:inst30|Countupdown[3] ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 2.567 ns                 ;
+; 2.723 ns                                ; Filter10us:inst30|z0                                ; Filter10us:inst30|Countupdown[2] ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 2.568 ns                 ;
+; 2.724 ns                                ; Filter10us:inst30|z0                                ; Filter10us:inst30|Countupdown[1] ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 2.569 ns                 ;
+; 2.765 ns                                ; Filter1us:inst42|z0                                 ; Filter1us:inst42|Countupdown[0]  ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 2.610 ns                 ;
+; 2.766 ns                                ; Filter1us:inst42|z0                                 ; Filter1us:inst42|Countupdown[2]  ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 2.611 ns                 ;
+; 2.769 ns                                ; Filter1us:inst42|z0                                 ; Filter1us:inst42|Countupdown[3]  ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 2.614 ns                 ;
+; 2.772 ns                                ; Filter1us:inst42|z0                                 ; Filter1us:inst42|Countupdown[1]  ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 2.617 ns                 ;
+; 2.772 ns                                ; and4sync:inst9|Filterb[2]                           ; and4sync:inst9|out_put           ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 2.617 ns                 ;
+; 2.812 ns                                ; Filter1us:inst42|out_put                            ; and4sync:inst7|Filterb[0]        ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 2.657 ns                 ;
+; 2.823 ns                                ; Filter1us:inst42|out_put                            ; and4sync:inst7|Filtera[0]        ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 2.668 ns                 ;
+; 2.878 ns                                ; and4sync:inst16|Filterb[3]                          ; and4sync:inst16|out_put          ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 2.723 ns                 ;
+; 2.892 ns                                ; Filter1us:inst54|Countupdown[1]                     ; Filter1us:inst54|Countupdown[1]  ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 2.737 ns                 ;
+; 2.912 ns                                ; and4sync:inst16|out_put                             ; ENINVPWM:inst|ENPWMOUT           ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 2.757 ns                 ;
+; 2.913 ns                                ; and4sync:inst16|out_put                             ; ENINVPWM:inst1|ENPWMOUT          ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 2.758 ns                 ;
+; 2.916 ns                                ; and4sync:inst16|out_put                             ; ENINVPWM:inst3|ENPWMOUT          ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 2.761 ns                 ;
+; 2.945 ns                                ; Filter1us:inst46|Countupdown[0]                     ; Filter1us:inst46|out_put         ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 2.790 ns                 ;
+; 2.953 ns                                ; Filter1us:inst46|z0                                 ; Filter1us:inst46|Countupdown[0]  ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 2.798 ns                 ;
+; 2.954 ns                                ; Filter1us:inst46|z0                                 ; Filter1us:inst46|out_put         ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 2.799 ns                 ;
+; 2.958 ns                                ; ILIMIT50US:inst18|COUNT1[1]                         ; ILIMIT50US:inst18|COUNT1[2]      ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 2.803 ns                 ;
+; 2.959 ns                                ; ILIMIT50US:inst18|COUNT1[2]                         ; ILIMIT50US:inst18|COUNT1[3]      ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 2.804 ns                 ;
+; 2.959 ns                                ; ILIMIT50US:inst18|COUNT1[7]                         ; ILIMIT50US:inst18|COUNT1[8]      ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 2.804 ns                 ;
+; 2.966 ns                                ; Filter1us:inst47|Rshift[0]                          ; Filter1us:inst47|z0              ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 2.811 ns                 ;
+; 2.978 ns                                ; Filter10us:inst30|Countupdown[0]                    ; Filter10us:inst30|Countupdown[1] ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 2.823 ns                 ;
+; 3.000 ns                                ; Filter1us:inst47|out_put                            ; and4sync:inst7|Filtera[3]        ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 2.845 ns                 ;
+; 3.019 ns                                ; and4sync:inst10|Filterb[2]                          ; and4sync:inst10|out_put          ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 2.864 ns                 ;
+; 3.042 ns                                ; and4sync:inst7|out_put                              ; and4sync:inst10|Filterb[0]       ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 2.887 ns                 ;
+; 3.047 ns                                ; Filter10us:inst30|Rshift[0]                         ; Filter10us:inst30|z0             ; clk        ; clk      ; 0.000 ns                   ; -0.155 ns                  ; 2.892 ns                 ;
+; Timing analysis restricted to 200 rows. ; To change the limit use Settings (Assignments menu) ;                                  ;            ;          ;                            ;                            ;                          ;
++-----------------------------------------+-----------------------------------------------------+----------------------------------+------------+----------+----------------------------+----------------------------+--------------------------+
+
+
++--------------------------------------------------------------------------------------------------+
+; tsu                                                                                              ;
++-------+--------------+------------+--------------------+------------------------------+----------+
+; Slack ; Required tsu ; Actual tsu ; From               ; To                           ; To Clock ;
++-------+--------------+------------+--------------------+------------------------------+----------+
+; N/A   ; None         ; 4.357 ns   ; EPWM2B             ; ENINVPWM:inst3|ENPWMIN_SG1   ; clk      ;
+; N/A   ; None         ; 3.871 ns   ; EPWM2A             ; ENINVPWM:inst2|ENPWMIN_SG1   ; clk      ;
+; N/A   ; None         ; 3.834 ns   ; EPWM2B             ; ENINVPWM:inst3|ENPWMIN_SG0   ; clk      ;
+; N/A   ; None         ; 3.804 ns   ; EPWM1B             ; ENINVPWM:inst1|ENPWMIN_SG1   ; clk      ;
+; N/A   ; None         ; 3.566 ns   ; EPWM1A             ; ENINVPWM:inst|ENPWMIN_SG1    ; clk      ;
+; N/A   ; None         ; 3.563 ns   ; EPWM1A             ; ENINVPWM:inst|ENPWMIN_SG0    ; clk      ;
+; N/A   ; None         ; 3.391 ns   ; IGBTHalt3          ; Filter1us:inst46|Rshift[0]   ; clk      ;
+; N/A   ; None         ; 3.360 ns   ; EPWM3B             ; ENINVPWM:inst5|ENPWMIN_SG0   ; clk      ;
+; N/A   ; None         ; 3.353 ns   ; EPWM3B             ; ENINVPWM:inst5|ENPWMIN_SG1   ; clk      ;
+; N/A   ; None         ; 3.346 ns   ; EPWM2A             ; ENINVPWM:inst2|ENPWMIN_SG0   ; clk      ;
+; N/A   ; None         ; 3.287 ns   ; IGBTHalt2          ; Filter1us:inst47|Rshift[0]   ; clk      ;
+; N/A   ; None         ; 3.281 ns   ; EPWM1B             ; ENINVPWM:inst1|ENPWMIN_SG0   ; clk      ;
+; N/A   ; None         ; 3.271 ns   ; SGLimit            ; ILIMIT50US:inst18|filter     ; clk      ;
+; N/A   ; None         ; 3.270 ns   ; SGLimit            ; ILIMIT50US:inst18|midSGlimit ; clk      ;
+; N/A   ; None         ; 3.169 ns   ; IGBTHalt1          ; Filter1us:inst48|Rshift[0]   ; clk      ;
+; N/A   ; None         ; 3.083 ns   ; EPWM3A             ; ENINVPWM:inst4|ENPWMIN_SG1   ; clk      ;
+; N/A   ; None         ; 2.988 ns   ; Unlock             ; signalsync:inst22|Filterb    ; clk      ;
+; N/A   ; None         ; 2.952 ns   ; EPWM6B             ; and4sync:inst16|Filterb[0]   ; clk      ;
+; N/A   ; None         ; 2.735 ns   ; OVP                ; Filter1us:inst54|Rshift[0]   ; clk      ;
+; N/A   ; None         ; 2.639 ns   ; OCP                ; Filter1us:inst58|Rshift[0]   ; clk      ;
+; N/A   ; None         ; 2.633 ns   ; 15VPower           ; Filter1us:inst42|Rshift[0]   ; clk      ;
+; N/A   ; None         ; 2.550 ns   ; EPWM3A             ; ENINVPWM:inst4|ENPWMIN_SG0   ; clk      ;
+; N/A   ; None         ; 2.462 ns   ; Unlock             ; signalsync:inst22|Filtera    ; clk      ;
+; N/A   ; None         ; 2.429 ns   ; EPWM6B             ; and4sync:inst16|Filtera[0]   ; clk      ;
+; N/A   ; None         ; 2.423 ns   ; EmergnecyButtonSta ; Filter10us:inst30|Rshift[0]  ; clk      ;
++-------+--------------+------------+--------------------+------------------------------+----------+
+
+
++--------------------------------------------------------------------------------------+
+; tco                                                                                  ;
++-------+--------------+------------+-------------------------+-----------+------------+
+; Slack ; Required tco ; Actual tco ; From                    ; To        ; From Clock ;
++-------+--------------+------------+-------------------------+-----------+------------+
+; N/A   ; None         ; 8.205 ns   ; ENINVPWM:inst1|ENPWMOUT ; midPWM1BO ; clk        ;
+; N/A   ; None         ; 8.198 ns   ; ENINVPWM:inst3|ENPWMOUT ; midPWM2BO ; clk        ;
+; N/A   ; None         ; 8.185 ns   ; ENINVPWM:inst|ENPWMOUT  ; midPWM1AO ; clk        ;
+; N/A   ; None         ; 8.103 ns   ; ENINVPWM:inst2|ENPWMOUT ; midPWM2AO ; clk        ;
+; N/A   ; None         ; 8.085 ns   ; ENINVPWM:inst5|ENPWMOUT ; midPWM3BO ; clk        ;
+; N/A   ; None         ; 8.070 ns   ; ENINVPWM:inst4|ENPWMOUT ; midPWM3AO ; clk        ;
++-------+--------------+------------+-------------------------+-----------+------------+
+
+
++---------------------------------------------------------------------------------+
+; tpd                                                                             ;
++-------+-------------------+-----------------+------------------+----------------+
+; Slack ; Required P2P Time ; Actual P2P Time ; From             ; To             ;
++-------+-------------------+-----------------+------------------+----------------+
+; N/A   ; None              ; 10.118 ns       ; midMastRlyCtr    ; MastRlyCtr     ;
+; N/A   ; None              ; 9.868 ns        ; MCU_Sta          ; MastRlyCtr     ;
+; N/A   ; None              ; 8.907 ns        ; MasRlySta        ; midMstRltSta   ;
+; N/A   ; None              ; 8.842 ns        ; In_Node4         ; midIn_Node4    ;
+; N/A   ; None              ; 8.832 ns        ; DCSwSta          ; midDCSwSta     ;
+; N/A   ; None              ; 8.814 ns        ; midDirverPowCtr  ; DriverPowCtr   ;
+; N/A   ; None              ; 8.813 ns        ; midNGR_Ctr       ; NGRelayCtr     ;
+; N/A   ; None              ; 8.791 ns        ; midDCBraskCutoff ; DCBreakCutoff  ;
+; N/A   ; None              ; 8.698 ns        ; midSlaveRlyCtr   ; SlaveRlyCtr    ;
+; N/A   ; None              ; 8.681 ns        ; EPWM5A           ; EPWM_FAN_OUT   ;
+; N/A   ; None              ; 8.645 ns        ; midACFanCtr      ; ACFanCtr       ;
+; N/A   ; None              ; 8.637 ns        ; MCU_Sta          ; misMCU_Sta     ;
+; N/A   ; None              ; 8.564 ns        ; midPGR_Ctr       ; PGRelayCtr     ;
+; N/A   ; None              ; 8.381 ns        ; midIn_Node3      ; In_Node3       ;
+; N/A   ; None              ; 8.358 ns        ; midOut_Node3     ; Out_Node3      ;
+; N/A   ; None              ; 8.354 ns        ; midIn_Node2      ; In_Node2       ;
+; N/A   ; None              ; 8.315 ns        ; Out_Node2        ; midOut_Node2   ;
+; N/A   ; None              ; 8.300 ns        ; Out_Node1        ; midOut_Node1   ;
+; N/A   ; None              ; 7.710 ns        ; AuxBreakSta      ; midAuxBreakSta ;
++-------+-------------------+-----------------+------------------+----------------+
+
+
++--------------------------------------------------------------------------------------------------------+
+; th                                                                                                     ;
++---------------+-------------+-----------+--------------------+------------------------------+----------+
+; Minimum Slack ; Required th ; Actual th ; From               ; To                           ; To Clock ;
++---------------+-------------+-----------+--------------------+------------------------------+----------+
+; N/A           ; None        ; -1.869 ns ; EmergnecyButtonSta ; Filter10us:inst30|Rshift[0]  ; clk      ;
+; N/A           ; None        ; -1.875 ns ; EPWM6B             ; and4sync:inst16|Filtera[0]   ; clk      ;
+; N/A           ; None        ; -1.908 ns ; Unlock             ; signalsync:inst22|Filtera    ; clk      ;
+; N/A           ; None        ; -1.996 ns ; EPWM3A             ; ENINVPWM:inst4|ENPWMIN_SG0   ; clk      ;
+; N/A           ; None        ; -2.079 ns ; 15VPower           ; Filter1us:inst42|Rshift[0]   ; clk      ;
+; N/A           ; None        ; -2.085 ns ; OCP                ; Filter1us:inst58|Rshift[0]   ; clk      ;
+; N/A           ; None        ; -2.181 ns ; OVP                ; Filter1us:inst54|Rshift[0]   ; clk      ;
+; N/A           ; None        ; -2.398 ns ; EPWM6B             ; and4sync:inst16|Filterb[0]   ; clk      ;
+; N/A           ; None        ; -2.434 ns ; Unlock             ; signalsync:inst22|Filterb    ; clk      ;
+; N/A           ; None        ; -2.529 ns ; EPWM3A             ; ENINVPWM:inst4|ENPWMIN_SG1   ; clk      ;
+; N/A           ; None        ; -2.615 ns ; IGBTHalt1          ; Filter1us:inst48|Rshift[0]   ; clk      ;
+; N/A           ; None        ; -2.716 ns ; SGLimit            ; ILIMIT50US:inst18|midSGlimit ; clk      ;
+; N/A           ; None        ; -2.717 ns ; SGLimit            ; ILIMIT50US:inst18|filter     ; clk      ;
+; N/A           ; None        ; -2.727 ns ; EPWM1B             ; ENINVPWM:inst1|ENPWMIN_SG0   ; clk      ;
+; N/A           ; None        ; -2.733 ns ; IGBTHalt2          ; Filter1us:inst47|Rshift[0]   ; clk      ;
+; N/A           ; None        ; -2.792 ns ; EPWM2A             ; ENINVPWM:inst2|ENPWMIN_SG0   ; clk      ;
+; N/A           ; None        ; -2.799 ns ; EPWM3B             ; ENINVPWM:inst5|ENPWMIN_SG1   ; clk      ;
+; N/A           ; None        ; -2.806 ns ; EPWM3B             ; ENINVPWM:inst5|ENPWMIN_SG0   ; clk      ;
+; N/A           ; None        ; -2.837 ns ; IGBTHalt3          ; Filter1us:inst46|Rshift[0]   ; clk      ;
+; N/A           ; None        ; -3.009 ns ; EPWM1A             ; ENINVPWM:inst|ENPWMIN_SG0    ; clk      ;
+; N/A           ; None        ; -3.012 ns ; EPWM1A             ; ENINVPWM:inst|ENPWMIN_SG1    ; clk      ;
+; N/A           ; None        ; -3.250 ns ; EPWM1B             ; ENINVPWM:inst1|ENPWMIN_SG1   ; clk      ;
+; N/A           ; None        ; -3.280 ns ; EPWM2B             ; ENINVPWM:inst3|ENPWMIN_SG0   ; clk      ;
+; N/A           ; None        ; -3.317 ns ; EPWM2A             ; ENINVPWM:inst2|ENPWMIN_SG1   ; clk      ;
+; N/A           ; None        ; -3.803 ns ; EPWM2B             ; ENINVPWM:inst3|ENPWMIN_SG1   ; clk      ;
++---------------+-------------+-----------+--------------------+------------------------------+----------+
+
+
++--------------------------+
+; Timing Analyzer Messages ;
++--------------------------+
+Info: *******************************************************************
+Info: Running Quartus II Classic Timing Analyzer
+    Info: Version 7.2 Build 151 09/26/2007 SJ Full Version
+    Info: Processing started: Mon Oct 14 15:48:00 2013
+Info: Command: quartus_tan --read_settings_files=off --write_settings_files=off inv -c inv
+Info: Started post-fitting delay annotation
+Info: Delay annotation completed successfully
+Info: Slack time is 92.139 ns for clock "clk" between source register "ILIMIT50US:inst18|COUNT1[4]" and destination register "ILIMIT50US:inst18|COUNT1[5]"
+    Info: Fmax is 127.21 MHz (period= 7.861 ns)
+    Info: + Largest register to register requirement is 99.291 ns
+        Info: + Setup relationship between source and destination is 100.000 ns
+            Info: + Latch edge is 100.000 ns
+                Info: Clock period of Destination clock "clk" is 100.000 ns with  offset of 0.000 ns and duty cycle of 50
+                Info: Multicycle Setup factor for Destination register is 1
+            Info: - Launch edge is 0.000 ns
+                Info: Clock period of Source clock "clk" is 100.000 ns with  offset of 0.000 ns and duty cycle of 50
+                Info: Multicycle Setup factor for Source register is 1
+        Info: + Largest clock skew is 0.000 ns
+            Info: + Shortest clock path from clock "clk" to destination register is 3.348 ns
+                Info: 1: + IC(0.000 ns) + CELL(1.163 ns) = 1.163 ns; Loc. = PIN_12; Fanout = 129; CLK Node = 'clk'
+                Info: 2: + IC(1.267 ns) + CELL(0.918 ns) = 3.348 ns; Loc. = LC_X5_Y3_N5; Fanout = 4; REG Node = 'ILIMIT50US:inst18|COUNT1[5]'
+                Info: Total cell delay = 2.081 ns ( 62.16 % )
+                Info: Total interconnect delay = 1.267 ns ( 37.84 % )
+            Info: - Longest clock path from clock "clk" to source register is 3.348 ns
+                Info: 1: + IC(0.000 ns) + CELL(1.163 ns) = 1.163 ns; Loc. = PIN_12; Fanout = 129; CLK Node = 'clk'
+                Info: 2: + IC(1.267 ns) + CELL(0.918 ns) = 3.348 ns; Loc. = LC_X5_Y3_N4; Fanout = 3; REG Node = 'ILIMIT50US:inst18|COUNT1[4]'
+                Info: Total cell delay = 2.081 ns ( 62.16 % )
+                Info: Total interconnect delay = 1.267 ns ( 37.84 % )
+        Info: - Micro clock to output delay of source is 0.376 ns
+        Info: - Micro setup delay of destination is 0.333 ns
+    Info: - Longest register to register delay is 7.152 ns
+        Info: 1: + IC(0.000 ns) + CELL(0.000 ns) = 0.000 ns; Loc. = LC_X5_Y3_N4; Fanout = 3; REG Node = 'ILIMIT50US:inst18|COUNT1[4]'
+        Info: 2: + IC(1.832 ns) + CELL(0.511 ns) = 2.343 ns; Loc. = LC_X6_Y3_N7; Fanout = 1; COMB Node = 'ILIMIT50US:inst18|LessThan0~105'
+        Info: 3: + IC(1.134 ns) + CELL(0.200 ns) = 3.677 ns; Loc. = LC_X5_Y3_N9; Fanout = 5; COMB Node = 'ILIMIT50US:inst18|LessThan0~106'
+        Info: 4: + IC(0.731 ns) + CELL(0.747 ns) = 5.155 ns; Loc. = LC_X5_Y3_N0; Fanout = 2; COMB Node = 'ILIMIT50US:inst18|COUNT1[0]~155'
+        Info: 5: + IC(0.000 ns) + CELL(0.123 ns) = 5.278 ns; Loc. = LC_X5_Y3_N1; Fanout = 2; COMB Node = 'ILIMIT50US:inst18|COUNT1[1]~153'
+        Info: 6: + IC(0.000 ns) + CELL(0.123 ns) = 5.401 ns; Loc. = LC_X5_Y3_N2; Fanout = 2; COMB Node = 'ILIMIT50US:inst18|COUNT1[2]~139'
+        Info: 7: + IC(0.000 ns) + CELL(0.123 ns) = 5.524 ns; Loc. = LC_X5_Y3_N3; Fanout = 2; COMB Node = 'ILIMIT50US:inst18|COUNT1[3]~141'
+        Info: 8: + IC(0.000 ns) + CELL(0.261 ns) = 5.785 ns; Loc. = LC_X5_Y3_N4; Fanout = 4; COMB Node = 'ILIMIT50US:inst18|COUNT1[4]~143'
+        Info: 9: + IC(0.000 ns) + CELL(1.367 ns) = 7.152 ns; Loc. = LC_X5_Y3_N5; Fanout = 4; REG Node = 'ILIMIT50US:inst18|COUNT1[5]'
+        Info: Total cell delay = 3.455 ns ( 48.31 % )
+        Info: Total interconnect delay = 3.697 ns ( 51.69 % )
+Info: Minimum slack time is 1.389 ns for clock "clk" between source register "ILIMIT50US:inst18|next_st" and destination register "ILIMIT50US:inst18|current_st"
+    Info: + Shortest register to register delay is 1.234 ns
+        Info: 1: + IC(0.000 ns) + CELL(0.000 ns) = 0.000 ns; Loc. = LC_X4_Y3_N0; Fanout = 1; REG Node = 'ILIMIT50US:inst18|next_st'
+        Info: 2: + IC(0.954 ns) + CELL(0.280 ns) = 1.234 ns; Loc. = LC_X4_Y3_N4; Fanout = 11; REG Node = 'ILIMIT50US:inst18|current_st'
+        Info: Total cell delay = 0.280 ns ( 22.69 % )
+        Info: Total interconnect delay = 0.954 ns ( 77.31 % )
+    Info: - Smallest register to register requirement is -0.155 ns
+        Info: + Hold relationship between source and destination is 0.000 ns
+            Info: + Latch edge is 0.000 ns
+                Info: Clock period of Destination clock "clk" is 100.000 ns with  offset of 0.000 ns and duty cycle of 50
+                Info: Multicycle Setup factor for Destination register is 1
+                Info: Multicycle Hold factor for Destination register is 1
+            Info: - Launch edge is 0.000 ns
+                Info: Clock period of Source clock "clk" is 100.000 ns with  offset of 0.000 ns and duty cycle of 50
+                Info: Multicycle Setup factor for Source register is 1
+                Info: Multicycle Hold factor for Source register is 1
+        Info: + Smallest clock skew is 0.000 ns
+            Info: + Longest clock path from clock "clk" to destination register is 3.348 ns
+                Info: 1: + IC(0.000 ns) + CELL(1.163 ns) = 1.163 ns; Loc. = PIN_12; Fanout = 129; CLK Node = 'clk'
+                Info: 2: + IC(1.267 ns) + CELL(0.918 ns) = 3.348 ns; Loc. = LC_X4_Y3_N4; Fanout = 11; REG Node = 'ILIMIT50US:inst18|current_st'
+                Info: Total cell delay = 2.081 ns ( 62.16 % )
+                Info: Total interconnect delay = 1.267 ns ( 37.84 % )
+            Info: - Shortest clock path from clock "clk" to source register is 3.348 ns
+                Info: 1: + IC(0.000 ns) + CELL(1.163 ns) = 1.163 ns; Loc. = PIN_12; Fanout = 129; CLK Node = 'clk'
+                Info: 2: + IC(1.267 ns) + CELL(0.918 ns) = 3.348 ns; Loc. = LC_X4_Y3_N0; Fanout = 1; REG Node = 'ILIMIT50US:inst18|next_st'
+                Info: Total cell delay = 2.081 ns ( 62.16 % )
+                Info: Total interconnect delay = 1.267 ns ( 37.84 % )
+        Info: - Micro clock to output delay of source is 0.376 ns
+        Info: + Micro hold delay of destination is 0.221 ns
+Info: tsu for register "ENINVPWM:inst3|ENPWMIN_SG1" (data pin = "EPWM2B", clock pin = "clk") is 4.357 ns
+    Info: + Longest pin to register delay is 7.372 ns
+        Info: 1: + IC(0.000 ns) + CELL(1.132 ns) = 1.132 ns; Loc. = PIN_75; Fanout = 2; PIN Node = 'EPWM2B'
+        Info: 2: + IC(5.436 ns) + CELL(0.804 ns) = 7.372 ns; Loc. = LC_X2_Y3_N8; Fanout = 2; REG Node = 'ENINVPWM:inst3|ENPWMIN_SG1'
+        Info: Total cell delay = 1.936 ns ( 26.26 % )
+        Info: Total interconnect delay = 5.436 ns ( 73.74 % )
+    Info: + Micro setup delay of destination is 0.333 ns
+    Info: - Shortest clock path from clock "clk" to destination register is 3.348 ns
+        Info: 1: + IC(0.000 ns) + CELL(1.163 ns) = 1.163 ns; Loc. = PIN_12; Fanout = 129; CLK Node = 'clk'
+        Info: 2: + IC(1.267 ns) + CELL(0.918 ns) = 3.348 ns; Loc. = LC_X2_Y3_N8; Fanout = 2; REG Node = 'ENINVPWM:inst3|ENPWMIN_SG1'
+        Info: Total cell delay = 2.081 ns ( 62.16 % )
+        Info: Total interconnect delay = 1.267 ns ( 37.84 % )
+Info: tco from clock "clk" to destination pin "midPWM1BO" through register "ENINVPWM:inst1|ENPWMOUT" is 8.205 ns
+    Info: + Longest clock path from clock "clk" to source register is 3.348 ns
+        Info: 1: + IC(0.000 ns) + CELL(1.163 ns) = 1.163 ns; Loc. = PIN_12; Fanout = 129; CLK Node = 'clk'
+        Info: 2: + IC(1.267 ns) + CELL(0.918 ns) = 3.348 ns; Loc. = LC_X2_Y3_N9; Fanout = 1; REG Node = 'ENINVPWM:inst1|ENPWMOUT'
+        Info: Total cell delay = 2.081 ns ( 62.16 % )
+        Info: Total interconnect delay = 1.267 ns ( 37.84 % )
+    Info: + Micro clock to output delay of source is 0.376 ns
+    Info: + Longest register to pin delay is 4.481 ns
+        Info: 1: + IC(0.000 ns) + CELL(0.000 ns) = 0.000 ns; Loc. = LC_X2_Y3_N9; Fanout = 1; REG Node = 'ENINVPWM:inst1|ENPWMOUT'
+        Info: 2: + IC(2.159 ns) + CELL(2.322 ns) = 4.481 ns; Loc. = PIN_21; Fanout = 0; PIN Node = 'midPWM1BO'
+        Info: Total cell delay = 2.322 ns ( 51.82 % )
+        Info: Total interconnect delay = 2.159 ns ( 48.18 % )
+Info: Longest tpd from source pin "midMastRlyCtr" to destination pin "MastRlyCtr" is 10.118 ns
+    Info: 1: + IC(0.000 ns) + CELL(1.132 ns) = 1.132 ns; Loc. = PIN_6; Fanout = 1; PIN Node = 'midMastRlyCtr'
+    Info: 2: + IC(4.594 ns) + CELL(0.200 ns) = 5.926 ns; Loc. = LC_X6_Y3_N0; Fanout = 1; COMB Node = 'inst11'
+    Info: 3: + IC(1.870 ns) + CELL(2.322 ns) = 10.118 ns; Loc. = PIN_49; Fanout = 0; PIN Node = 'MastRlyCtr'
+    Info: Total cell delay = 3.654 ns ( 36.11 % )
+    Info: Total interconnect delay = 6.464 ns ( 63.89 % )
+Info: th for register "Filter10us:inst30|Rshift[0]" (data pin = "EmergnecyButtonSta", clock pin = "clk") is -1.869 ns
+    Info: + Longest clock path from clock "clk" to destination register is 3.348 ns
+        Info: 1: + IC(0.000 ns) + CELL(1.163 ns) = 1.163 ns; Loc. = PIN_12; Fanout = 129; CLK Node = 'clk'
+        Info: 2: + IC(1.267 ns) + CELL(0.918 ns) = 3.348 ns; Loc. = LC_X6_Y1_N4; Fanout = 2; REG Node = 'Filter10us:inst30|Rshift[0]'
+        Info: Total cell delay = 2.081 ns ( 62.16 % )
+        Info: Total interconnect delay = 1.267 ns ( 37.84 % )
+    Info: + Micro hold delay of destination is 0.221 ns
+    Info: - Shortest pin to register delay is 5.438 ns
+        Info: 1: + IC(0.000 ns) + CELL(1.132 ns) = 1.132 ns; Loc. = PIN_43; Fanout = 1; PIN Node = 'EmergnecyButtonSta'
+        Info: 2: + IC(4.026 ns) + CELL(0.280 ns) = 5.438 ns; Loc. = LC_X6_Y1_N4; Fanout = 2; REG Node = 'Filter10us:inst30|Rshift[0]'
+        Info: Total cell delay = 1.412 ns ( 25.97 % )
+        Info: Total interconnect delay = 4.026 ns ( 74.03 % )
+Info: All timing requirements were met for slow timing model timing analysis. See Report window for more details.
+Info: Quartus II Classic Timing Analyzer was successful. 0 errors, 0 warnings
+    Info: Allocated 111 megabytes of memory during processing
+    Info: Processing ended: Mon Oct 14 15:48:01 2013
+    Info: Elapsed time: 00:00:01
+
+

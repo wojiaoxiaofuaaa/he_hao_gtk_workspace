@@ -1,0 +1,49 @@
+--------------------------  grid_invter.pjt - Debug  --------------------------
+[AD.c] "C:\CCStudio_v3.3PLA\C2000\cgtools\bin\cl2000" -g -pdsw225 -fr"E:/test_programme/PCS_30kVA_16kHz/Debug" -d"_DEBUG" -d"LARGE_MODEL" -ml -v28 -@"../Debug.lkf" "AD.c"
+
+[BiDirDCController.c] "C:\CCStudio_v3.3PLA\C2000\cgtools\bin\cl2000" -g -pdsw225 -fr"E:/test_programme/PCS_30kVA_16kHz/Debug" -d"_DEBUG" -d"LARGE_MODEL" -ml -v28 -@"../Debug.lkf" "BiDirDCController.c"
+
+[CAN.c] "C:\CCStudio_v3.3PLA\C2000\cgtools\bin\cl2000" -g -pdsw225 -fr"E:/test_programme/PCS_30kVA_16kHz/Debug" -d"_DEBUG" -d"LARGE_MODEL" -ml -v28 -@"../Debug.lkf" "CAN.c"
+
+[CAP.c] "C:\CCStudio_v3.3PLA\C2000\cgtools\bin\cl2000" -g -pdsw225 -fr"E:/test_programme/PCS_30kVA_16kHz/Debug" -d"_DEBUG" -d"LARGE_MODEL" -ml -v28 -@"../Debug.lkf" "CAP.c"
+
+[F28235_Boot.c] "C:\CCStudio_v3.3PLA\C2000\cgtools\bin\cl2000" -g -pdsw225 -fr"E:/test_programme/PCS_30kVA_16kHz/Debug" -d"_DEBUG" -d"LARGE_MODEL" -ml -v28 -@"../Debug.lkf" "F28235_Boot.c"
+
+[I2C.c] "C:\CCStudio_v3.3PLA\C2000\cgtools\bin\cl2000" -g -pdsw225 -fr"E:/test_programme/PCS_30kVA_16kHz/Debug" -d"_DEBUG" -d"LARGE_MODEL" -ml -v28 -@"../Debug.lkf" "I2C.c"
+
+[InvController.C] "C:\CCStudio_v3.3PLA\C2000\cgtools\bin\cl2000" -g -pdsw225 -fr"E:/test_programme/PCS_30kVA_16kHz/Debug" -d"_DEBUG" -d"LARGE_MODEL" -ml -v28 -@"../Debug.lkf" "InvController.C"
+"InvController.C", line 1338: warning: variable "i" was declared but never referenced
+"InvController.C", line 1339: warning: variable "fAPFCtrDelay" was declared but never referenced
+"InvController.C", line 1340: warning: variable "k" was declared but never referenced
+"InvController.C", line 1341: warning: variable "wInvDsCurrErrP" was declared but never referenced
+"InvController.C", line 1341: warning: variable "wInvQsCurrErrP" was declared but never referenced
+
+[MAIN.c] "C:\CCStudio_v3.3PLA\C2000\cgtools\bin\cl2000" -g -pdsw225 -fr"E:/test_programme/PCS_30kVA_16kHz/Debug" -d"_DEBUG" -d"LARGE_MODEL" -ml -v28 -@"../Debug.lkf" "MAIN.c"
+
+[PROTECT.c] "C:\CCStudio_v3.3PLA\C2000\cgtools\bin\cl2000" -g -pdsw225 -fr"E:/test_programme/PCS_30kVA_16kHz/Debug" -d"_DEBUG" -d"LARGE_MODEL" -ml -v28 -@"../Debug.lkf" "PROTECT.c"
+
+[PWM.c] "C:\CCStudio_v3.3PLA\C2000\cgtools\bin\cl2000" -g -pdsw225 -fr"E:/test_programme/PCS_30kVA_16kHz/Debug" -d"_DEBUG" -d"LARGE_MODEL" -ml -v28 -@"../Debug.lkf" "PWM.c"
+
+[SCI.c] "C:\CCStudio_v3.3PLA\C2000\cgtools\bin\cl2000" -g -pdsw225 -fr"E:/test_programme/PCS_30kVA_16kHz/Debug" -d"_DEBUG" -d"LARGE_MODEL" -ml -v28 -@"../Debug.lkf" "SCI.c"
+
+[SYSCTR.c] "C:\CCStudio_v3.3PLA\C2000\cgtools\bin\cl2000" -g -pdsw225 -fr"E:/test_programme/PCS_30kVA_16kHz/Debug" -d"_DEBUG" -d"LARGE_MODEL" -ml -v28 -@"../Debug.lkf" "SYSCTR.c"
+
+[TIMER.c] "C:\CCStudio_v3.3PLA\C2000\cgtools\bin\cl2000" -g -pdsw225 -fr"E:/test_programme/PCS_30kVA_16kHz/Debug" -d"_DEBUG" -d"LARGE_MODEL" -ml -v28 -@"../Debug.lkf" "TIMER.c"
+
+[DSP2833x_GlobalVariableDefs.c] "C:\CCStudio_v3.3PLA\C2000\cgtools\bin\cl2000" -g -pdsw225 -fr"E:/test_programme/PCS_30kVA_16kHz/Debug" -d"_DEBUG" -d"LARGE_MODEL" -ml -v28 -@"../Debug.lkf" "DSP2833x_GlobalVariableDefs.c"
+
+[DSP2833x_SWPrioritizedDefaultIsr.c] "C:\CCStudio_v3.3PLA\C2000\cgtools\bin\cl2000" -g -pdsw225 -fr"E:/test_programme/PCS_30kVA_16kHz/Debug" -d"_DEBUG" -d"LARGE_MODEL" -ml -v28 -@"../Debug.lkf" "DSP2833x_SWPrioritizedDefaultIsr.c"
+
+[DSP2833x_SWPrioritizedPieVect.c] "C:\CCStudio_v3.3PLA\C2000\cgtools\bin\cl2000" -g -pdsw225 -fr"E:/test_programme/PCS_30kVA_16kHz/Debug" -d"_DEBUG" -d"LARGE_MODEL" -ml -v28 -@"../Debug.lkf" "DSP2833x_SWPrioritizedPieVect.c"
+
+[Gpio.c] "C:\CCStudio_v3.3PLA\C2000\cgtools\bin\cl2000" -g -pdsw225 -fr"E:/test_programme/PCS_30kVA_16kHz/Debug" -d"_DEBUG" -d"LARGE_MODEL" -ml -v28 -@"../Debug.lkf" "Gpio.c"
+
+[PieCtrl_nonBIOS.c] "C:\CCStudio_v3.3PLA\C2000\cgtools\bin\cl2000" -g -pdsw225 -fr"E:/test_programme/PCS_30kVA_16kHz/Debug" -d"_DEBUG" -d"LARGE_MODEL" -ml -v28 -@"../Debug.lkf" "PieCtrl_nonBIOS.c"
+
+[SysCtrl.c] "C:\CCStudio_v3.3PLA\C2000\cgtools\bin\cl2000" -g -pdsw225 -fr"E:/test_programme/PCS_30kVA_16kHz/Debug" -d"_DEBUG" -d"LARGE_MODEL" -ml -v28 -@"../Debug.lkf" "SysCtrl.c"
+
+[Linking...] "C:\CCStudio_v3.3PLA\C2000\cgtools\bin\cl2000" -@"Debug.lkf"
+<Linking>
+
+Build Complete,
+  0 Errors, 5 Warnings, 0 Remarks.

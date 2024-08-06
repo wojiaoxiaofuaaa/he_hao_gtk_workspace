@@ -1,0 +1,13 @@
+"D:\tool\digital_tool_keil_common_use\keil\IAR\arm\bin\armproc.dll" 
+
+"D:\tool\digital_tool_keil_common_use\keil\IAR\arm\bin\armsim2.dll" 
+
+"E:\code\free_rtos_revision\FreeRTOS_V2022changetonew_IAR\FreeRTOS\Demo\CORTEX_STM32F103_IAR\Debug\Exe\RTOSDemo.out" 
+
+--plugin="D:\tool\digital_tool_keil_common_use\keil\IAR\arm\bin\armbat.dll" 
+
+--device_macro="D:\tool\digital_tool_keil_common_use\keil\IAR\arm\config\debugger\ST\STM32F1xx.dmac" 
+
+
+
+

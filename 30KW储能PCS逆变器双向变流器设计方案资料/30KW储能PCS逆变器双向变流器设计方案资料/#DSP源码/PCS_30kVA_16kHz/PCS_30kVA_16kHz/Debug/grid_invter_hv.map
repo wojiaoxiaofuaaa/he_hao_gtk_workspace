@@ -1,0 +1,3185 @@
+******************************************************************************
+             TMS320C2000 Linker PC v5.2.1                      
+******************************************************************************
+>> Linked Tue Sep 11 13:58:28 2018
+
+OUTPUT FILE NAME:   <./Debug/grid_invter_hv.out>
+ENTRY POINT SYMBOL: "_c_int00"  address: 0032b21a
+
+
+MEMORY CONFIGURATION
+
+         name            origin    length      used     unused   attr    fill
+----------------------  --------  ---------  --------  --------  ----  --------
+PAGE 0:
+  BEGIN_M0              00000000   00000002  00000000  00000002  RWIX
+  L0123SARAM            00008000   00004000  000034fa  00000b06  RWIX
+  FLASH_HEAD            00320000   00000002  00000002  00000000  RWIX
+  BEGIN_FLASH           00320002   00000002  00000002  00000000  RWIX
+  FLASH_CDEFGH          00320004   00017ffc  0001016d  00007e8f  RWIX
+  FLASH_SAFECRC         00338000   00000001  00000001  00000000  RWIX
+  FLASH_SAFE            00338001   00003ffd  000006bc  00003941  RWIX
+  FLASH_TRAIL           0033bffe   00000002  00000002  00000000  RWIX
+  CSM_RSVD              0033ff80   00000076  00000000  00000076  RWIX
+  PASSWORDS             0033fff8   00000008  00000000  00000008  RWIX
+  ADC_CAL               00380080   00000009  00000000  00000009  RWIX
+  OTP                   00380400   00000400  00000000  00000400  RWIX
+  IQTABLES              003fe000   00000b50  00000000  00000b50  RWIX
+  IQTABLES2             003feb50   0000008c  00000000  0000008c  RWIX
+  FPUTABLES             003febdc   000006a0  00000000  000006a0  RWIX
+  BOOTROM               003ff27c   00000d44  00000000  00000d44  RWIX
+  RESET                 003fffc0   00000002  00000000  00000002  RWIX
+
+PAGE 1:
+  M0SARAM               00000006   000003fa  000003a0  0000005a  RWIX
+  M1SARAM               00000400   00000400  00000000  00000400  RWIX
+  DEV_EMU               00000880   00000180  000000d0  000000b0  RWIX
+  FLASH_REGS            00000a80   00000060  00000008  00000058  RWIX
+  CSM                   00000ae0   00000010  00000010  00000000  RWIX
+  ADC_MIRROR            00000b00   00000010  00000010  00000000  RWIX
+  XINTF                 00000b20   00000020  0000001e  00000002  RWIX
+  CPU_TIMER0            00000c00   00000008  00000008  00000000  RWIX
+  CPU_TIMER1            00000c08   00000008  00000008  00000000  RWIX
+  CPU_TIMER2            00000c10   00000008  00000008  00000000  RWIX
+  PIE_CTRL              00000ce0   00000020  0000001a  00000006  RWIX
+  PIE_VECT              00000d00   00000100  00000100  00000000  RWIX
+  DMA                   00001000   00000200  000000e0  00000120  RWIX
+  MCBSPA                00005000   00000040  00000025  0000001b  RWIX
+  MCBSPB                00005040   00000040  00000025  0000001b  RWIX
+  ECANA                 00006000   00000040  00000034  0000000c  RWIX
+  ECANA_LAM             00006040   00000040  00000040  00000000  RWIX
+  ECANA_MOTS            00006080   00000040  00000040  00000000  RWIX
+  ECANA_MOTO            000060c0   00000040  00000040  00000000  RWIX
+  ECANA_MBOX            00006100   00000100  00000100  00000000  RWIX
+  ECANB                 00006200   00000040  00000034  0000000c  RWIX
+  ECANB_LAM             00006240   00000040  00000040  00000000  RWIX
+  ECANB_MOTS            00006280   00000040  00000040  00000000  RWIX
+  ECANB_MOTO            000062c0   00000040  00000040  00000000  RWIX
+  ECANB_MBOX            00006300   00000100  00000100  00000000  RWIX
+  EPWM1                 00006800   00000022  00000022  00000000  RWIX
+  EPWM2                 00006840   00000022  00000022  00000000  RWIX
+  EPWM3                 00006880   00000022  00000022  00000000  RWIX
+  EPWM4                 000068c0   00000022  00000022  00000000  RWIX
+  EPWM5                 00006900   00000022  00000022  00000000  RWIX
+  EPWM6                 00006940   00000022  00000022  00000000  RWIX
+  ECAP1                 00006a00   00000020  00000020  00000000  RWIX
+  ECAP2                 00006a20   00000020  00000020  00000000  RWIX
+  ECAP3                 00006a40   00000020  00000020  00000000  RWIX
+  ECAP4                 00006a60   00000020  00000020  00000000  RWIX
+  ECAP5                 00006a80   00000020  00000020  00000000  RWIX
+  ECAP6                 00006aa0   00000020  00000020  00000000  RWIX
+  EQEP1                 00006b00   00000040  00000040  00000000  RWIX
+  EQEP2                 00006b40   00000040  00000040  00000000  RWIX
+  GPIOCTRL              00006f80   00000040  0000002e  00000012  RWIX
+  GPIODAT               00006fc0   00000020  00000020  00000000  RWIX
+  GPIOINT               00006fe0   00000020  0000000a  00000016  RWIX
+  SYSTEM                00007010   00000020  00000020  00000000  RWIX
+  SPIA                  00007040   00000010  00000010  00000000  RWIX
+  SCIA                  00007050   00000010  00000010  00000000  RWIX
+  XINTRUPT              00007070   00000010  00000010  00000000  RWIX
+  ADC                   00007100   00000020  0000001e  00000002  RWIX
+  SCIB                  00007750   00000010  00000010  00000000  RWIX
+  SCIC                  00007770   00000010  00000010  00000000  RWIX
+  I2CA                  00007900   00000040  00000022  0000001e  RWIX
+  L4SARAM               0000c000   00001000  00000000  00001000  RWIX
+  L56SARAM              0000d000   00002000  00000f7e  00001082  RWIX
+  RAMSafety             0000f000   00001000  00000254  00000dac  RWIX
+  CSM_PWL               0033fff8   00000008  00000008  00000000  RWIX
+  PARTID                00380090   00000001  00000001  00000000  RWIX
+
+
+SECTION ALLOCATION MAP
+
+ output                                  attributes/
+section   page    origin      length       input sections
+--------  ----  ----------  ----------   ----------------
+.pinit     0    00320004    00000000     UNINITIALIZED
+
+sMpptStrategyRamFuncs 
+*          0    00008000    00000000     UNINITIALIZED
+
+FlashHead 
+*          0    00320000    00000002     
+                  00320000    00000002     MAIN.obj (FlashHead)
+
+codestart 
+*          0    00320002    00000002     
+                  00320002    00000002     CodeStartBranch.obj (codestart)
+
+.text      0    00320004    0000b566     
+                  00320004    000029d8     CAN.obj (.text)
+                  003229dc    00002142     SYSCTR.obj (.text)
+                  00324b1e    00001ea9     SCI.obj (.text)
+                  003269c7    0000173d     PROTECT.obj (.text)
+                  00328104    00000c4d     MAIN.obj (.text)
+                  00328d51    00000afd     I2C.obj (.text)
+                  0032984e    0000076e     AD.obj (.text)
+                  00329fbc    00000610     InvController.obj (.text)
+                  0032a5cc    0000034e     DSP2833x_SWPrioritizedDefaultIsr.obj (.text)
+                  0032a91a    00000232     Gpio.obj (.text)
+                  0032ab4c    00000160     PWM.obj (.text)
+                  0032acac    00000148     F28235_Boot.obj (.text)
+                  0032adf4    00000107     rts2800_ml.lib : ll_div.obj (.text)
+                  0032aefb    000000dd     CAP.obj (.text)
+                  0032afd8    0000009d     SysCtrl.obj (.text)
+                  0032b075    00000083     rts2800_ml.lib : fs_div.obj (.text)
+                  0032b0f8    00000078                    : fs_add.obj (.text)
+                  0032b170    0000005a                    : fs_mpy.obj (.text)
+                  0032b1ca    00000050                    : sqrt.obj (.text)
+                  0032b21a    00000044                    : boot.obj (.text)
+                  0032b25e    00000041                    : ldexp.obj (.text)
+                  0032b29f    0000003e     BiDirDCController.obj (.text)
+                  0032b2dd    00000030     PieCtrl_nonBIOS.obj (.text)
+                  0032b30d    0000002a     rts2800_ml.lib : l_div.obj (.text)
+                  0032b337    00000029                    : fs_tol.obj (.text)
+                  0032b360    00000025                    : fs_toi.obj (.text)
+                  0032b385    00000023     Init_Boot.obj (.text)
+                  0032b3a8    00000022     TIMER.obj (.text)
+                  0032b3ca    00000022     rts2800_ml.lib : i_div.obj (.text)
+                  0032b3ec    00000021                    : fs_toul.obj (.text)
+                  0032b40d    00000021                    : memcpy_ff.obj (.text)
+                  0032b42e    0000001e                    : ll_cmp.obj (.text)
+                  0032b44c    0000001d                    : fs_tou.obj (.text)
+                  0032b469    0000001c     DSP2833x_SWPrioritizedPieVect.obj (.text)
+                  0032b485    0000001b     rts2800_ml.lib : args_main.obj (.text)
+                  0032b4a0    0000001b                    : ull_tofs.obj (.text)
+                  0032b4bb    0000001a                    : l_tofs.obj (.text)
+                  0032b4d5    00000019                    : exit.obj (.text)
+                  0032b4ee    00000017                    : fs_cmp.obj (.text)
+                  0032b505    00000014                    : ll_mpy.obj (.text)
+                  0032b519    00000013                    : ul_tofs.obj (.text)
+                  0032b52c    00000010     DelayUs.obj (.text)
+                  0032b53c    00000010     rts2800_ml.lib : u_tofs.obj (.text)
+                  0032b54c    0000000b                    : u_div.obj (.text)
+                  0032b557    00000009                    : _lock.obj (.text)
+                  0032b560    00000007     CodeStartBranch.obj (.text)
+                  0032b567    00000003     SetDBGIER.obj (.text)
+
+sInvControlRamFuncs 
+*          0    0032b56a    0000130b     RUN ADDR = 00008000
+                  0032b56a    0000130b     InvController.obj (sInvControlRamFuncs)
+
+AdcIsrRamFuncs 
+*          0    0032c875    000010ed     RUN ADDR = 0000930b
+                  0032c875    000010c4     AD.obj (AdcIsrRamFuncs)
+                  0032d939    00000029     TIMER.obj (AdcIsrRamFuncs)
+
+eCanRamFuncs 
+*          0    0032d962    0000067e     RUN ADDR = 0000a3f8
+                  0032d962    0000067e     CAN.obj (eCanRamFuncs)
+
+BiDirDCCtrFuncs 
+*          0    0032dfe0    000004ef     RUN ADDR = 0000aa76
+                  0032dfe0    000004ef     BiDirDCController.obj (BiDirDCCtrFuncs)
+
+CAPRamFuncs 
+*          0    0032e4cf    00000349     RUN ADDR = 0000af65
+                  0032e4cf    00000349     CAP.obj (CAPRamFuncs)
+
+ProtectRamFuncs 
+*          0    0032e818    0000022d     RUN ADDR = 0000b2ae
+                  0032e818    0000022d     PROTECT.obj (ProtectRamFuncs)
+
+.cinit     0    0032ea45    00000d46     
+                  0032ea45    000004db     InvController.obj (.cinit)
+                  0032ef20    00000327     PROTECT.obj (.cinit)
+                  0032f247    0000024b     SYSCTR.obj (.cinit)
+                  0032f492    000000bf     BiDirDCController.obj (.cinit)
+                  0032f551    0000009c     I2C.obj (.cinit)
+                  0032f5ed    00000090     SCI.obj (.cinit)
+                  0032f67d    00000059     CAP.obj (.cinit)
+                  0032f6d6    00000051     CAN.obj (.cinit)
+                  0032f727    00000024     MAIN.obj (.cinit)
+                  0032f74b    00000021     AD.obj (.cinit)
+                  0032f76c    0000000a     rts2800_ml.lib : _lock.obj (.cinit)
+                  0032f776    0000000a                    : exit.obj (.cinit)
+                  0032f780    00000005     F28235_Boot.obj (.cinit)
+                  0032f785    00000004     rts2800_ml.lib : errno.obj (.cinit)
+                  0032f789    00000002     --HOLE-- [fill = 0]
+
+.econst    0    0032f78c    00000975     
+                  0032f78c    000002d0     InvController.obj (.econst:_wSinTabArray)
+                  0032fa5c    00000190     InvController.obj (.econst:_dwATANArray)
+                  0032fbec    00000100     DSP2833x_SWPrioritizedPieVect.obj (.econst)
+                  0032fcec    00000054     I2C.obj (.econst:_wEepromDefaultProtMaxArrayIEEE1547)
+                  0032fd40    00000054     I2C.obj (.econst:_wEepromDefaultProtMaxArrayRule21)
+                  0032fd94    00000054     I2C.obj (.econst:_wEepromDefaultProtMinArrayIEEE1547)
+                  0032fde8    00000054     I2C.obj (.econst:_wEepromDefaultProtMinArrayRule21)
+                  0032fe3c    00000054     I2C.obj (.econst:_wEepromDefaultProtectArrayIEEE1547)
+                  0032fe90    00000054     I2C.obj (.econst:_wEepromDefaultProtectArrayRule21)
+                  0032fee4    00000046     I2C.obj (.econst:_wEepromDefaultAdcAdjMaxArray)
+                  0032ff2a    00000046     I2C.obj (.econst:_wEepromDefaultAdcAdjMinArray)
+                  0032ff70    00000046     I2C.obj (.econst:_wEepromDefaultAdcAdjustArray)
+                  0032ffb6    00000046     I2C.obj (.econst:_wEepromDefaultProtMaxSupplArray)
+                  0032fffc    00000046     I2C.obj (.econst:_wEepromDefaultProtMinSupplArray)
+                  00330042    00000046     I2C.obj (.econst:_wEepromDefaultProtectSupplArray)
+                  00330088    00000032     CAN.obj (.econst:_wRemoteDataMax)
+                  003300ba    00000032     CAN.obj (.econst:_wRemoteDataMin)
+                  003300ec    00000007     I2C.obj (.econst:_wEepromDefaultHisDataArray)
+                  003300f3    00000007     I2C.obj (.econst:_wEepromDefaultImptMaxArray)
+                  003300fa    00000007     I2C.obj (.econst:_wEepromDefaultImptMinArray)
+
+secureRamFuncs 
+*          0    00330101    0000001f     RUN ADDR = 0000b4db
+                  00330101    0000001f     SysCtrl.obj (secureRamFuncs)
+
+.switch    0    00330120    00000052     
+                  00330120    00000052     SCI.obj (.switch)
+
+FlashSafetyCRC 
+*          0    00338000    00000001     
+                  00338000    00000001     PROTECT.obj (FlashSafetyCRC)
+
+FlashSafety 
+*          0    00338001    000006bc     
+                  00338001    00000572     PROTECT.obj (FlashSafety)
+                  00338573    0000014a     F28register_check.obj (FlashSafety)
+
+FlashTrail 
+*          0    0033bffe    00000002     
+                  0033bffe    00000002     MAIN.obj (FlashTrail)
+
+.reset     0    003fffc0    00000002     DSECT
+                  003fffc0    00000002     rts2800_ml.lib : boot.obj (.reset)
+
+.stack     1    00000006    000003a0     UNINITIALIZED
+                  00000006    000003a0     --HOLE--
+
+DevEmuRegsFile 
+*          1    00000880    000000d0     UNINITIALIZED
+                  00000880    000000d0     DSP2833x_GlobalVariableDefs.obj (DevEmuRegsFile)
+
+FlashRegsFile 
+*          1    00000a80    00000008     UNINITIALIZED
+                  00000a80    00000008     DSP2833x_GlobalVariableDefs.obj (FlashRegsFile)
+
+CsmRegsFile 
+*          1    00000ae0    00000010     UNINITIALIZED
+                  00000ae0    00000010     DSP2833x_GlobalVariableDefs.obj (CsmRegsFile)
+
+AdcMirrorFile 
+*          1    00000b00    00000010     UNINITIALIZED
+                  00000b00    00000010     DSP2833x_GlobalVariableDefs.obj (AdcMirrorFile)
+
+XintfRegsFile 
+*          1    00000b20    0000001e     UNINITIALIZED
+                  00000b20    0000001e     DSP2833x_GlobalVariableDefs.obj (XintfRegsFile)
+
+CpuTimer0RegsFile 
+*          1    00000c00    00000008     UNINITIALIZED
+                  00000c00    00000008     DSP2833x_GlobalVariableDefs.obj (CpuTimer0RegsFile)
+
+CpuTimer1RegsFile 
+*          1    00000c08    00000008     UNINITIALIZED
+                  00000c08    00000008     DSP2833x_GlobalVariableDefs.obj (CpuTimer1RegsFile)
+
+CpuTimer2RegsFile 
+*          1    00000c10    00000008     UNINITIALIZED
+                  00000c10    00000008     DSP2833x_GlobalVariableDefs.obj (CpuTimer2RegsFile)
+
+PieCtrlRegsFile 
+*          1    00000ce0    0000001a     UNINITIALIZED
+                  00000ce0    0000001a     DSP2833x_GlobalVariableDefs.obj (PieCtrlRegsFile)
+
+PieVectTableFile 
+*          1    00000d00    00000100     UNINITIALIZED
+                  00000d00    00000100     DSP2833x_GlobalVariableDefs.obj (PieVectTableFile)
+
+DmaRegsFile 
+*          1    00001000    000000e0     UNINITIALIZED
+                  00001000    000000e0     DSP2833x_GlobalVariableDefs.obj (DmaRegsFile)
+
+McbspaRegsFile 
+*          1    00005000    00000025     UNINITIALIZED
+                  00005000    00000025     DSP2833x_GlobalVariableDefs.obj (McbspaRegsFile)
+
+McbspbRegsFile 
+*          1    00005040    00000025     UNINITIALIZED
+                  00005040    00000025     DSP2833x_GlobalVariableDefs.obj (McbspbRegsFile)
+
+ECanaRegsFile 
+*          1    00006000    00000034     UNINITIALIZED
+                  00006000    00000034     DSP2833x_GlobalVariableDefs.obj (ECanaRegsFile)
+
+ECanaLAMRegsFile 
+*          1    00006040    00000040     UNINITIALIZED
+                  00006040    00000040     DSP2833x_GlobalVariableDefs.obj (ECanaLAMRegsFile)
+
+ECanaMOTSRegsFile 
+*          1    00006080    00000040     UNINITIALIZED
+                  00006080    00000040     DSP2833x_GlobalVariableDefs.obj (ECanaMOTSRegsFile)
+
+ECanaMOTORegsFile 
+*          1    000060c0    00000040     UNINITIALIZED
+                  000060c0    00000040     DSP2833x_GlobalVariableDefs.obj (ECanaMOTORegsFile)
+
+ECanaMboxesFile 
+*          1    00006100    00000100     UNINITIALIZED
+                  00006100    00000100     DSP2833x_GlobalVariableDefs.obj (ECanaMboxesFile)
+
+ECanbRegsFile 
+*          1    00006200    00000034     UNINITIALIZED
+                  00006200    00000034     DSP2833x_GlobalVariableDefs.obj (ECanbRegsFile)
+
+ECanbLAMRegsFile 
+*          1    00006240    00000040     UNINITIALIZED
+                  00006240    00000040     DSP2833x_GlobalVariableDefs.obj (ECanbLAMRegsFile)
+
+ECanbMOTSRegsFile 
+*          1    00006280    00000040     UNINITIALIZED
+                  00006280    00000040     DSP2833x_GlobalVariableDefs.obj (ECanbMOTSRegsFile)
+
+ECanbMOTORegsFile 
+*          1    000062c0    00000040     UNINITIALIZED
+                  000062c0    00000040     DSP2833x_GlobalVariableDefs.obj (ECanbMOTORegsFile)
+
+ECanbMboxesFile 
+*          1    00006300    00000100     UNINITIALIZED
+                  00006300    00000100     DSP2833x_GlobalVariableDefs.obj (ECanbMboxesFile)
+
+EPwm1RegsFile 
+*          1    00006800    00000022     UNINITIALIZED
+                  00006800    00000022     DSP2833x_GlobalVariableDefs.obj (EPwm1RegsFile)
+
+EPwm2RegsFile 
+*          1    00006840    00000022     UNINITIALIZED
+                  00006840    00000022     DSP2833x_GlobalVariableDefs.obj (EPwm2RegsFile)
+
+EPwm3RegsFile 
+*          1    00006880    00000022     UNINITIALIZED
+                  00006880    00000022     DSP2833x_GlobalVariableDefs.obj (EPwm3RegsFile)
+
+EPwm4RegsFile 
+*          1    000068c0    00000022     UNINITIALIZED
+                  000068c0    00000022     DSP2833x_GlobalVariableDefs.obj (EPwm4RegsFile)
+
+EPwm5RegsFile 
+*          1    00006900    00000022     UNINITIALIZED
+                  00006900    00000022     DSP2833x_GlobalVariableDefs.obj (EPwm5RegsFile)
+
+EPwm6RegsFile 
+*          1    00006940    00000022     UNINITIALIZED
+                  00006940    00000022     DSP2833x_GlobalVariableDefs.obj (EPwm6RegsFile)
+
+ECap1RegsFile 
+*          1    00006a00    00000020     UNINITIALIZED
+                  00006a00    00000020     DSP2833x_GlobalVariableDefs.obj (ECap1RegsFile)
+
+ECap2RegsFile 
+*          1    00006a20    00000020     UNINITIALIZED
+                  00006a20    00000020     DSP2833x_GlobalVariableDefs.obj (ECap2RegsFile)
+
+ECap3RegsFile 
+*          1    00006a40    00000020     UNINITIALIZED
+                  00006a40    00000020     DSP2833x_GlobalVariableDefs.obj (ECap3RegsFile)
+
+ECap4RegsFile 
+*          1    00006a60    00000020     UNINITIALIZED
+                  00006a60    00000020     DSP2833x_GlobalVariableDefs.obj (ECap4RegsFile)
+
+ECap5RegsFile 
+*          1    00006a80    00000020     UNINITIALIZED
+                  00006a80    00000020     DSP2833x_GlobalVariableDefs.obj (ECap5RegsFile)
+
+ECap6RegsFile 
+*          1    00006aa0    00000020     UNINITIALIZED
+                  00006aa0    00000020     DSP2833x_GlobalVariableDefs.obj (ECap6RegsFile)
+
+EQep1RegsFile 
+*          1    00006b00    00000040     UNINITIALIZED
+                  00006b00    00000040     DSP2833x_GlobalVariableDefs.obj (EQep1RegsFile)
+
+EQep2RegsFile 
+*          1    00006b40    00000040     UNINITIALIZED
+                  00006b40    00000040     DSP2833x_GlobalVariableDefs.obj (EQep2RegsFile)
+
+GpioCtrlRegsFile 
+*          1    00006f80    0000002e     UNINITIALIZED
+                  00006f80    0000002e     DSP2833x_GlobalVariableDefs.obj (GpioCtrlRegsFile)
+
+GpioDataRegsFile 
+*          1    00006fc0    00000020     UNINITIALIZED
+                  00006fc0    00000020     DSP2833x_GlobalVariableDefs.obj (GpioDataRegsFile)
+
+GpioIntRegsFile 
+*          1    00006fe0    0000000a     UNINITIALIZED
+                  00006fe0    0000000a     DSP2833x_GlobalVariableDefs.obj (GpioIntRegsFile)
+
+SysCtrlRegsFile 
+*          1    00007010    00000020     UNINITIALIZED
+                  00007010    00000020     DSP2833x_GlobalVariableDefs.obj (SysCtrlRegsFile)
+
+SpiaRegsFile 
+*          1    00007040    00000010     UNINITIALIZED
+                  00007040    00000010     DSP2833x_GlobalVariableDefs.obj (SpiaRegsFile)
+
+SciaRegsFile 
+*          1    00007050    00000010     UNINITIALIZED
+                  00007050    00000010     DSP2833x_GlobalVariableDefs.obj (SciaRegsFile)
+
+XIntruptRegsFile 
+*          1    00007070    00000010     UNINITIALIZED
+                  00007070    00000010     DSP2833x_GlobalVariableDefs.obj (XIntruptRegsFile)
+
+AdcRegsFile 
+*          1    00007100    0000001e     UNINITIALIZED
+                  00007100    0000001e     DSP2833x_GlobalVariableDefs.obj (AdcRegsFile)
+
+ScibRegsFile 
+*          1    00007750    00000010     UNINITIALIZED
+                  00007750    00000010     DSP2833x_GlobalVariableDefs.obj (ScibRegsFile)
+
+ScicRegsFile 
+*          1    00007770    00000010     UNINITIALIZED
+                  00007770    00000010     DSP2833x_GlobalVariableDefs.obj (ScicRegsFile)
+
+I2caRegsFile 
+*          1    00007900    00000022     UNINITIALIZED
+                  00007900    00000022     DSP2833x_GlobalVariableDefs.obj (I2caRegsFile)
+
+.bss       1    0000c000    00000000     UNINITIALIZED
+
+.ebss      1    0000d000    00000f7e     UNINITIALIZED
+                  0000d000    00000420     AD.obj (.ebss)
+                  0000d420    0000000a     TIMER.obj (.ebss)
+                  0000d42a    00000009     MAIN.obj (.ebss)
+                  0000d433    00000001     rts2800_ml.lib : errno.obj (.ebss)
+                  0000d434    00000004     F28235_Boot.obj (.ebss)
+                  0000d438    00000004     rts2800_ml.lib : _lock.obj (.ebss)
+                  0000d43c    00000004                    : exit.obj (.ebss)
+                  0000d440    00000420     InvController.obj (.ebss)
+                  0000d860    00000003     PWM.obj (.ebss)
+                  0000d863    0000001d     --HOLE--
+                  0000d880    000001b4     CAN.obj (.ebss)
+                  0000da34    0000000c     --HOLE--
+                  0000da40    000001ac     SCI.obj (.ebss)
+                  0000dbec    00000014     --HOLE--
+                  0000dc00    00000146     I2C.obj (.ebss)
+                  0000dd46    00000028     CAP.obj (.ebss)
+                  0000dd6e    00000012     --HOLE--
+                  0000dd80    000000dc     SYSCTR.obj (.ebss)
+                  0000de5c    00000024     --HOLE--
+                  0000de80    000000c0     PROTECT.obj (.ebss)
+                  0000df40    0000003e     BiDirDCController.obj (.ebss)
+
+RamSafetyProt 
+*          1    0000f000    00000254     UNINITIALIZED
+                  0000f000    00000181     PROTECT.obj (RamSafetyProt)
+                  0000f181    00000001     --HOLE--
+                  0000f182    00000021     AD.obj (RamSafetyProt)
+                  0000f1a3    00000001     --HOLE--
+                  0000f1a4    00000014     SYSCTR.obj (RamSafetyProt)
+                  0000f1b8    00000004     InvController.obj (RamSafetyProt)
+                  0000f1bc    00000002     BiDirDCController.obj (RamSafetyProt)
+                  0000f1be    00000002     --HOLE--
+                  0000f1c0    00000094     I2C.obj (RamSafetyProt)
+
+CsmPwlFile 
+*          1    0033fff8    00000008     UNINITIALIZED
+                  0033fff8    00000008     DSP2833x_GlobalVariableDefs.obj (CsmPwlFile)
+
+PartIdRegsFile 
+*          1    00380090    00000001     UNINITIALIZED
+                  00380090    00000001     DSP2833x_GlobalVariableDefs.obj (PartIdRegsFile)
+
+
+GLOBAL SYMBOLS: SORTED ALPHABETICALLY BY Name 
+
+address    name
+--------   ----
+0000c000   .bss
+00320004   .text
+0032b4d5   C$$EXIT
+0032b0fd   FS$$ADD
+0032b4ee   FS$$CMP
+0032b075   FS$$DIV
+0032b170   FS$$MPY
+0032b0f8   FS$$SUB
+0032b360   FS$$TOI
+0032b337   FS$$TOL
+0032b44c   FS$$TOU
+0032b3ec   FS$$TOUL
+0032b3ca   I$$DIV
+0032b3db   I$$MOD
+0032b30d   L$$DIV
+0032b31c   L$$MOD
+0032b4bb   L$$TOFS
+0032b42e   LL$$CMP
+0032adf4   LL$$DIV
+0032ae30   LL$$MOD
+0032b505   LL$$MPY
+0032b54c   U$$DIV
+0032b551   U$$MOD
+0032b53c   U$$TOFS
+0032b32a   UL$$DIV
+0032b331   UL$$MOD
+0032b519   UL$$TOFS
+0032b440   ULL$$CMP
+0032ae6a   ULL$$DIV
+0032ae99   ULL$$MOD
+0032b4a0   ULL$$TOFS
+0032a646   _ADCINT_ISR
+0000984d   _ADCIsr
+0032d962   _AdcIsrRamFuncs_loadend
+0032c875   _AdcIsrRamFuncs_loadstart
+0000930b   _AdcIsrRamFuncs_runstart
+00000b00   _AdcMirror
+00007100   _AdcRegs
+0032e4cf   _BiDirDCCtrFuncs_loadend
+0032dfe0   _BiDirDCCtrFuncs_loadstart
+0000aa76   _BiDirDCCtrFuncs_runstart
+0000a3f8   _CANTX
+0000b09f   _CAPIsr
+0032e818   _CAPRamFuncs_loadend
+0032e4cf   _CAPRamFuncs_loadstart
+0000af65   _CAPRamFuncs_runstart
+00338573   _CPURegister_check
+0032ad2e   _CopyData
+00000c00   _CpuTimer0Regs
+00000c08   _CpuTimer1Regs
+00000c10   _CpuTimer2Regs
+0033fff8   _CsmPwl
+00000ae0   _CsmRegs
+0032b52c   _DelayUs
+00000880   _DevEmuRegs
+0032afe2   _DisableDog
+00001000   _DmaRegs
+0032a8b9   _ECAN0INTA_ISR
+0032a8e2   _ECAN1INTA_ISR
+0032a78d   _ECAP1_INT_ISR
+0000a75c   _ECanISR0
+0000a7e8   _ECanISR1
+00006040   _ECanaLAMRegs
+000060c0   _ECanaMOTORegs
+00006080   _ECanaMOTSRegs
+00006100   _ECanaMboxes
+00006000   _ECanaRegs
+00006240   _ECanbLAMRegs
+000062c0   _ECanbMOTORegs
+00006280   _ECanbMOTSRegs
+00006300   _ECanbMboxes
+00006200   _ECanbRegs
+00006a00   _ECap1Regs
+00006a20   _ECap2Regs
+00006a40   _ECap3Regs
+00006a60   _ECap4Regs
+00006a80   _ECap5Regs
+00006aa0   _ECap6Regs
+0032a5ec   _EMUINT_ISR
+0032a709   _EPWM1_INT_ISR
+0032a685   _EPWM1_TZINT_ISR
+0032a71f   _EPWM2_INT_ISR
+0032a69b   _EPWM2_TZINT_ISR
+0032a735   _EPWM3_INT_ISR
+0032a6b1   _EPWM3_TZINT_ISR
+0032a74b   _EPWM4_INT_ISR
+0032a6c7   _EPWM4_TZINT_ISR
+0032a761   _EPWM5_INT_ISR
+0032a6dd   _EPWM5_TZINT_ISR
+0032a777   _EPWM6_INT_ISR
+0032a6f3   _EPWM6_TZINT_ISR
+00006800   _EPwm1Regs
+00006840   _EPwm2Regs
+00006880   _EPwm3Regs
+000068c0   _EPwm4Regs
+00006900   _EPwm5Regs
+00006940   _EPwm6Regs
+0032a7b6   _EQEP1_INT_ISR
+0032a7cc   _EQEP2_INT_ISR
+00006b00   _EQep1Regs
+00006b40   _EQep2Regs
+00000a80   _FlashRegs
+0032ade2   _GetLongData
+0000d436   _GetWordData
+00006f80   _GpioCtrlRegs
+00006fc0   _GpioDataRegs
+00006fe0   _GpioIntRegs
+0032a7e2   _I2CINT1A_ISR
+0032a7f8   _I2CINT2A_ISR
+00007900   _I2caRegs
+0032a5f8   _ILLEGAL_ISR
+0032a5cc   _INT13_ISR
+0032a5e4   _INT14_ISR
+0032a910   _INT_NOTUSED_ISR
+00329ad4   _InitAdc
+0032984e   _InitAdcVar
+0032b385   _InitBoot
+0032aefb   _InitCapVar
+00320004   _InitECanVar
+00320072   _InitECana
+0032af11   _InitECap
+0032ab52   _InitEPwm
+0000b4db   _InitFlash
+0032a91a   _InitGpio
+00328dc1   _InitI2c
+00328d51   _InitI2cVar
+0032ab4c   _InitPWMVar
+0032b2dd   _InitPieCtrl
+0032b469   _InitPieVectTable
+003269c7   _InitProtectVar
+00324b1e   _InitScia
+00324b7c   _InitScib
+00322af7   _InitSysCtrVar
+0032afea   _InitSysCtrl
+0000d434   _InitSysCtrl_POINT
+0032b3a8   _InitTimer
+0032b3ba   _InitTimerVar
+00328104   _InitVar
+0032afd8   _KickDog
+00005000   _McbspaRegs
+00005040   _McbspbRegs
+0032a5f2   _NMI_ISR
+0032a90b   _PIE_RESERVED
+00380090   _PartIdRegs
+00000ce0   _PieCtrlRegs
+00000d00   _PieVectTable
+0032fbec   _PieVectTableInit
+0032ea45   _ProtectRamFuncs_loadend
+0032e818   _ProtectRamFuncs_loadstart
+0000b2ae   _ProtectRamFuncs_runstart
+003386ba   _RPC_check
+0032add2   _ReadReservedFn
+0032ad53   _SCIA_AutobaudLock
+0032adb7   _SCIA_GetWordData
+0032699d   _SCIB_TX
+0032a83a   _SCIRXINTA_ISR
+0032a87a   _SCIRXINTB_ISR
+0032a80e   _SCIRXINTC_ISR
+0032a863   _SCITXINTA_ISR
+0032a8a3   _SCITXINTB_ISR
+0032a824   _SCITXINTC_ISR
+0032acd2   _SCI_Boot
+00324c4a   _SCI_TX
+00007050   _SciaRegs
+00324c74   _SciaRxDeal
+00324bd3   _SciaRxIsr
+003268cf   _SciaTxDeal
+00007750   _ScibRegs
+0032692a   _ScibRxIsr
+00007770   _ScicRegs
+0032b567   _SetDBGIER
+00007040   _SpiaRegs
+00007010   _SysCtrlRegs
+0032b3c7   _TimerIsr
+0032a634   _USER10_ISR
+0032a63a   _USER11_ISR
+0032a640   _USER12_ISR
+0032a5fe   _USER1_ISR
+0032a604   _USER2_ISR
+0032a60a   _USER3_ISR
+0032a610   _USER4_ISR
+0032a616   _USER5_ISR
+0032a61c   _USER6_ISR
+0032a622   _USER7_ISR
+0032a628   _USER8_ISR
+0032a62e   _USER9_ISR
+0032a66f   _WAKEINT_ISR
+00007070   _XIntruptRegs
+00000b20   _XintfRegs
+000003a6   __STACK_END
+000003a0   __STACK_SIZE
+00000001   __TI_args_main
+ffffffff   ___binit__
+0000c000   ___bss__
+ffffffff   ___c_args__
+0032ea45   ___cinit__
+0000c000   ___end__
+0032b56a   ___etext__
+0032b40d   ___memcpy_ff
+ffffffff   ___pinit__
+00320004   ___text__
+0032b485   __args_main
+0000d43c   __cleanup_ptr
+0000d43e   __dtors_ptr
+0000d43a   __lock
+0032b55f   __nop
+0032b55b   __register_lock
+0032b557   __register_unlock
+00000006   __stack
+0000d438   __unlock
+0032b4d5   _abort
+00320000   _cFlashCheckHead
+0033bffe   _cFlashCheckTrail
+0000d496   _cNotch8KNum1
+0000d491   _cNotch8KNum2
+0000d492   _cNotch8KNum3
+0032b21a   _c_int00
+003201e6   _configeCANAmbx
+0000d184   _ddwDCPowerSum
+0000d1d0   _ddwInvActivePowerSum
+0000d1c0   _ddwInvReactivePowerSum
+0000d4ec   _dwAIPLLFreqNoise
+0032fa5c   _dwATANArray
+0000de2c   _dwActivePowerAim
+0000d4f2   _dwAngleErr
+0000d510   _dwAngleIngSub
+0000d50e   _dwAngleIngSubReal
+0000df70   _dwBatteryChargeVoltIngCtrl
+0000df6c   _dwBatteryChargeVoltSatErr
+0000d102   _dwBatteryCurr1Sum
+0000d0e0   _dwBatteryCurr2Sum
+0000d0ea   _dwBatteryCurr3Sum
+0000d0e4   _dwBatteryCurr4Sum
+0000df6a   _dwBatteryDischargeVoltIngCtrl
+0000df78   _dwBatteryDischargeVoltSatErr
+0000d0fc   _dwBatteryInVolSum
+0000d0fe   _dwBatteryOutVolSum
+0000d4ba   _dwBusDiffCtrlPrev
+0000d4f0   _dwBusDiffVoltIngCtrl
+0000d4cc   _dwBusSumVoltIngCtrl
+0000df7c   _dwDCBusVoltIngCtrl
+0000df6e   _dwDCBusVoltSatErr
+0000d4d0   _dwDCCurrIngCtrl
+0000df7a   _dwDCCurrIngCtrl1st
+0000df72   _dwDCCurrIngCtrl2nd
+0000df60   _dwDCCurrIngCtrl3rd
+0000df62   _dwDCCurrIngCtrl4th
+0000d4ca   _dwDCCurrSatErr
+0000de32   _dwDCCurrSetIng
+0000df76   _dwDCModuSatErr1st
+0000df74   _dwDCModuSatErr2nd
+0000df64   _dwDCModuSatErr3rd
+0000df66   _dwDCModuSatErr4th
+0000d0c2   _dwDCPower
+0000df68   _dwDeltaDCCurr
+0000d4bc   _dwDeltaDsCurr
+0000d0da   _dwEnvTmpSum
+0000f024   _dwGFCIAvgActSum
+0000f196   _dwGFCIAvgCurrSum
+0000f01c   _dwGFCIAvgInitSum
+0000f198   _dwGFCICurrSum
+0000f026   _dwGFCIRmsActSum
+0000f020   _dwGFCIRmsInitSum
+0000de36   _dwGridFreMaxSum
+0000de3a   _dwGridFreMinSum
+0000d0d4   _dwHeatTmpSum
+0000de38   _dwI2TValue
+0000de26   _dwIdLimitHigh
+0000de2a   _dwIdLimitLow
+0000d0c6   _dwInstantaneousActivePower
+0000d0c4   _dwInstantaneousReactivePower
+0000d1a4   _dwInvActivePower
+0000d4fa   _dwInvDsCurrIngCtrl
+0000d4be   _dwInvDsCurrSatErr
+0000d4f8   _dwInvDsModuSatErr
+0000d500   _dwInvNosDsCurrIngCtrl
+0000d504   _dwInvNosDsModuSatErr
+0000d4f6   _dwInvNosQsCurrIngCtrl
+0000d4f4   _dwInvNosQsModuSatErr
+0000d506   _dwInvOsCurrSatErr
+0000d508   _dwInvQsCurrIngCtrl
+0000d50a   _dwInvQsModuSatErr
+0000d194   _dwInvReactivePower
+0000de44   _dwIqRef
+0000f01e   _dwIsoRlyCloseVngSum
+0000f022   _dwIsoRlyOpenVngSum
+0000f194   _dwIsoVolSum
+0000d4ee   _dwNosAngleErr
+0000d0f8   _dwONBusVolSum
+0000d4e0   _dwPLLAngleIngOpen
+0000d4e4   _dwPLLFreqIngCtrl
+0000d4e8   _dwPLLNosFreqIngCtrl
+0000d50c   _dwPLLPdFiltGainDen
+0000d4fc   _dwPLLPdFiltGainNum
+0000d100   _dwPOBusVolSum
+0000d19c   _dwPowerFactorSum
+0000d0de   _dwRDCICurrSum
+0000d11e   _dwRInvAvgVolSum
+0000d0f4   _dwRInvRmsCurrSum
+0000d110   _dwRInvRmsPrdCurrSum
+0000d126   _dwRInvRmsVolSum
+0000d120   _dwRSGridRmsPrdVolSum
+0000d0ee   _dwRSGridRmsVolSum
+0000d0f0   _dwRSInvRmsVolSum
+0000de34   _dwRatePower
+0000de2e   _dwReactivePowerAim
+0000d0e8   _dwSDCICurrSum
+0000d122   _dwSInvAvgVolSum
+0000d0f2   _dwSInvRmsCurrSum
+0000d10e   _dwSInvRmsPrdCurrSum
+0000d124   _dwSInvRmsVolSum
+0000d13a   _dwSTGridRmsPrdVolSum
+0000d0ec   _dwSTGridRmsVolSum
+0000d12a   _dwSTInvRmsVolSum
+0000de3e   _dwSoftStopIdLimMax
+0000d0e2   _dwTDCICurrSum
+0000d112   _dwTInvAvgVolSum
+0000d108   _dwTInvRmsCurrSum
+0000d118   _dwTInvRmsPrdCurrSum
+0000d12e   _dwTInvRmsVolSum
+0000d11c   _dwTRGridRmsPrdVolSum
+0000d0f6   _dwTRGridRmsVolSum
+0000d130   _dwTRInvRmsVolSum
+0000d0d6   _dwXFMRTmpSum
+0000da58   _dwpAddr1
+0000da5a   _dwpAddr2
+0000da56   _dwpAddr3
+0000da54   _dwpAddr4
+0000f1b2   _dwregister0
+0000f1b6   _dwregister1
+0000f1b4   _dwregister2
+0032dfe0   _eCanRamFuncs_loadend
+0032d962   _eCanRamFuncs_loadstart
+0000a3f8   _eCanRamFuncs_runstart
+0000d433   _errno
+0032b4d7   _exit
+0000dde4   _fACPowerCtr
+0000f192   _fADCtrSwitch
+0000d458   _fAIStart
+0000d49d   _fAPFCtrEnable
+0000dd9c   _fActiveMode
+0000dd95   _fAdjustQEn
+0000f1a7   _fAuxiRelayCtr
+0000f1ad   _fAuxiRelayCtrBak
+0000dda9   _fAuxiRelayLost
+0000dde8   _fBMSActive
+0000d0a0   _fBatCurr1OffsetSumClear
+0000d0a3   _fBatCurr2OffsetSumClear
+0000d09e   _fBatCurr3OffsetSumClear
+0000d09f   _fBatCurr4OffsetSumClear
+0000dd98   _fBattDarkStart
+0000d0a6   _fBatteryCurr1Clear
+0000d0b9   _fBatteryCurr2Clear
+0000d0a7   _fBatteryCurr3Clear
+0000d0a8   _fBatteryCurr4Clear
+0000d0a5   _fBatteryInVolClear
+0000de15   _fBatteryInitiStateOK
+0000d0a9   _fBatteryOutVolClear
+0000f18e   _fBiDirDCEnOut
+0000d895   _fCANActive
+0000d888   _fCANBCongfigFinish
+0000dda7   _fCANRunOrder
+0000f1bc   _fCPLDShutDCDeal
+0000f1b9   _fCPLDShutInvDeal
+0000dd90   _fCSVSSwitch
+0000de0b   _fCallDefaultValueOrder
+0000dd51   _fCapIntEvent
+0000dd80   _fCharge
+0000dd81   _fChargeToDisCharge
+0000de1e   _fClearBusCtr
+0000d89b   _fConfigeCANmbx
+0000dd8f   _fDC1And2En
+0000dd88   _fDC3And4En
+0000dd87   _fDCChargeToDisCharge
+0000dd84   _fDCCtrBusSoftSta
+0000dd85   _fDCDisChargeToCharge
+0000df27   _fDCICurrOffsetFaultEvent
+0000df14   _fDCIDelayClear
+0000df1d   _fDCIErrHighEventBak
+0000df26   _fDCIHighFaultEvent
+0000d446   _fDCIReguRefurbish
+0000df5c   _fDCModeSwitch
+0000df5b   _fDCModeSwitchEn
+0000dde7   _fDCOCPEnable
+0000f018   _fDCPWMLost
+0000d09a   _fDCPowerSumClear
+0000f015   _fDCRelayBurn
+0000f1a4   _fDCRelayCtrBak
+0000f1a9   _fDCRelayNCtr
+0000f1a8   _fDCRelayPCtr
+0000f1a6   _fDCSoftRelayCtr
+0000df10   _fDCSoftRelayLost
+0000df43   _fDCVoltCtrDeal
+0000df24   _fDampResistanceErrEventBak
+0000df21   _fDampResistanceFaultEvent
+0000de1f   _fDeCapEnergy
+0000dda2   _fDerating
+0000d88b   _fDisBootloaderOrder
+0000dd82   _fDisChargeToCharge
+0000d882   _fECANRunOrder
+0000dc0b   _fEepromChkError
+0000f1c0   _fEepromOperateRequire
+0000dc27   _fEepromOperateStep
+0000dc11   _fEepromProtSumErrNum
+0000dc12   _fEepromProtSuplSumErrNum
+0000dc0c   _fEepromRdWrHalt
+0000d02c   _fEnvTmpSumClear
+0000f1b0   _fError
+0000dd8e   _fFVRTMaxCurrDelay2s
+0000d4a4   _fFVRTType
+0000deae   _fFanFaultStatus
+0000de20   _fFanStatus
+0000ddea   _fFloatCharge
+0000dd50   _fFreDetect
+0000f183   _fGFCIAvgCurrSumClear
+0000f005   _fGFCICTStatue
+0000d013   _fGFCICurrOffsetSumClear
+0000f182   _fGFCICurrSumClear
+0000ddb7   _fGridPretect
+0000dd8d   _fGridRelayCloseDeal
+0000f1a5   _fGridRelayCtr
+0000f1aa   _fGridRelayCtrBak
+0000deff   _fGridRelayErrEventBak
+0000df1a   _fGridRelayFaultEvent
+0000d0a4   _fHVRTValue
+0000d036   _fHeatTmpSumClear
+0000d883   _fHoldRegisterStatus
+0000d898   _fHoldTx
+0000dd96   _fHotBackup
+0000d0ad   _fImbalanceLVRT
+0000d88e   _fImportTx
+0000d891   _fInputTx
+0000d0b3   _fInvActivePowerSumClear
+0000d4a1   _fInvCtrDeal
+0000df18   _fInvCurrHighErrEventBak
+0000df25   _fInvCurrHighFaultEvent
+0000f190   _fInvEnOut
+0000ddec   _fInvEnOutBak
+0000de09   _fInvLittleVolOk
+0000d09d   _fInvReactivePowerSumClear
+0000df00   _fInvRelayErrEventBak
+0000df19   _fInvRelayFaultEvent
+0000de1b   _fInvSoftStaRequire
+0000de11   _fIsoStatue
+0000f191   _fIsoVolClear
+0000d0a2   _fLVRTEnable
+0000d498   _fLVRTEndUpdate
+0000d0ae   _fLVRTStartOrEnd
+0000d0ac   _fLVRTStartOrEndBak
+0000d49c   _fLVRTStartUpdate
+0000d0a1   _fLVRTValue
+0000d88a   _fLcdRunOrder
+0000d889   _fLcdSoftRunOrder
+0000dd93   _fLocalPCSComdOnOff
+0000dd94   _fLocalPCSConnect
+0000d884   _fLocalPhyAddr
+0000dc10   _fMachineCoeff
+0000de14   _fMpptEnable
+0000df02   _fOCPEventBak
+0000df1b   _fOCPFaultEvent
+0000d094   _fONBusVolClear
+0000de06   _fPLLStaOk
+0000d093   _fPOBusVolClear
+0000df1c   _fPhaseRmsCurErrEventBak
+0000df28   _fPhaseRmsCurFaultEvent
+0000de13   _fPhaseSequ
+0000de10   _fPhaseSequBak
+0000dd9f   _fPowerDanger
+0000d09b   _fPowerEffSumClear
+0000d180   _fPowerFactorSumClear
+0000de03   _fPvPowEnough
+0000ddf1   _fQCtrEnDelay2s
+0000de0f   _fQuitShutModeOrder
+0000d01a   _fRDCICurrOffsetSumClear
+0000d04e   _fRDCISumClear
+0000d003   _fRInvAvgVolClear
+0000d014   _fRInvCurrOffsetSumClear
+0000d051   _fRInvRmsCurrSumClear
+0000d01b   _fRInvRmsPrdCurrSumClear
+0000d04a   _fRInvRmsVolSumClear
+0000d018   _fRSGridRmsPrdVolSumClear
+0000d048   _fRSGridRmsVolSumClear
+0000d00d   _fRSGridVolOffsetSumClear
+0000d04b   _fRSInvRmsVolSumClear
+0000dc0e   _fRateCoeff
+0000dd9b   _fReactiveMode
+0000f003   _fRelayCheckStep
+0000de16   _fRelayChkRequire
+0000df15   _fRemoteDCBreakerCtrEn
+0000d89c   _fRemoteTx
+0000de0e   _fRunInvAhdChkRequire
+0000de05   _fRunInvAhdChkRestart
+0000df1e   _fRunInvAhdErrEventBak
+0000df23   _fRunInvAhdFaultEvent
+0000de0a   _fRunOrder
+0000d019   _fSDCICurrOffsetSumClear
+0000d053   _fSDCISumClear
+0000d000   _fSInvAvgVolClear
+0000d011   _fSInvCurrOffsetSumClear
+0000d052   _fSInvRmsCurrSumClear
+0000d016   _fSInvRmsPrdCurrSumClear
+0000d001   _fSInvRmsVolSumClear
+0000d017   _fSTGridRmsPrdVolSumClear
+0000d045   _fSTGridRmsVolSumClear
+0000d010   _fSTGridVolOffsetSumClear
+0000d04c   _fSTInvRmsVolSumClear
+0000dc0d   _fSciStandChanged
+0000da40   _fScibRxOk
+0000da43   _fScibTxEn
+0000d499   _fSoftLVRTEn
+0000d88c   _fStandardChgStopRequire
+0000dd89   _fStartByDCOrAC
+0000f18f   _fStartOrNormal
+0000d08b   _fSyncAD
+0000ddb8   _fSysFreChange
+0000d01c   _fTDCICurrOffsetSumClear
+0000d054   _fTDCISumClear
+0000d004   _fTInvAvgVolClear
+0000d012   _fTInvCurrOffsetSumClear
+0000d047   _fTInvRmsCurrSumClear
+0000d015   _fTInvRmsPrdCurrSumClear
+0000d00e   _fTInvRmsVolSumClear
+0000d002   _fTRGridRmsPrdVolSumClear
+0000d046   _fTRGridRmsVolSumClear
+0000d00f   _fTRGridVolOffsetSumClear
+0000d049   _fTRInvRmsVolSumClear
+0000df16   _fTempdisable
+0000f1bb   _fUqUnconv
+0000f1b8   _fUqUnconvBak
+0000d035   _fXFMRTmpSumClear
+0032b25e   _ldexp
+003285de   _main
+0000da5c   _pSciRamData
+0032a915   _rsvd_ISR
+00327900   _sACOCPStateChk
+00324a93   _sACPowerDeal
+00327087   _sAIFreqChk
+00323807   _sAdjustPF
+0032a49e   _sAiCurrRefCal
+00327ed4   _sAuxiRelayChk
+0032732e   _sBatRevConnectChk
+00326c12   _sBatVolHighChk
+003246c5   _sBatteryChargeDeal
+00327afb   _sBatteryCoeffChk
+0000b2e9   _sBatteryCurrHighChk
+00324adf   _sBatteryDataUpdateChk
+0032465d   _sBatteryInitiStateJudge
+0000ab79   _sBiDirBatteryVoltCtr
+0000adb8   _sBiDirDCCon1And3Controller
+0000ae26   _sBiDirDCCon2And4Controller
+0032b29f   _sBiDirDCCtrParamInit
+00323050   _sBiDirDCModeSwitch
+00328151   _sBootLoaderSchedule
+00326c4b   _sBusDiffBatVolChk
+0000b3db   _sBusOVPChk
+00326bb1   _sBusVolHighChk
+00327daa   _sCANActiveChk
+00322915   _sCANConfigID
+00322793   _sCANDataMange
+0000a728   _sCANRXBootLoader
+0000a539   _sCANRXHoldRead
+0000a5c3   _sCANRXHoldWrite
+0000a43f   _sCANRXImportRead
+0000a46d   _sCANRXImportWrite
+0000a567   _sCANRXInputRead
+0000a595   _sCANRXRemoteRead
+0000a62b   _sCANRXRemoteWrite
+00328098   _sCPLDOscilChk
+00322fd6   _sCalBusVolRef
+00009804   _sCalDCPowerSum
+00329dd4   _sCalDCPowerValue
+00323af6   _sCalIdLimit
+00009396   _sCalInvActivePowerSum
+00329bcf   _sCalInvActivePowerValue
+00329d70   _sCalInvApparentPowerValue
+00009433   _sCalInvReactivePowerSum
+00329c64   _sCalInvReactivePowerValue
+00324036   _sCalIqRef
+00008e1b   _sCalLVRTReactivePowerRef
+000094e2   _sCalLVRTSumValue
+00009592   _sCalLVRTValue
+00329f59   _sCalLongAvg
+00329f8a   _sCalPowerAvg
+00329eeb   _sCalRmsAvgValue
+00329f2c   _sCalRmsFifoAvgValue
+00329ea0   _sCalRmsPrdValueSum
+0000936f   _sCalRmsSum
+00009769   _sCalRmsValue
+00329b74   _sCalSPWMDuty
+00322fb0   _sCalSignedLongAvg
+00009354   _sCalSignedSum
+0000933a   _sCalUnSignedSum
+0000b277   _sCapDeal
+0000af65   _sCapIsrDeal
+00008540   _sClarke
+00327d7f   _sCtrPowerChk
+00324a27   _sDC12And34OptSwitch
+00327a2e   _sDCCurrBalanceChk
+0032727a   _sDCIHighChk
+00327239   _sDCIOffsetHighChk
+0032792e   _sDCOCPStateChk
+00327a06   _sDCPWMChk
+00327bf7   _sDCRelayChk
+00327c7e   _sDCRelayOpenAct
+00327b55   _sDCSoftRelayChk
+00327efe   _sDCSwitchChk
+00008be2   _sDciControl
+0032317e   _sDecCapEnergy
+00327f40   _sDecCapEnergyChk
+003297a9   _sEEPROMProRangeChk
+00329516   _sEepromAdcshift
+0032730b   _sEepromChk
+00329749   _sEepromHandle
+0032958d   _sEepromHisshift
+003294a0   _sEepromProtSupplshift
+00328eee   _sEepromProtectDataSetDefaultVaule
+00328f1c   _sEepromProtectSupplDataSetDefaultVaule
+00329435   _sEepromProtshift
+00328f33   _sEepromwAdcAdjustDataSetDefaultVaule
+00328f46   _sEepromwHisDataSetDefaultVaule
+0032785d   _sErrFaultDeal
+00338001   _sErroringDeal
+00327870   _sFanFdbChk
+00322cf0   _sFanOpenLoopCtrl
+0032741b   _sFaultDeal
+00328062   _sFlashChk
+00326ebf   _sFreHighChk
+00326fa3   _sFreLowChk
+00327960   _sFuseStateChk
+00338078   _sGFCIDynamicHighChk
+003381c9   _sGFCISteadyHighChk
+003271f7   _sGridCurrOffsetHighChk
+0000b331   _sGridNoUtilityChk
+0000b445   _sGridVolAndInvVolDiffChk
+0032735e   _sGridVoltBalanceDegreeChk
+0032028c   _sHoldComdDeal
+00320641   _sHoldDataDeal
+003279d9   _sIGBTHaltStateChk
+00328daf   _sInitLCDImptData
+00322355   _sInputDataUpdate
+00009254   _sInvAndGridVolDeal
+00008569   _sInvClarke
+00008602   _sInvControl
+0032c875   _sInvControlRamFuncs_loadend
+0032b56a   _sInvControlRamFuncs_loadstart
+00008000   _sInvControlRamFuncs_runstart
+00008000   _sInvController
+0000b2ae   _sInvCurrHighChk
+0032a064   _sInvParamInit
+000085cc   _sInvPark
+0000974f   _sInvShortPowerClearZero
+0032399a   _sIqRefExtract
+00326d4a   _sLineRmsVolChk
+0000982e   _sLineToPhase
+0000b408   _sMcuFdbChk
+00008000   _sMpptStrategyRamFuncs_loadend
+00008000   _sMpptStrategyRamFuncs_loadstart
+00008000   _sMpptStrategyRamFuncs_runstart
+000085e7   _sNosInvPark
+000085ab   _sNosPark
+00008dea   _sNotchFilter8K
+003271b6   _sOffsetHighChk
+00327699   _sPFChk
+003276df   _sPFDeal
+00008128   _sPLLControl
+00329fbc   _sPLLParamInit
+0000858a   _sPark
+00327b81   _sPhaseRmsCurChk
+00329e10   _sPowerAdjust
+00327c92   _sPowerDisMatchChk
+003237bc   _sPowerFactor
+0000b162   _sRCapDeal
+00327f8b   _sRamChk
+003292c1   _sReadEepromAdcAdjustData
+00329379   _sReadEepromHisData
+003290dd   _sReadEepromProtectData
+003291da   _sReadEepromProtectDataSuppl
+00324a70   _sRelayDelayDeal
+00320165   _sResetECana
+003229dc   _sRestartVarInit
+0000968b   _sRmsClearZero
+0000b1b8   _sSCapDeal
+0032a13e   _sSVModu
+003266e7   _sSciTxArray
+00327d55   _sSpdChk
+00327f76   _sSumCheck
+00328170   _sSysMode
+00322e0a   _sSysRateCoeffChangeInit
+00324158   _sSysSleepChk
+0000b20e   _sTCapDeal
+0032798d   _sTZStateClear
+0000a3cf   _sTimerDeal
+003270f1   _sTmpHighChk
+00327162   _sTmpLoseChk
+00326ce6   _sVCapDiffChk
+00326c7e   _sVCapHighChk
+003273b6   _sWarrningDeal
+00008d6f   _sdwArcTan
+00330120   _secureRamFuncs_loadend
+00330101   _secureRamFuncs_loadstart
+0000b4db   _secureRamFuncs_runstart
+00324730   _sfBiDirDCCtrSoftStart
+00324863   _sfBiDirDCCtrSoftStartByAC
+003293eb   _sfEepromReadOnPower
+0032961b   _sfEepromRunDataChange
+00327de0   _sfGFCICTChk
+00328e50   _sfI2cRx
+00328dd6   _sfI2cTx
+00327ce4   _sfInvVolNormalChk
+003383e6   _sfIsoChk
+0032af4a   _sfPhaseSequJudge
+003241b1   _sfPowerComdCal
+00328f59   _sfReadEepromImptdata
+00338204   _sfRelayChk
+003234c6   _sfRunInvAhdChk
+003235f4   _sfRunInvAhdChkByAC
+0032b1ca   _sqrt
+003295bd   _suEepromCmparWr
+003239c3   _suMaxOutputCurrCal
+00328134   _suwFlashCheck
+00329b0a   _suwGetAvg
+00327859   _suwGetFaultGrade
+0032af80   _suwGetMaxGridFreq
+0032af93   _suwGetMidGridFreq
+0000b264   _suwGetMinGridFreq
+003245d9   _suwInvAndDCPwmKCal
+00323950   _suwMidGridFreqExtract
+0000aa76   _swBiDirDCVoltCtrl
+0000ac20   _swBiDirectionalDCCurrCtr1st
+0000ac86   _swBiDirectionalDCCurrCtr2nd
+0000acec   _swBiDirectionalDCCurrCtr3rd
+0000ad52   _swBiDirectionalDCCurrCtr4th
+00322f78   _swCalBalanceDegree
+003232ee   _swEfficiencyFit
+003381a3   _swGFCICoeffCal
+0000930b   _swGetAvg
+00329b3c   _swGetFifoAvg
+00009653   _swGetRms
+0032463b   _swGirdDivBatteryVolCoeff
+00322c41   _swModuleEnvTempFit
+00322c84   _swModuleHeatTempFit
+0000d44f   _swReactiveCurrQs
+0000dd68   _tCapEvent
+0000da61   _tChxData
+0000d552   _tDeadCompModuAfBtGm
+0000f0c0   _tErrFlag
+0000f140   _tEventFlag
+0000d4c4   _tGridNosVolDSampIn
+0000d58c   _tGridNosVolDSampOut
+0000d4ce   _tGridNosVolQSampIn
+0000d598   _tGridNosVolQSampOut
+0000d518   _tGridNosVoltDqo
+0000d51e   _tGridNosVoltSampDqo
+0000d546   _tGridPhaseVoltAbc
+0000d4c8   _tGridPosVolDSampIn
+0000d580   _tGridPosVolDSampOut
+0000d4c2   _tGridPosVolQSampIn
+0000d586   _tGridPosVolQSampOut
+0000d521   _tGridPosVoltSampDqo
+0000d515   _tGridVoltAfBtGm
+0000d576   _tGridVoltDqo
+0000d52d   _tInvCurrAbc
+0000d52a   _tInvCurrAbcBak
+0000d533   _tInvCurrAbcRef
+0000d51b   _tInvCurrAfBtGm
+0000d561   _tInvCurrAfBtGmRef
+0000d57c   _tInvCurrDqo
+0000d555   _tInvCurrDqoRef
+0000d543   _tInvCurrPowerReguRefDqo
+0000d5aa   _tInvModuAbc
+0000d56d   _tInvModuAfBtGm
+0000d524   _tInvModuDqo
+0000d55b   _tInvNosCurrAfBtGmRef
+0000d4ea   _tInvNosCurrDSampIn
+0000d5c0   _tInvNosCurrDSampOut
+0000d570   _tInvNosCurrDqo
+0000d567   _tInvNosCurrDqoRef
+0000d4c6   _tInvNosCurrQSampIn
+0000d59e   _tInvNosCurrQSampOut
+0000d573   _tInvNosCurrSampDqo
+0000d564   _tInvNosModuAfBtGm
+0000d512   _tInvNosModuDqo
+0000d54c   _tInvPWMModuAbc
+0000d4fe   _tInvPosCurrDSampIn
+0000d592   _tInvPosCurrDSampOut
+0000d549   _tInvPosCurrDqoRef
+0000d502   _tInvPosCurrQSampIn
+0000d5a4   _tInvPosCurrQSampOut
+0000d579   _tInvPosCurrSampDqo
+0000d55e   _tInvPosModuAfBtGm
+0000d56a   _tInvVolDqo
+0000dd6b   _tLstPhase
+0000d527   _tPLLGridVoltABCPrev
+0000d530   _tPLLGridVoltBPFABC
+0000d558   _tPLLNosGridVoltSampAfbtgm
+0000d53c   _tPLLNosSeqGridVoltABC
+0000d5b6   _tPLLPDGridTmp1ABC
+0000d5b0   _tPLLPDGridTmp2ABC
+0000d539   _tPLLPDGridVoltABC
+0000d536   _tPLLPDGridVoltABCPrev
+0000d54f   _tPLLPosGridVoltSampAfbtgm
+0000d540   _tPLLPosSeqGridVoltABC
+0000da8a   _tReceData
+0000da65   _tScibRxData
+0000dac0   _tSendData
+0000d420   _tTimer
+0000d146   _twDCICurr
+0000d14f   _twDCICurrFilt
+0000d158   _twGridLineRmsAvgVol
+0000d15b   _twGridLineRmsFifoAvgVol
+0000f19a   _twGridLineRmsVol
+0000d14c   _twGridLineVol
+0000d149   _twGridPhaseVol
+0000d164   _twInvCurr
+0000d161   _twInvCurrCalRms
+0000f1a0   _twInvPhaseAvgVol
+0000f19d   _twInvPhaseRmsVol
+0000d143   _twInvPhaseVol
+0000d152   _twInvRmsAvgCurr
+0000d140   _twInvRmsCurr
+0000d155   _twInvRmsFifoAvgCurr
+0000d8aa   _ubBootloaderRecData
+0000da4d   _ubCheckSum
+0000da74   _ubRxBuf
+0000da4c   _ubRxCnt
+0000da80   _ubTxBuf
+0000d1ac   _udwApparentPower
+0000d0e6   _udwBatCurr1OffsetSum
+0000d10c   _udwBatCurr2OffsetSum
+0000d104   _udwBatCurr3OffsetSum
+0000d0fa   _udwBatCurr4OffsetSum
+0000df2e   _udwDCIHighNFTimerCnt
+0000df3e   _udwDampResistanceNFTimerCnt
+0000d4c0   _udwFreqMidSum
+0000d134   _udwGFCICurrOffsetSum
+0000d200   _udwGridVolRSSqure
+0000d380   _udwGridVolSTSqure
+0000d2c0   _udwGridVolTRSqure
+0000d0d8   _udwHalfCysRVolSqureSum
+0000d0d2   _udwHalfCysRateVolSqure0R01
+0000d0ce   _udwHalfCysRateVolSqure0R2
+0000d0ca   _udwHalfCysRateVolSqure0R81
+0000d0d0   _udwHalfCysRateVolSqure1R21
+0000d0dc   _udwHalfCysSVolSqureSum
+0000d0cc   _udwHalfCysTVolSqureSum
+0000df30   _udwInvCurrHighNFTimerCnt
+0000df3c   _udwInvRelayNFTimerCnt
+0000d4dc   _udwNosPLLAngleIngCtrl
+0000df3a   _udwOCPNFTimerCnt
+0000d4e6   _udwPLLAngleIngCtrl
+0000d4de   _udwPLLAngleIngCtrlOpen
+0000d4e2   _udwPNPhDifPLLAngleIngCtrl
+0000df34   _udwPhaseRmsCurNFTimerCnt
+0000d0c0   _udwPowerEffSum
+0000de24   _udwPowerOnWaitTime
+0000dd5e   _udwRCapVal
+0000dd66   _udwRCapValBak
+0000d116   _udwRDCICurrOffsetSum
+0000d128   _udwRInvCurrOffsetSum
+0000d10a   _udwRSGridVolFiltoffset
+0000d132   _udwRSGridVolOffsetSum
+0000dd58   _udwRSOffsetBak
+0000df36   _udwRelayNFTimerCnt
+0000df32   _udwRunInvAhdNFTimerCnt
+0000dd5c   _udwSCapVal
+0000dd64   _udwSCapValBak
+0000d114   _udwSDCICurrOffsetSum
+0000d13e   _udwSInvCurrOffsetSum
+0000d12c   _udwSTGridVolFiltoffset
+0000d138   _udwSTGridVolOffsetSum
+0000dd56   _udwSTOffsetBak
+0000dd60   _udwTCapVal
+0000dd62   _udwTCapValBak
+0000d11a   _udwTDCICurrOffsetSum
+0000d13c   _udwTInvCurrOffsetSum
+0000d106   _udwTRGridVolFiltoffset
+0000d136   _udwTRGridVolOffsetSum
+0000dd5a   _udwTROffsetBak
+0000dc2b   _uwAdcAdrStart
+0000f004   _uwAuxiRelayBadCnt
+0000ddeb   _uwAuxiRelayDelay
+0000f007   _uwAuxiRelayOKCnt
+0000d082   _uwBatCurr1Offset
+0000d095   _uwBatCurr1OffsetSumCnt
+0000d07f   _uwBatCurr2Offset
+0000d090   _uwBatCurr2OffsetSumCnt
+0000d080   _uwBatCurr3Offset
+0000d091   _uwBatCurr3OffsetSumCnt
+0000d0b0   _uwBatCurr4Offset
+0000d096   _uwBatCurr4OffsetSumCnt
+0000d0b6   _uwBatteryCurr1Cnt
+0000d0ba   _uwBatteryCurr1HighCnt
+0000d09c   _uwBatteryCurr1OKCnt
+0000d0b7   _uwBatteryCurr2Cnt
+0000d0be   _uwBatteryCurr2HighCnt
+0000d097   _uwBatteryCurr2OKCnt
+0000d0b4   _uwBatteryCurr3Cnt
+0000d0b8   _uwBatteryCurr3HighCnt
+0000d098   _uwBatteryCurr3OKCnt
+0000d0b5   _uwBatteryCurr4Cnt
+0000d099   _uwBatteryCurr4HighCnt
+0000d092   _uwBatteryCurr4OKCnt
+0000d0bc   _uwBatteryInVolCnt
+0000d0bb   _uwBatteryOutVolCnt
+0000d860   _uwBiDirDCCtrPWMPrd
+0000d886   _uwBootloaderReceFlag
+0000d885   _uwBootloaderStep
+0000f1bd   _uwCPLDShutDCDelay
+0000f1ba   _uwCPLDShutInvDelay
+0000ddac   _uwCurrMax
+0000df4c   _uwDCCtrStartDelay
+0000df09   _uwDCIChkDelay5sCnt
+0000df0f   _uwDCIHighFaultCnt
+0000df03   _uwDCIHighHoldFaultCnt
+0000d027   _uwDCPowerSumCnt
+0000ddef   _uwDCSoftRelayDelay
+0000dd86   _uwDCSoftStep
+0000de1d   _uwDECapEnergyStep
+0000df13   _uwDampResistanceFaultCnt
+0000df07   _uwDampResistanceHoldFaultCnt
+0000da6b   _uwDataSci
+0000d881   _uwDebugCANA1
+0000d880   _uwDebugCANA2
+0000d887   _uwDebugCANA3
+0000da48   _uwDebugDeltaPvPower
+0000da47   _uwDebugPvPower
+0000da50   _uwDebugPvVoltAvg
+0000f01b   _uwDeltaGFCIChkDelay100Prd
+0000f00a   _uwDeltaGFCIErrClearDelay10s
+0000dc0a   _uwEepromWrSelNumFinished
+0000d02b   _uwEnvTmpSumCnt
+0000ddf0   _uwFVRTCurrSoftDelay
+0000d861   _uwFanDuty
+0000f028   _uwFaultCode
+0000defd   _uwFaultGrade
+0000d5c6   _uwFreqMidTemp
+0000f016   _uwGFCIActArrayIndex
+0000f187   _uwGFCIAvgCurrSumCnt
+0000f011   _uwGFCICTChkStep
+0000d037   _uwGFCICurrOffset
+0000d072   _uwGFCICurrOffsetSumCnt
+0000f188   _uwGFCICurrSumCnt
+0000f01a   _uwGFCIHighCnt
+0000f017   _uwGFCIInitArrayIndex
+0000df17   _uwGridAndInvVolChkOk
+0000de1a   _uwGridFreq
+0000f006   _uwGridRelayBadCnt
+0000f00e   _uwGridRelayOKCnt
+0000dda6   _uwHVRTActiveValue
+0000d0aa   _uwHalfCycSampNum
+0000d0ab   _uwHalfCysRateVolSqure
+0000d02a   _uwHeatTmpSumCnt
+0000dc2c   _uwHisAdrStart
+0000d899   _uwHoldDataAddr
+0000d897   _uwHoldDataCnt
+0000d89a   _uwHoldDataLength
+0000dc2d   _uwI2CBlockState
+0000d896   _uwImportDataAddr
+0000d88d   _uwImportDataCnt
+0000d894   _uwImportDataLength
+0000d88f   _uwInputDataAddr
+0000d89d   _uwInputDataCnt
+0000d890   _uwInputDataLength
+0000d025   _uwInvActivePowerSumCnt
+0000d862   _uwInvCtrPWMPrd
+0000df0c   _uwInvCurrHighFaultCnt
+0000df08   _uwInvCurrHighHoldFaultCnt
+0000d449   _uwInvPwmBusComp
+0000d49a   _uwInvPwmKFeedBack
+0000d028   _uwInvReactivePowerSumCnt
+0000f001   _uwInvRelayBadCnt
+0000df1f   _uwInvRelayFaultCnt
+0000df0e   _uwInvRelayHoldFaultCnt
+0000f000   _uwInvRelayOKCnt
+0000df12   _uwInvVolNormalChkOk
+0000f009   _uwIsoChkCounter
+0000dea4   _uwIsoChkStep
+0000f010   _uwIsoSumCnt
+0000f00d   _uwIsoTimer20msCnt
+0000f193   _uwIsoVolCnt
+0000dc2e   _uwLCDRxImptDataFlag
+0000d4a5   _uwLVRTActDelay
+0000dda8   _uwLVRTActiveValue
+0000d49f   _uwLVRTExtDelay
+0000d4a0   _uwMasterCtrDelay150ms
+0000d44c   _uwModuSoftIncCnt
+0000da53   _uwMonCnt
+0000df20   _uwOCPFaultCnt
+0000df05   _uwOCPHoldFaultCnt
+0000d0bd   _uwONBusVolCnt
+0000df01   _uwPFCode
+0000dd97   _uwPFSetMax
+0000d0af   _uwPOBusVolCnt
+0000df0a   _uwPhaseRmsCurFaultCnt
+0000df04   _uwPhaseRmsCurHoldFaultCnt
+0000d05f   _uwPowerEff
+0000d026   _uwPowerEffAvg
+0000d0b1   _uwPowerEffSumCnt
+0000d17b   _uwPowerFactorSumCnt
+0000dc2f   _uwProtAdrStart
+0000dc2a   _uwProtSupplAdrStart
+0000d029   _uwRCurCntDebug
+0000d034   _uwRDCICurrOffset
+0000d038   _uwRDCICurrOffsetADCnt
+0000d068   _uwRDCICurrOffsetHighCnt
+0000d066   _uwRDCICurrOffsetSumCnt
+0000d060   _uwRDCISumCnt
+0000de0d   _uwRFre
+0000de08   _uwRFreq
+0000d03c   _uwRInvAvgVolCnt
+0000d01d   _uwRInvCurrOffset
+0000d043   _uwRInvCurrOffsetADCnt
+0000d065   _uwRInvCurrOffsetHighCnt
+0000d06f   _uwRInvCurrOffsetSumCnt
+0000d063   _uwRInvRmsCurrSumCnt
+0000d041   _uwRInvRmsPrdCurrSumCnt
+0000d05c   _uwRInvRmsVolSumCnt
+0000d442   _uwRPhaseZeroCrossCnt
+0000dd55   _uwRSGridOffsetBak
+0000d044   _uwRSGridRmsPrdVolSumCnt
+0000d062   _uwRSGridRmsVolSumCnt
+0000d024   _uwRSGridVolOffset
+0000d0b2   _uwRSGridVolOffsetSumCnt
+0000d055   _uwRSInvRmsVolSumCnt
+0000da41   _uwReceFlag
+0000df22   _uwRelayFaultCnt
+0000df0d   _uwRelayHoldFaultCnt
+0000d8a0   _uwRemoteDataAddr
+0000d89f   _uwRemoteDataCnt
+0000d89e   _uwRemoteDataLength
+0000df0b   _uwRunInvAhdFaultCnt
+0000df06   _uwRunInvAhdHoldFaultCnt
+0000d01f   _uwSCurCntDebug
+0000d032   _uwSDCICurrOffset
+0000d039   _uwSDCICurrOffsetADCnt
+0000d069   _uwSDCICurrOffsetHighCnt
+0000d067   _uwSDCICurrOffsetSumCnt
+0000d05d   _uwSDCISumCnt
+0000de04   _uwSFre
+0000de19   _uwSFreq
+0000d050   _uwSInvAvgVolCnt
+0000d01e   _uwSInvCurrOffset
+0000d03a   _uwSInvCurrOffsetADCnt
+0000d06a   _uwSInvCurrOffsetHighCnt
+0000d06c   _uwSInvCurrOffsetSumCnt
+0000d06e   _uwSInvRmsCurrSumCnt
+0000d03e   _uwSInvRmsPrdCurrSumCnt
+0000d059   _uwSInvRmsVolSumCnt
+0000dd52   _uwSTGridOffsetBak
+0000d04f   _uwSTGridRmsPrdVolSumCnt
+0000d057   _uwSTGridRmsVolSumCnt
+0000d021   _uwSTGridVolOffset
+0000d070   _uwSTGridVolOffsetSumCnt
+0000d056   _uwSTInvRmsVolSumCnt
+0000da4f   _uwSciSendNum
+0000da44   _uwScibSendNum
+0000da5e   _uwScibTxData
+0000da42   _uwSendFlag
+0000da4e   _uwSendNum
+0000d4a7   _uwSoftHVRTValue
+0000d4a3   _uwSoftLVRTValue
+0000f00c   _uwSteadyErrClearDelay10s
+0000d4ab   _uwSysFreq
+0000f1af   _uwSysMode
+0000de0c   _uwSysModePrepare
+0000d020   _uwTCurCntDebug
+0000d033   _uwTDCICurrOffset
+0000d03d   _uwTDCICurrOffsetADCnt
+0000d040   _uwTDCICurrOffsetHighCnt
+0000d064   _uwTDCICurrOffsetSumCnt
+0000d05e   _uwTDCISumCnt
+0000de07   _uwTFre
+0000de17   _uwTFreq
+0000d04d   _uwTInvAvgVolCnt
+0000d023   _uwTInvCurrOffset
+0000d03b   _uwTInvCurrOffsetADCnt
+0000d06b   _uwTInvCurrOffsetHighCnt
+0000d06d   _uwTInvCurrOffsetSumCnt
+0000d061   _uwTInvRmsCurrSumCnt
+0000d03f   _uwTInvRmsPrdCurrSumCnt
+0000d05a   _uwTInvRmsVolSumCnt
+0000dd53   _uwTRGridOffsetBak
+0000d042   _uwTRGridRmsPrdVolSumCnt
+0000d058   _uwTRGridRmsVolSumCnt
+0000d022   _uwTRGridVolOffset
+0000d071   _uwTRGridVolOffsetSumCnt
+0000d05b   _uwTRInvRmsVolSumCnt
+0000d4a2   _uwTwiceFreSampNum
+0000da52   _uwTxCnt
+0000defe   _uwWarrningCode
+0000d02d   _uwXFMRTmpSumCnt
+0000dd54   _uwfFreCalEnable
+0000f012   _uwfGFCICTChkFinished
+0000f013   _uwfGFCICTChkOk
+0000f00b   _uwfIsoChkFinished
+0000f008   _uwfIsoChkOk
+0000dd4e   _uwfPhaseSequencChkOk
+0000dd4f   _uwfSTExchange
+0000ddb9   _uwpuApparentPowerMax
+0000ddb6   _uwpuReactivePowerMax
+0000d45a   _wAIDeltaIq
+0000d457   _wAIDeltaIqRef
+0000d4ae   _wAIFreqSet
+0000d454   _wAIGetInvDsCurrRef
+0000d455   _wAISystemNoise
+0000ddaa   _wActivePowerPer
+0000ddba   _wAdjustPF
+0000dda0   _wAdjustStep
+0000dde9   _wBatChargeCurrLimt
+0000dded   _wBatChargeVoltLimt
+0000dde5   _wBatDisChargeCurrLimt
+0000ddee   _wBatDisChargeVoltLimt
+0000dde6   _wBatFloatChargeVolt
+0000dde3   _wBatSToFChargeCurr
+0000df57   _wBatVolLimtHigh
+0000df47   _wBatVolLimtLow
+0000d07d   _wBatteryAvgCurr
+0000d07e   _wBatteryAvgCurr1
+0000d07b   _wBatteryAvgCurr2
+0000d07c   _wBatteryAvgCurr3
+0000d081   _wBatteryAvgCurr4
+0000df58   _wBatteryChargeCurr
+0000df42   _wBatteryChargeVoltErrFiltPrev
+0000d079   _wBatteryCurr
+0000d076   _wBatteryCurr1
+0000d077   _wBatteryCurr2
+0000d084   _wBatteryCurr3
+0000d085   _wBatteryCurr4
+0000df5d   _wBatteryCurrRef
+0000df5e   _wBatteryDisChargeCurr
+0000df4f   _wBatteryDischargeVoltErrFiltPrev
+0000f18c   _wBatteryInAvgVol
+0000d078   _wBatteryInVol
+0000df55   _wBatteryLimitCurrHigh
+0000df59   _wBatteryLimitCurrLow
+0000f18b   _wBatteryOutAvgVol
+0000d073   _wBatteryOutVol
+0000df45   _wBiDCCtrModu1
+0000df44   _wBiDCCtrModu2
+0000df46   _wBiDCCtrModu3
+0000df48   _wBiDCCtrModu4
+0000f18a   _wBusAvgVol
+0000d46c   _wBusDiffVoltErrFiltPrev
+0000d46e   _wBusSumVoltErrFiltPrev
+0000df41   _wDCBusVoltErrFiltPrev
+0000df56   _wDCCtrBusVolRef
+0000df5a   _wDCCtrCoeff
+0000dd99   _wDCCurrAim
+0000dd91   _wDCCurrAimBak
+0000d46b   _wDCCurrErrFiltPrev
+0000df51   _wDCCurrErrFiltPrev1st
+0000df53   _wDCCurrErrFiltPrev2nd
+0000df52   _wDCCurrErrFiltPrev3rd
+0000df54   _wDCCurrErrFiltPrev4th
+0000dd9a   _wDCCurrSet
+0000d15e   _wDCIAvgCurr
+0000d445   _wDCIReguR
+0000d440   _wDCIReguS
+0000d441   _wDCIReguT
+0000df40   _wDCPwmCarrFrwd
+0000d480   _wDebugAIDeltaIqRef
+0000d48c   _wDebugAIEnd
+0000d47e   _wDebugAIStart
+0000df4d   _wDebugCPLDShutDC
+0000d47d   _wDebugCPLDShutInv
+0000df4a   _wDebugDeltaDCCurr
+0000df49   _wDebugDeltaDCCurrCharge
+0000df4b   _wDebugDeltaDCCurrDisCharge
+0000df11   _wDebugFlashSum
+0000d482   _wDebugInvDCCurrRef
+0000d47f   _wDebugInvDsCurrRef
+0000dda1   _wDebugIqStep
+0000d494   _wDebugNosVol
+0000d49b   _wDebugPLLDAxis
+0000d493   _wDebugPLLQAxis
+0000d497   _wDebugPosVol
+0000ddbd   _wDebugRunInvChkStep
+0000ddbe   _wDebugTest1
+0000ddbb   _wDebugTest2
+0000ddb1   _wDebugTest3
+0000ddaf   _wDebugTest4
+0000ddb0   _wDebugTest5
+0000ddad   _wDebugTest6
+0000f05e   _wDeltaGFCIAvgArray
+0000f080   _wDeltaGFCIRmsArray
+0000dc80   _wEepromAdcAdjustData
+0032fee4   _wEepromDefaultAdcAdjMaxArray
+0032ff2a   _wEepromDefaultAdcAdjMinArray
+0032ff70   _wEepromDefaultAdcAdjustArray
+003300ec   _wEepromDefaultHisDataArray
+003300f3   _wEepromDefaultImptMaxArray
+003300fa   _wEepromDefaultImptMinArray
+0032fcec   _wEepromDefaultProtMaxArrayIEEE1547
+0032fd40   _wEepromDefaultProtMaxArrayRule21
+0032ffb6   _wEepromDefaultProtMaxSupplArray
+0032fd94   _wEepromDefaultProtMinArrayIEEE1547
+0032fde8   _wEepromDefaultProtMinArrayRule21
+0032fffc   _wEepromDefaultProtMinSupplArray
+0032fe3c   _wEepromDefaultProtectArrayIEEE1547
+0032fe90   _wEepromDefaultProtectArrayRule21
+00330042   _wEepromDefaultProtectSupplArray
+0000dc40   _wEepromHisData
+0000dc37   _wEepromImptData
+0000f200   _wEepromProtectData
+0000dd00   _wEepromProtectSupplData
+0000d02e   _wEnvFitTemp
+0000d00b   _wEnvTmp
+0000d005   _wEnvTmpAvg
+00338000   _wFlashSafetyCheckCRC
+0000f09e   _wGFCIAvgActArray
+0000f184   _wGFCIAvgCurr
+0000f02d   _wGFCIAvgInitArray
+0000f186   _wGFCICurr
+0000f185   _wGFCICurrRms
+0000f040   _wGFCIRmsActArray
+0000f035   _wGFCIRmsInitArray
+0000de49   _wGridFreMaxArray
+0000de4d   _wGridFreMinArray
+0000d452   _wGridPosDFF
+0000d451   _wGridPosQFF
+0000de18   _wGridVolAvgBalanceDegree
+0000de1c   _wGridVolBalanceDegree
+0000d031   _wHeatFitTemp
+0000d007   _wHeatTmp
+0000d006   _wHeatTmpAvg
+0000d980   _wHoldRegister
+0000dc29   _wI2cRxData
+0000dc28   _wI2cTxData
+0000dd8b   _wIdRefBak
+0000d900   _wInputRegister
+0000d49e   _wInvCtrBusVolRef
+0000ddb4   _wInvCurrPeakMax
+0000ddb5   _wInvCurrResolving
+0000d448   _wInvDsCurrErrFiltPrev
+0000d450   _wInvDsCurrLimitHigh
+0000d44e   _wInvDsCurrLimitHighBak
+0000d453   _wInvDsCurrLimitLow
+0000d44d   _wInvDsCurrLimitLowBak
+0000d4b2   _wInvDsCurrPre
+0000d7c0   _wInvDsErr
+0000d495   _wInvDsRepetRef
+0000d4b6   _wInvDsRepetitiveRef
+0000dd92   _wInvMaxRmsCurr
+0000d456   _wInvNosDsCurrErrFiltPrev
+0000d44b   _wInvNosQsCurrErrFiltPrev
+0000d447   _wInvOsCurrRef
+0000d44a   _wInvQsCurrErrFiltPrev
+0000d4b4   _wInvQsCurrPre
+0000d700   _wInvQsErr
+0000d4a6   _wInvQsRepetRef
+0000d4b8   _wInvQsRepetitiveRef
+0000dd8c   _wIqRefBak
+0000de12   _wIqRefBakToLVRT
+0000f18d   _wIsoAvgVol
+0000f002   _wIsoImp
+0000f00f   _wIsoRlyCloseVngAvgTemp
+0000f014   _wIsoRlyOpenVngAvgTemp
+0000f189   _wIsoVol
+0000dc30   _wLCDImptData
+0000d086   _wONBusAvgVol
+0000d075   _wONBusVol
+0000dd9e   _wPFSet
+0000ddab   _wPFSetHex
+0000d473   _wPLLAngle
+0000d46a   _wPLLAngleOpen
+0000d464   _wPLLCoeffK
+0000d4b1   _wPLLCoeffW
+0000d474   _wPLLCosIndex
+0000d462   _wPLLCosTheta
+0000d4b0   _wPLLFiltGainDen
+0000d4af   _wPLLFiltGainNum
+0000d45b   _wPLLFiltUqPrev
+0000d461   _wPLLFreqSatErr
+0000d4a9   _wPLLFreqSet
+0000d468   _wPLLFrequency
+0000d4a8   _wPLLKaw
+0000d4ad   _wPLLKi
+0000d4aa   _wPLLKp
+0000d46d   _wPLLNosAngle
+0000d470   _wPLLNosCosIndex
+0000d471   _wPLLNosCosTheta
+0000d45c   _wPLLNosFiltUqPrev
+0000d45e   _wPLLNosFreqSatErr
+0000d469   _wPLLNosFrequency
+0000d46f   _wPLLNosSinIndex
+0000d463   _wPLLNosSinTheta
+0000d460   _wPLLOpenCosTheta
+0000d45d   _wPLLOpenSinTheta
+0000d472   _wPLLPNPhDifCosIndex
+0000d466   _wPLLPNPhDifCosTheta
+0000d475   _wPLLPNPhDifSinIndex
+0000d465   _wPLLPNPhDifSinTheta
+0000d45f   _wPLLSinIndex
+0000d467   _wPLLSinTheta
+0000d083   _wPOBusAvgVol
+0000d074   _wPOBusVol
+0000d8a1   _wPVLongAvgVol
+0000dda3   _wPowerDeratingIdmax
+0000d188   _wPowerFactor
+0000d18c   _wPowerFactorAvg
+0000d167   _wRInvRmsAvgCurrArray
+0000d173   _wRSGridRmsAvgVolArray
+0000d00a   _wRSGridVolCalRms
+0000f019   _wRamSafetyForCheck
+0000ddb2   _wRateGridLineVol
+0000ddbc   _wRateInvCurrInv
+0000ddae   _wRateInvCurrPeak
+0000dd83   _wRateRmsCurr
+0000dda4   _wReactiveCurrErr
+0000dda5   _wReactiveCurrRefPreSat
+0000dd9d   _wReactivePowerPer
+0000d443   _wRefurbishDCIReguR
+0000d444   _wRefurbishDCIReguS
+0000d459   _wRefurbishDCIReguT
+0000f1ae   _wRegistercheckFlag
+0000d8c0   _wRemoteData
+00330088   _wRemoteDataMax
+003300ba   _wRemoteDataMin
+0000d16f   _wSInvRmsAvgCurrArray
+0000d190   _wSTGridRmsAvgVolArray
+0000d07a   _wSTGridVolBak
+0000d009   _wSTGridVolCalRms
+0032f78c   _wSinTabArray
+0000dd8a   _wStdBusVolRef
+0000d177   _wTInvRmsAvgCurrArray
+0000d16b   _wTRGridRmsAvgVolArray
+0000d08f   _wTRGridVolBak
+0000d00c   _wTRGridVolCalRms
+0000df50   _wUdDivBatCoeff
+0000d4ac   _wWL
+0000d030   _wXFMRFitTemp
+0000d008   _wXFMRTmp
+0000d02f   _wXFMRTmpAvg
+0000ddb3   _wpuGridLineVol
+0000d600   _wpuNosVolData
+0000d680   _wpuPosVolData
+0000f1ab   _wregister0
+0000f1ac   _wregister1
+ffffffff   binit
+0032ea45   cinit
+00320002   code_start
+0000c000   end
+0032b56a   etext
+ffffffff   pinit
+
+
+GLOBAL SYMBOLS: SORTED BY Symbol Address 
+
+address    name
+--------   ----
+00000001   __TI_args_main
+00000006   __stack
+000003a0   __STACK_SIZE
+000003a6   __STACK_END
+00000880   _DevEmuRegs
+00000a80   _FlashRegs
+00000ae0   _CsmRegs
+00000b00   _AdcMirror
+00000b20   _XintfRegs
+00000c00   _CpuTimer0Regs
+00000c08   _CpuTimer1Regs
+00000c10   _CpuTimer2Regs
+00000ce0   _PieCtrlRegs
+00000d00   _PieVectTable
+00001000   _DmaRegs
+00005000   _McbspaRegs
+00005040   _McbspbRegs
+00006000   _ECanaRegs
+00006040   _ECanaLAMRegs
+00006080   _ECanaMOTSRegs
+000060c0   _ECanaMOTORegs
+00006100   _ECanaMboxes
+00006200   _ECanbRegs
+00006240   _ECanbLAMRegs
+00006280   _ECanbMOTSRegs
+000062c0   _ECanbMOTORegs
+00006300   _ECanbMboxes
+00006800   _EPwm1Regs
+00006840   _EPwm2Regs
+00006880   _EPwm3Regs
+000068c0   _EPwm4Regs
+00006900   _EPwm5Regs
+00006940   _EPwm6Regs
+00006a00   _ECap1Regs
+00006a20   _ECap2Regs
+00006a40   _ECap3Regs
+00006a60   _ECap4Regs
+00006a80   _ECap5Regs
+00006aa0   _ECap6Regs
+00006b00   _EQep1Regs
+00006b40   _EQep2Regs
+00006f80   _GpioCtrlRegs
+00006fc0   _GpioDataRegs
+00006fe0   _GpioIntRegs
+00007010   _SysCtrlRegs
+00007040   _SpiaRegs
+00007050   _SciaRegs
+00007070   _XIntruptRegs
+00007100   _AdcRegs
+00007750   _ScibRegs
+00007770   _ScicRegs
+00007900   _I2caRegs
+00008000   _sInvControlRamFuncs_runstart
+00008000   _sInvController
+00008000   _sMpptStrategyRamFuncs_loadend
+00008000   _sMpptStrategyRamFuncs_loadstart
+00008000   _sMpptStrategyRamFuncs_runstart
+00008128   _sPLLControl
+00008540   _sClarke
+00008569   _sInvClarke
+0000858a   _sPark
+000085ab   _sNosPark
+000085cc   _sInvPark
+000085e7   _sNosInvPark
+00008602   _sInvControl
+00008be2   _sDciControl
+00008d6f   _sdwArcTan
+00008dea   _sNotchFilter8K
+00008e1b   _sCalLVRTReactivePowerRef
+00009254   _sInvAndGridVolDeal
+0000930b   _AdcIsrRamFuncs_runstart
+0000930b   _swGetAvg
+0000933a   _sCalUnSignedSum
+00009354   _sCalSignedSum
+0000936f   _sCalRmsSum
+00009396   _sCalInvActivePowerSum
+00009433   _sCalInvReactivePowerSum
+000094e2   _sCalLVRTSumValue
+00009592   _sCalLVRTValue
+00009653   _swGetRms
+0000968b   _sRmsClearZero
+0000974f   _sInvShortPowerClearZero
+00009769   _sCalRmsValue
+00009804   _sCalDCPowerSum
+0000982e   _sLineToPhase
+0000984d   _ADCIsr
+0000a3cf   _sTimerDeal
+0000a3f8   _CANTX
+0000a3f8   _eCanRamFuncs_runstart
+0000a43f   _sCANRXImportRead
+0000a46d   _sCANRXImportWrite
+0000a539   _sCANRXHoldRead
+0000a567   _sCANRXInputRead
+0000a595   _sCANRXRemoteRead
+0000a5c3   _sCANRXHoldWrite
+0000a62b   _sCANRXRemoteWrite
+0000a728   _sCANRXBootLoader
+0000a75c   _ECanISR0
+0000a7e8   _ECanISR1
+0000aa76   _BiDirDCCtrFuncs_runstart
+0000aa76   _swBiDirDCVoltCtrl
+0000ab79   _sBiDirBatteryVoltCtr
+0000ac20   _swBiDirectionalDCCurrCtr1st
+0000ac86   _swBiDirectionalDCCurrCtr2nd
+0000acec   _swBiDirectionalDCCurrCtr3rd
+0000ad52   _swBiDirectionalDCCurrCtr4th
+0000adb8   _sBiDirDCCon1And3Controller
+0000ae26   _sBiDirDCCon2And4Controller
+0000af65   _CAPRamFuncs_runstart
+0000af65   _sCapIsrDeal
+0000b09f   _CAPIsr
+0000b162   _sRCapDeal
+0000b1b8   _sSCapDeal
+0000b20e   _sTCapDeal
+0000b264   _suwGetMinGridFreq
+0000b277   _sCapDeal
+0000b2ae   _ProtectRamFuncs_runstart
+0000b2ae   _sInvCurrHighChk
+0000b2e9   _sBatteryCurrHighChk
+0000b331   _sGridNoUtilityChk
+0000b3db   _sBusOVPChk
+0000b408   _sMcuFdbChk
+0000b445   _sGridVolAndInvVolDiffChk
+0000b4db   _InitFlash
+0000b4db   _secureRamFuncs_runstart
+0000c000   .bss
+0000c000   ___bss__
+0000c000   ___end__
+0000c000   end
+0000d000   _fSInvAvgVolClear
+0000d001   _fSInvRmsVolSumClear
+0000d002   _fTRGridRmsPrdVolSumClear
+0000d003   _fRInvAvgVolClear
+0000d004   _fTInvAvgVolClear
+0000d005   _wEnvTmpAvg
+0000d006   _wHeatTmpAvg
+0000d007   _wHeatTmp
+0000d008   _wXFMRTmp
+0000d009   _wSTGridVolCalRms
+0000d00a   _wRSGridVolCalRms
+0000d00b   _wEnvTmp
+0000d00c   _wTRGridVolCalRms
+0000d00d   _fRSGridVolOffsetSumClear
+0000d00e   _fTInvRmsVolSumClear
+0000d00f   _fTRGridVolOffsetSumClear
+0000d010   _fSTGridVolOffsetSumClear
+0000d011   _fSInvCurrOffsetSumClear
+0000d012   _fTInvCurrOffsetSumClear
+0000d013   _fGFCICurrOffsetSumClear
+0000d014   _fRInvCurrOffsetSumClear
+0000d015   _fTInvRmsPrdCurrSumClear
+0000d016   _fSInvRmsPrdCurrSumClear
+0000d017   _fSTGridRmsPrdVolSumClear
+0000d018   _fRSGridRmsPrdVolSumClear
+0000d019   _fSDCICurrOffsetSumClear
+0000d01a   _fRDCICurrOffsetSumClear
+0000d01b   _fRInvRmsPrdCurrSumClear
+0000d01c   _fTDCICurrOffsetSumClear
+0000d01d   _uwRInvCurrOffset
+0000d01e   _uwSInvCurrOffset
+0000d01f   _uwSCurCntDebug
+0000d020   _uwTCurCntDebug
+0000d021   _uwSTGridVolOffset
+0000d022   _uwTRGridVolOffset
+0000d023   _uwTInvCurrOffset
+0000d024   _uwRSGridVolOffset
+0000d025   _uwInvActivePowerSumCnt
+0000d026   _uwPowerEffAvg
+0000d027   _uwDCPowerSumCnt
+0000d028   _uwInvReactivePowerSumCnt
+0000d029   _uwRCurCntDebug
+0000d02a   _uwHeatTmpSumCnt
+0000d02b   _uwEnvTmpSumCnt
+0000d02c   _fEnvTmpSumClear
+0000d02d   _uwXFMRTmpSumCnt
+0000d02e   _wEnvFitTemp
+0000d02f   _wXFMRTmpAvg
+0000d030   _wXFMRFitTemp
+0000d031   _wHeatFitTemp
+0000d032   _uwSDCICurrOffset
+0000d033   _uwTDCICurrOffset
+0000d034   _uwRDCICurrOffset
+0000d035   _fXFMRTmpSumClear
+0000d036   _fHeatTmpSumClear
+0000d037   _uwGFCICurrOffset
+0000d038   _uwRDCICurrOffsetADCnt
+0000d039   _uwSDCICurrOffsetADCnt
+0000d03a   _uwSInvCurrOffsetADCnt
+0000d03b   _uwTInvCurrOffsetADCnt
+0000d03c   _uwRInvAvgVolCnt
+0000d03d   _uwTDCICurrOffsetADCnt
+0000d03e   _uwSInvRmsPrdCurrSumCnt
+0000d03f   _uwTInvRmsPrdCurrSumCnt
+0000d040   _uwTDCICurrOffsetHighCnt
+0000d041   _uwRInvRmsPrdCurrSumCnt
+0000d042   _uwTRGridRmsPrdVolSumCnt
+0000d043   _uwRInvCurrOffsetADCnt
+0000d044   _uwRSGridRmsPrdVolSumCnt
+0000d045   _fSTGridRmsVolSumClear
+0000d046   _fTRGridRmsVolSumClear
+0000d047   _fTInvRmsCurrSumClear
+0000d048   _fRSGridRmsVolSumClear
+0000d049   _fTRInvRmsVolSumClear
+0000d04a   _fRInvRmsVolSumClear
+0000d04b   _fRSInvRmsVolSumClear
+0000d04c   _fSTInvRmsVolSumClear
+0000d04d   _uwTInvAvgVolCnt
+0000d04e   _fRDCISumClear
+0000d04f   _uwSTGridRmsPrdVolSumCnt
+0000d050   _uwSInvAvgVolCnt
+0000d051   _fRInvRmsCurrSumClear
+0000d052   _fSInvRmsCurrSumClear
+0000d053   _fSDCISumClear
+0000d054   _fTDCISumClear
+0000d055   _uwRSInvRmsVolSumCnt
+0000d056   _uwSTInvRmsVolSumCnt
+0000d057   _uwSTGridRmsVolSumCnt
+0000d058   _uwTRGridRmsVolSumCnt
+0000d059   _uwSInvRmsVolSumCnt
+0000d05a   _uwTInvRmsVolSumCnt
+0000d05b   _uwTRInvRmsVolSumCnt
+0000d05c   _uwRInvRmsVolSumCnt
+0000d05d   _uwSDCISumCnt
+0000d05e   _uwTDCISumCnt
+0000d05f   _uwPowerEff
+0000d060   _uwRDCISumCnt
+0000d061   _uwTInvRmsCurrSumCnt
+0000d062   _uwRSGridRmsVolSumCnt
+0000d063   _uwRInvRmsCurrSumCnt
+0000d064   _uwTDCICurrOffsetSumCnt
+0000d065   _uwRInvCurrOffsetHighCnt
+0000d066   _uwRDCICurrOffsetSumCnt
+0000d067   _uwSDCICurrOffsetSumCnt
+0000d068   _uwRDCICurrOffsetHighCnt
+0000d069   _uwSDCICurrOffsetHighCnt
+0000d06a   _uwSInvCurrOffsetHighCnt
+0000d06b   _uwTInvCurrOffsetHighCnt
+0000d06c   _uwSInvCurrOffsetSumCnt
+0000d06d   _uwTInvCurrOffsetSumCnt
+0000d06e   _uwSInvRmsCurrSumCnt
+0000d06f   _uwRInvCurrOffsetSumCnt
+0000d070   _uwSTGridVolOffsetSumCnt
+0000d071   _uwTRGridVolOffsetSumCnt
+0000d072   _uwGFCICurrOffsetSumCnt
+0000d073   _wBatteryOutVol
+0000d074   _wPOBusVol
+0000d075   _wONBusVol
+0000d076   _wBatteryCurr1
+0000d077   _wBatteryCurr2
+0000d078   _wBatteryInVol
+0000d079   _wBatteryCurr
+0000d07a   _wSTGridVolBak
+0000d07b   _wBatteryAvgCurr2
+0000d07c   _wBatteryAvgCurr3
+0000d07d   _wBatteryAvgCurr
+0000d07e   _wBatteryAvgCurr1
+0000d07f   _uwBatCurr2Offset
+0000d080   _uwBatCurr3Offset
+0000d081   _wBatteryAvgCurr4
+0000d082   _uwBatCurr1Offset
+0000d083   _wPOBusAvgVol
+0000d084   _wBatteryCurr3
+0000d085   _wBatteryCurr4
+0000d086   _wONBusAvgVol
+0000d08b   _fSyncAD
+0000d08f   _wTRGridVolBak
+0000d090   _uwBatCurr2OffsetSumCnt
+0000d091   _uwBatCurr3OffsetSumCnt
+0000d092   _uwBatteryCurr4OKCnt
+0000d093   _fPOBusVolClear
+0000d094   _fONBusVolClear
+0000d095   _uwBatCurr1OffsetSumCnt
+0000d096   _uwBatCurr4OffsetSumCnt
+0000d097   _uwBatteryCurr2OKCnt
+0000d098   _uwBatteryCurr3OKCnt
+0000d099   _uwBatteryCurr4HighCnt
+0000d09a   _fDCPowerSumClear
+0000d09b   _fPowerEffSumClear
+0000d09c   _uwBatteryCurr1OKCnt
+0000d09d   _fInvReactivePowerSumClear
+0000d09e   _fBatCurr3OffsetSumClear
+0000d09f   _fBatCurr4OffsetSumClear
+0000d0a0   _fBatCurr1OffsetSumClear
+0000d0a1   _fLVRTValue
+0000d0a2   _fLVRTEnable
+0000d0a3   _fBatCurr2OffsetSumClear
+0000d0a4   _fHVRTValue
+0000d0a5   _fBatteryInVolClear
+0000d0a6   _fBatteryCurr1Clear
+0000d0a7   _fBatteryCurr3Clear
+0000d0a8   _fBatteryCurr4Clear
+0000d0a9   _fBatteryOutVolClear
+0000d0aa   _uwHalfCycSampNum
+0000d0ab   _uwHalfCysRateVolSqure
+0000d0ac   _fLVRTStartOrEndBak
+0000d0ad   _fImbalanceLVRT
+0000d0ae   _fLVRTStartOrEnd
+0000d0af   _uwPOBusVolCnt
+0000d0b0   _uwBatCurr4Offset
+0000d0b1   _uwPowerEffSumCnt
+0000d0b2   _uwRSGridVolOffsetSumCnt
+0000d0b3   _fInvActivePowerSumClear
+0000d0b4   _uwBatteryCurr3Cnt
+0000d0b5   _uwBatteryCurr4Cnt
+0000d0b6   _uwBatteryCurr1Cnt
+0000d0b7   _uwBatteryCurr2Cnt
+0000d0b8   _uwBatteryCurr3HighCnt
+0000d0b9   _fBatteryCurr2Clear
+0000d0ba   _uwBatteryCurr1HighCnt
+0000d0bb   _uwBatteryOutVolCnt
+0000d0bc   _uwBatteryInVolCnt
+0000d0bd   _uwONBusVolCnt
+0000d0be   _uwBatteryCurr2HighCnt
+0000d0c0   _udwPowerEffSum
+0000d0c2   _dwDCPower
+0000d0c4   _dwInstantaneousReactivePower
+0000d0c6   _dwInstantaneousActivePower
+0000d0ca   _udwHalfCysRateVolSqure0R81
+0000d0cc   _udwHalfCysTVolSqureSum
+0000d0ce   _udwHalfCysRateVolSqure0R2
+0000d0d0   _udwHalfCysRateVolSqure1R21
+0000d0d2   _udwHalfCysRateVolSqure0R01
+0000d0d4   _dwHeatTmpSum
+0000d0d6   _dwXFMRTmpSum
+0000d0d8   _udwHalfCysRVolSqureSum
+0000d0da   _dwEnvTmpSum
+0000d0dc   _udwHalfCysSVolSqureSum
+0000d0de   _dwRDCICurrSum
+0000d0e0   _dwBatteryCurr2Sum
+0000d0e2   _dwTDCICurrSum
+0000d0e4   _dwBatteryCurr4Sum
+0000d0e6   _udwBatCurr1OffsetSum
+0000d0e8   _dwSDCICurrSum
+0000d0ea   _dwBatteryCurr3Sum
+0000d0ec   _dwSTGridRmsVolSum
+0000d0ee   _dwRSGridRmsVolSum
+0000d0f0   _dwRSInvRmsVolSum
+0000d0f2   _dwSInvRmsCurrSum
+0000d0f4   _dwRInvRmsCurrSum
+0000d0f6   _dwTRGridRmsVolSum
+0000d0f8   _dwONBusVolSum
+0000d0fa   _udwBatCurr4OffsetSum
+0000d0fc   _dwBatteryInVolSum
+0000d0fe   _dwBatteryOutVolSum
+0000d100   _dwPOBusVolSum
+0000d102   _dwBatteryCurr1Sum
+0000d104   _udwBatCurr3OffsetSum
+0000d106   _udwTRGridVolFiltoffset
+0000d108   _dwTInvRmsCurrSum
+0000d10a   _udwRSGridVolFiltoffset
+0000d10c   _udwBatCurr2OffsetSum
+0000d10e   _dwSInvRmsPrdCurrSum
+0000d110   _dwRInvRmsPrdCurrSum
+0000d112   _dwTInvAvgVolSum
+0000d114   _udwSDCICurrOffsetSum
+0000d116   _udwRDCICurrOffsetSum
+0000d118   _dwTInvRmsPrdCurrSum
+0000d11a   _udwTDCICurrOffsetSum
+0000d11c   _dwTRGridRmsPrdVolSum
+0000d11e   _dwRInvAvgVolSum
+0000d120   _dwRSGridRmsPrdVolSum
+0000d122   _dwSInvAvgVolSum
+0000d124   _dwSInvRmsVolSum
+0000d126   _dwRInvRmsVolSum
+0000d128   _udwRInvCurrOffsetSum
+0000d12a   _dwSTInvRmsVolSum
+0000d12c   _udwSTGridVolFiltoffset
+0000d12e   _dwTInvRmsVolSum
+0000d130   _dwTRInvRmsVolSum
+0000d132   _udwRSGridVolOffsetSum
+0000d134   _udwGFCICurrOffsetSum
+0000d136   _udwTRGridVolOffsetSum
+0000d138   _udwSTGridVolOffsetSum
+0000d13a   _dwSTGridRmsPrdVolSum
+0000d13c   _udwTInvCurrOffsetSum
+0000d13e   _udwSInvCurrOffsetSum
+0000d140   _twInvRmsCurr
+0000d143   _twInvPhaseVol
+0000d146   _twDCICurr
+0000d149   _twGridPhaseVol
+0000d14c   _twGridLineVol
+0000d14f   _twDCICurrFilt
+0000d152   _twInvRmsAvgCurr
+0000d155   _twInvRmsFifoAvgCurr
+0000d158   _twGridLineRmsAvgVol
+0000d15b   _twGridLineRmsFifoAvgVol
+0000d15e   _wDCIAvgCurr
+0000d161   _twInvCurrCalRms
+0000d164   _twInvCurr
+0000d167   _wRInvRmsAvgCurrArray
+0000d16b   _wTRGridRmsAvgVolArray
+0000d16f   _wSInvRmsAvgCurrArray
+0000d173   _wRSGridRmsAvgVolArray
+0000d177   _wTInvRmsAvgCurrArray
+0000d17b   _uwPowerFactorSumCnt
+0000d180   _fPowerFactorSumClear
+0000d184   _ddwDCPowerSum
+0000d188   _wPowerFactor
+0000d18c   _wPowerFactorAvg
+0000d190   _wSTGridRmsAvgVolArray
+0000d194   _dwInvReactivePower
+0000d19c   _dwPowerFactorSum
+0000d1a4   _dwInvActivePower
+0000d1ac   _udwApparentPower
+0000d1c0   _ddwInvReactivePowerSum
+0000d1d0   _ddwInvActivePowerSum
+0000d200   _udwGridVolRSSqure
+0000d2c0   _udwGridVolTRSqure
+0000d380   _udwGridVolSTSqure
+0000d420   _tTimer
+0000d433   _errno
+0000d434   _InitSysCtrl_POINT
+0000d436   _GetWordData
+0000d438   __unlock
+0000d43a   __lock
+0000d43c   __cleanup_ptr
+0000d43e   __dtors_ptr
+0000d440   _wDCIReguS
+0000d441   _wDCIReguT
+0000d442   _uwRPhaseZeroCrossCnt
+0000d443   _wRefurbishDCIReguR
+0000d444   _wRefurbishDCIReguS
+0000d445   _wDCIReguR
+0000d446   _fDCIReguRefurbish
+0000d447   _wInvOsCurrRef
+0000d448   _wInvDsCurrErrFiltPrev
+0000d449   _uwInvPwmBusComp
+0000d44a   _wInvQsCurrErrFiltPrev
+0000d44b   _wInvNosQsCurrErrFiltPrev
+0000d44c   _uwModuSoftIncCnt
+0000d44d   _wInvDsCurrLimitLowBak
+0000d44e   _wInvDsCurrLimitHighBak
+0000d44f   _swReactiveCurrQs
+0000d450   _wInvDsCurrLimitHigh
+0000d451   _wGridPosQFF
+0000d452   _wGridPosDFF
+0000d453   _wInvDsCurrLimitLow
+0000d454   _wAIGetInvDsCurrRef
+0000d455   _wAISystemNoise
+0000d456   _wInvNosDsCurrErrFiltPrev
+0000d457   _wAIDeltaIqRef
+0000d458   _fAIStart
+0000d459   _wRefurbishDCIReguT
+0000d45a   _wAIDeltaIq
+0000d45b   _wPLLFiltUqPrev
+0000d45c   _wPLLNosFiltUqPrev
+0000d45d   _wPLLOpenSinTheta
+0000d45e   _wPLLNosFreqSatErr
+0000d45f   _wPLLSinIndex
+0000d460   _wPLLOpenCosTheta
+0000d461   _wPLLFreqSatErr
+0000d462   _wPLLCosTheta
+0000d463   _wPLLNosSinTheta
+0000d464   _wPLLCoeffK
+0000d465   _wPLLPNPhDifSinTheta
+0000d466   _wPLLPNPhDifCosTheta
+0000d467   _wPLLSinTheta
+0000d468   _wPLLFrequency
+0000d469   _wPLLNosFrequency
+0000d46a   _wPLLAngleOpen
+0000d46b   _wDCCurrErrFiltPrev
+0000d46c   _wBusDiffVoltErrFiltPrev
+0000d46d   _wPLLNosAngle
+0000d46e   _wBusSumVoltErrFiltPrev
+0000d46f   _wPLLNosSinIndex
+0000d470   _wPLLNosCosIndex
+0000d471   _wPLLNosCosTheta
+0000d472   _wPLLPNPhDifCosIndex
+0000d473   _wPLLAngle
+0000d474   _wPLLCosIndex
+0000d475   _wPLLPNPhDifSinIndex
+0000d47d   _wDebugCPLDShutInv
+0000d47e   _wDebugAIStart
+0000d47f   _wDebugInvDsCurrRef
+0000d480   _wDebugAIDeltaIqRef
+0000d482   _wDebugInvDCCurrRef
+0000d48c   _wDebugAIEnd
+0000d491   _cNotch8KNum2
+0000d492   _cNotch8KNum3
+0000d493   _wDebugPLLQAxis
+0000d494   _wDebugNosVol
+0000d495   _wInvDsRepetRef
+0000d496   _cNotch8KNum1
+0000d497   _wDebugPosVol
+0000d498   _fLVRTEndUpdate
+0000d499   _fSoftLVRTEn
+0000d49a   _uwInvPwmKFeedBack
+0000d49b   _wDebugPLLDAxis
+0000d49c   _fLVRTStartUpdate
+0000d49d   _fAPFCtrEnable
+0000d49e   _wInvCtrBusVolRef
+0000d49f   _uwLVRTExtDelay
+0000d4a0   _uwMasterCtrDelay150ms
+0000d4a1   _fInvCtrDeal
+0000d4a2   _uwTwiceFreSampNum
+0000d4a3   _uwSoftLVRTValue
+0000d4a4   _fFVRTType
+0000d4a5   _uwLVRTActDelay
+0000d4a6   _wInvQsRepetRef
+0000d4a7   _uwSoftHVRTValue
+0000d4a8   _wPLLKaw
+0000d4a9   _wPLLFreqSet
+0000d4aa   _wPLLKp
+0000d4ab   _uwSysFreq
+0000d4ac   _wWL
+0000d4ad   _wPLLKi
+0000d4ae   _wAIFreqSet
+0000d4af   _wPLLFiltGainNum
+0000d4b0   _wPLLFiltGainDen
+0000d4b1   _wPLLCoeffW
+0000d4b2   _wInvDsCurrPre
+0000d4b4   _wInvQsCurrPre
+0000d4b6   _wInvDsRepetitiveRef
+0000d4b8   _wInvQsRepetitiveRef
+0000d4ba   _dwBusDiffCtrlPrev
+0000d4bc   _dwDeltaDsCurr
+0000d4be   _dwInvDsCurrSatErr
+0000d4c0   _udwFreqMidSum
+0000d4c2   _tGridPosVolQSampIn
+0000d4c4   _tGridNosVolDSampIn
+0000d4c6   _tInvNosCurrQSampIn
+0000d4c8   _tGridPosVolDSampIn
+0000d4ca   _dwDCCurrSatErr
+0000d4cc   _dwBusSumVoltIngCtrl
+0000d4ce   _tGridNosVolQSampIn
+0000d4d0   _dwDCCurrIngCtrl
+0000d4dc   _udwNosPLLAngleIngCtrl
+0000d4de   _udwPLLAngleIngCtrlOpen
+0000d4e0   _dwPLLAngleIngOpen
+0000d4e2   _udwPNPhDifPLLAngleIngCtrl
+0000d4e4   _dwPLLFreqIngCtrl
+0000d4e6   _udwPLLAngleIngCtrl
+0000d4e8   _dwPLLNosFreqIngCtrl
+0000d4ea   _tInvNosCurrDSampIn
+0000d4ec   _dwAIPLLFreqNoise
+0000d4ee   _dwNosAngleErr
+0000d4f0   _dwBusDiffVoltIngCtrl
+0000d4f2   _dwAngleErr
+0000d4f4   _dwInvNosQsModuSatErr
+0000d4f6   _dwInvNosQsCurrIngCtrl
+0000d4f8   _dwInvDsModuSatErr
+0000d4fa   _dwInvDsCurrIngCtrl
+0000d4fc   _dwPLLPdFiltGainNum
+0000d4fe   _tInvPosCurrDSampIn
+0000d500   _dwInvNosDsCurrIngCtrl
+0000d502   _tInvPosCurrQSampIn
+0000d504   _dwInvNosDsModuSatErr
+0000d506   _dwInvOsCurrSatErr
+0000d508   _dwInvQsCurrIngCtrl
+0000d50a   _dwInvQsModuSatErr
+0000d50c   _dwPLLPdFiltGainDen
+0000d50e   _dwAngleIngSubReal
+0000d510   _dwAngleIngSub
+0000d512   _tInvNosModuDqo
+0000d515   _tGridVoltAfBtGm
+0000d518   _tGridNosVoltDqo
+0000d51b   _tInvCurrAfBtGm
+0000d51e   _tGridNosVoltSampDqo
+0000d521   _tGridPosVoltSampDqo
+0000d524   _tInvModuDqo
+0000d527   _tPLLGridVoltABCPrev
+0000d52a   _tInvCurrAbcBak
+0000d52d   _tInvCurrAbc
+0000d530   _tPLLGridVoltBPFABC
+0000d533   _tInvCurrAbcRef
+0000d536   _tPLLPDGridVoltABCPrev
+0000d539   _tPLLPDGridVoltABC
+0000d53c   _tPLLNosSeqGridVoltABC
+0000d540   _tPLLPosSeqGridVoltABC
+0000d543   _tInvCurrPowerReguRefDqo
+0000d546   _tGridPhaseVoltAbc
+0000d549   _tInvPosCurrDqoRef
+0000d54c   _tInvPWMModuAbc
+0000d54f   _tPLLPosGridVoltSampAfbtgm
+0000d552   _tDeadCompModuAfBtGm
+0000d555   _tInvCurrDqoRef
+0000d558   _tPLLNosGridVoltSampAfbtgm
+0000d55b   _tInvNosCurrAfBtGmRef
+0000d55e   _tInvPosModuAfBtGm
+0000d561   _tInvCurrAfBtGmRef
+0000d564   _tInvNosModuAfBtGm
+0000d567   _tInvNosCurrDqoRef
+0000d56a   _tInvVolDqo
+0000d56d   _tInvModuAfBtGm
+0000d570   _tInvNosCurrDqo
+0000d573   _tInvNosCurrSampDqo
+0000d576   _tGridVoltDqo
+0000d579   _tInvPosCurrSampDqo
+0000d57c   _tInvCurrDqo
+0000d580   _tGridPosVolDSampOut
+0000d586   _tGridPosVolQSampOut
+0000d58c   _tGridNosVolDSampOut
+0000d592   _tInvPosCurrDSampOut
+0000d598   _tGridNosVolQSampOut
+0000d59e   _tInvNosCurrQSampOut
+0000d5a4   _tInvPosCurrQSampOut
+0000d5aa   _tInvModuAbc
+0000d5b0   _tPLLPDGridTmp2ABC
+0000d5b6   _tPLLPDGridTmp1ABC
+0000d5c0   _tInvNosCurrDSampOut
+0000d5c6   _uwFreqMidTemp
+0000d600   _wpuNosVolData
+0000d680   _wpuPosVolData
+0000d700   _wInvQsErr
+0000d7c0   _wInvDsErr
+0000d860   _uwBiDirDCCtrPWMPrd
+0000d861   _uwFanDuty
+0000d862   _uwInvCtrPWMPrd
+0000d880   _uwDebugCANA2
+0000d881   _uwDebugCANA1
+0000d882   _fECANRunOrder
+0000d883   _fHoldRegisterStatus
+0000d884   _fLocalPhyAddr
+0000d885   _uwBootloaderStep
+0000d886   _uwBootloaderReceFlag
+0000d887   _uwDebugCANA3
+0000d888   _fCANBCongfigFinish
+0000d889   _fLcdSoftRunOrder
+0000d88a   _fLcdRunOrder
+0000d88b   _fDisBootloaderOrder
+0000d88c   _fStandardChgStopRequire
+0000d88d   _uwImportDataCnt
+0000d88e   _fImportTx
+0000d88f   _uwInputDataAddr
+0000d890   _uwInputDataLength
+0000d891   _fInputTx
+0000d894   _uwImportDataLength
+0000d895   _fCANActive
+0000d896   _uwImportDataAddr
+0000d897   _uwHoldDataCnt
+0000d898   _fHoldTx
+0000d899   _uwHoldDataAddr
+0000d89a   _uwHoldDataLength
+0000d89b   _fConfigeCANmbx
+0000d89c   _fRemoteTx
+0000d89d   _uwInputDataCnt
+0000d89e   _uwRemoteDataLength
+0000d89f   _uwRemoteDataCnt
+0000d8a0   _uwRemoteDataAddr
+0000d8a1   _wPVLongAvgVol
+0000d8aa   _ubBootloaderRecData
+0000d8c0   _wRemoteData
+0000d900   _wInputRegister
+0000d980   _wHoldRegister
+0000da40   _fScibRxOk
+0000da41   _uwReceFlag
+0000da42   _uwSendFlag
+0000da43   _fScibTxEn
+0000da44   _uwScibSendNum
+0000da47   _uwDebugPvPower
+0000da48   _uwDebugDeltaPvPower
+0000da4c   _ubRxCnt
+0000da4d   _ubCheckSum
+0000da4e   _uwSendNum
+0000da4f   _uwSciSendNum
+0000da50   _uwDebugPvVoltAvg
+0000da52   _uwTxCnt
+0000da53   _uwMonCnt
+0000da54   _dwpAddr4
+0000da56   _dwpAddr3
+0000da58   _dwpAddr1
+0000da5a   _dwpAddr2
+0000da5c   _pSciRamData
+0000da5e   _uwScibTxData
+0000da61   _tChxData
+0000da65   _tScibRxData
+0000da6b   _uwDataSci
+0000da74   _ubRxBuf
+0000da80   _ubTxBuf
+0000da8a   _tReceData
+0000dac0   _tSendData
+0000dc0a   _uwEepromWrSelNumFinished
+0000dc0b   _fEepromChkError
+0000dc0c   _fEepromRdWrHalt
+0000dc0d   _fSciStandChanged
+0000dc0e   _fRateCoeff
+0000dc10   _fMachineCoeff
+0000dc11   _fEepromProtSumErrNum
+0000dc12   _fEepromProtSuplSumErrNum
+0000dc27   _fEepromOperateStep
+0000dc28   _wI2cTxData
+0000dc29   _wI2cRxData
+0000dc2a   _uwProtSupplAdrStart
+0000dc2b   _uwAdcAdrStart
+0000dc2c   _uwHisAdrStart
+0000dc2d   _uwI2CBlockState
+0000dc2e   _uwLCDRxImptDataFlag
+0000dc2f   _uwProtAdrStart
+0000dc30   _wLCDImptData
+0000dc37   _wEepromImptData
+0000dc40   _wEepromHisData
+0000dc80   _wEepromAdcAdjustData
+0000dd00   _wEepromProtectSupplData
+0000dd4e   _uwfPhaseSequencChkOk
+0000dd4f   _uwfSTExchange
+0000dd50   _fFreDetect
+0000dd51   _fCapIntEvent
+0000dd52   _uwSTGridOffsetBak
+0000dd53   _uwTRGridOffsetBak
+0000dd54   _uwfFreCalEnable
+0000dd55   _uwRSGridOffsetBak
+0000dd56   _udwSTOffsetBak
+0000dd58   _udwRSOffsetBak
+0000dd5a   _udwTROffsetBak
+0000dd5c   _udwSCapVal
+0000dd5e   _udwRCapVal
+0000dd60   _udwTCapVal
+0000dd62   _udwTCapValBak
+0000dd64   _udwSCapValBak
+0000dd66   _udwRCapValBak
+0000dd68   _tCapEvent
+0000dd6b   _tLstPhase
+0000dd80   _fCharge
+0000dd81   _fChargeToDisCharge
+0000dd82   _fDisChargeToCharge
+0000dd83   _wRateRmsCurr
+0000dd84   _fDCCtrBusSoftSta
+0000dd85   _fDCDisChargeToCharge
+0000dd86   _uwDCSoftStep
+0000dd87   _fDCChargeToDisCharge
+0000dd88   _fDC3And4En
+0000dd89   _fStartByDCOrAC
+0000dd8a   _wStdBusVolRef
+0000dd8b   _wIdRefBak
+0000dd8c   _wIqRefBak
+0000dd8d   _fGridRelayCloseDeal
+0000dd8e   _fFVRTMaxCurrDelay2s
+0000dd8f   _fDC1And2En
+0000dd90   _fCSVSSwitch
+0000dd91   _wDCCurrAimBak
+0000dd92   _wInvMaxRmsCurr
+0000dd93   _fLocalPCSComdOnOff
+0000dd94   _fLocalPCSConnect
+0000dd95   _fAdjustQEn
+0000dd96   _fHotBackup
+0000dd97   _uwPFSetMax
+0000dd98   _fBattDarkStart
+0000dd99   _wDCCurrAim
+0000dd9a   _wDCCurrSet
+0000dd9b   _fReactiveMode
+0000dd9c   _fActiveMode
+0000dd9d   _wReactivePowerPer
+0000dd9e   _wPFSet
+0000dd9f   _fPowerDanger
+0000dda0   _wAdjustStep
+0000dda1   _wDebugIqStep
+0000dda2   _fDerating
+0000dda3   _wPowerDeratingIdmax
+0000dda4   _wReactiveCurrErr
+0000dda5   _wReactiveCurrRefPreSat
+0000dda6   _uwHVRTActiveValue
+0000dda7   _fCANRunOrder
+0000dda8   _uwLVRTActiveValue
+0000dda9   _fAuxiRelayLost
+0000ddaa   _wActivePowerPer
+0000ddab   _wPFSetHex
+0000ddac   _uwCurrMax
+0000ddad   _wDebugTest6
+0000ddae   _wRateInvCurrPeak
+0000ddaf   _wDebugTest4
+0000ddb0   _wDebugTest5
+0000ddb1   _wDebugTest3
+0000ddb2   _wRateGridLineVol
+0000ddb3   _wpuGridLineVol
+0000ddb4   _wInvCurrPeakMax
+0000ddb5   _wInvCurrResolving
+0000ddb6   _uwpuReactivePowerMax
+0000ddb7   _fGridPretect
+0000ddb8   _fSysFreChange
+0000ddb9   _uwpuApparentPowerMax
+0000ddba   _wAdjustPF
+0000ddbb   _wDebugTest2
+0000ddbc   _wRateInvCurrInv
+0000ddbd   _wDebugRunInvChkStep
+0000ddbe   _wDebugTest1
+0000dde3   _wBatSToFChargeCurr
+0000dde4   _fACPowerCtr
+0000dde5   _wBatDisChargeCurrLimt
+0000dde6   _wBatFloatChargeVolt
+0000dde7   _fDCOCPEnable
+0000dde8   _fBMSActive
+0000dde9   _wBatChargeCurrLimt
+0000ddea   _fFloatCharge
+0000ddeb   _uwAuxiRelayDelay
+0000ddec   _fInvEnOutBak
+0000dded   _wBatChargeVoltLimt
+0000ddee   _wBatDisChargeVoltLimt
+0000ddef   _uwDCSoftRelayDelay
+0000ddf0   _uwFVRTCurrSoftDelay
+0000ddf1   _fQCtrEnDelay2s
+0000de03   _fPvPowEnough
+0000de04   _uwSFre
+0000de05   _fRunInvAhdChkRestart
+0000de06   _fPLLStaOk
+0000de07   _uwTFre
+0000de08   _uwRFreq
+0000de09   _fInvLittleVolOk
+0000de0a   _fRunOrder
+0000de0b   _fCallDefaultValueOrder
+0000de0c   _uwSysModePrepare
+0000de0d   _uwRFre
+0000de0e   _fRunInvAhdChkRequire
+0000de0f   _fQuitShutModeOrder
+0000de10   _fPhaseSequBak
+0000de11   _fIsoStatue
+0000de12   _wIqRefBakToLVRT
+0000de13   _fPhaseSequ
+0000de14   _fMpptEnable
+0000de15   _fBatteryInitiStateOK
+0000de16   _fRelayChkRequire
+0000de17   _uwTFreq
+0000de18   _wGridVolAvgBalanceDegree
+0000de19   _uwSFreq
+0000de1a   _uwGridFreq
+0000de1b   _fInvSoftStaRequire
+0000de1c   _wGridVolBalanceDegree
+0000de1d   _uwDECapEnergyStep
+0000de1e   _fClearBusCtr
+0000de1f   _fDeCapEnergy
+0000de20   _fFanStatus
+0000de24   _udwPowerOnWaitTime
+0000de26   _dwIdLimitHigh
+0000de2a   _dwIdLimitLow
+0000de2c   _dwActivePowerAim
+0000de2e   _dwReactivePowerAim
+0000de32   _dwDCCurrSetIng
+0000de34   _dwRatePower
+0000de36   _dwGridFreMaxSum
+0000de38   _dwI2TValue
+0000de3a   _dwGridFreMinSum
+0000de3e   _dwSoftStopIdLimMax
+0000de44   _dwIqRef
+0000de49   _wGridFreMaxArray
+0000de4d   _wGridFreMinArray
+0000dea4   _uwIsoChkStep
+0000deae   _fFanFaultStatus
+0000defd   _uwFaultGrade
+0000defe   _uwWarrningCode
+0000deff   _fGridRelayErrEventBak
+0000df00   _fInvRelayErrEventBak
+0000df01   _uwPFCode
+0000df02   _fOCPEventBak
+0000df03   _uwDCIHighHoldFaultCnt
+0000df04   _uwPhaseRmsCurHoldFaultCnt
+0000df05   _uwOCPHoldFaultCnt
+0000df06   _uwRunInvAhdHoldFaultCnt
+0000df07   _uwDampResistanceHoldFaultCnt
+0000df08   _uwInvCurrHighHoldFaultCnt
+0000df09   _uwDCIChkDelay5sCnt
+0000df0a   _uwPhaseRmsCurFaultCnt
+0000df0b   _uwRunInvAhdFaultCnt
+0000df0c   _uwInvCurrHighFaultCnt
+0000df0d   _uwRelayHoldFaultCnt
+0000df0e   _uwInvRelayHoldFaultCnt
+0000df0f   _uwDCIHighFaultCnt
+0000df10   _fDCSoftRelayLost
+0000df11   _wDebugFlashSum
+0000df12   _uwInvVolNormalChkOk
+0000df13   _uwDampResistanceFaultCnt
+0000df14   _fDCIDelayClear
+0000df15   _fRemoteDCBreakerCtrEn
+0000df16   _fTempdisable
+0000df17   _uwGridAndInvVolChkOk
+0000df18   _fInvCurrHighErrEventBak
+0000df19   _fInvRelayFaultEvent
+0000df1a   _fGridRelayFaultEvent
+0000df1b   _fOCPFaultEvent
+0000df1c   _fPhaseRmsCurErrEventBak
+0000df1d   _fDCIErrHighEventBak
+0000df1e   _fRunInvAhdErrEventBak
+0000df1f   _uwInvRelayFaultCnt
+0000df20   _uwOCPFaultCnt
+0000df21   _fDampResistanceFaultEvent
+0000df22   _uwRelayFaultCnt
+0000df23   _fRunInvAhdFaultEvent
+0000df24   _fDampResistanceErrEventBak
+0000df25   _fInvCurrHighFaultEvent
+0000df26   _fDCIHighFaultEvent
+0000df27   _fDCICurrOffsetFaultEvent
+0000df28   _fPhaseRmsCurFaultEvent
+0000df2e   _udwDCIHighNFTimerCnt
+0000df30   _udwInvCurrHighNFTimerCnt
+0000df32   _udwRunInvAhdNFTimerCnt
+0000df34   _udwPhaseRmsCurNFTimerCnt
+0000df36   _udwRelayNFTimerCnt
+0000df3a   _udwOCPNFTimerCnt
+0000df3c   _udwInvRelayNFTimerCnt
+0000df3e   _udwDampResistanceNFTimerCnt
+0000df40   _wDCPwmCarrFrwd
+0000df41   _wDCBusVoltErrFiltPrev
+0000df42   _wBatteryChargeVoltErrFiltPrev
+0000df43   _fDCVoltCtrDeal
+0000df44   _wBiDCCtrModu2
+0000df45   _wBiDCCtrModu1
+0000df46   _wBiDCCtrModu3
+0000df47   _wBatVolLimtLow
+0000df48   _wBiDCCtrModu4
+0000df49   _wDebugDeltaDCCurrCharge
+0000df4a   _wDebugDeltaDCCurr
+0000df4b   _wDebugDeltaDCCurrDisCharge
+0000df4c   _uwDCCtrStartDelay
+0000df4d   _wDebugCPLDShutDC
+0000df4f   _wBatteryDischargeVoltErrFiltPrev
+0000df50   _wUdDivBatCoeff
+0000df51   _wDCCurrErrFiltPrev1st
+0000df52   _wDCCurrErrFiltPrev3rd
+0000df53   _wDCCurrErrFiltPrev2nd
+0000df54   _wDCCurrErrFiltPrev4th
+0000df55   _wBatteryLimitCurrHigh
+0000df56   _wDCCtrBusVolRef
+0000df57   _wBatVolLimtHigh
+0000df58   _wBatteryChargeCurr
+0000df59   _wBatteryLimitCurrLow
+0000df5a   _wDCCtrCoeff
+0000df5b   _fDCModeSwitchEn
+0000df5c   _fDCModeSwitch
+0000df5d   _wBatteryCurrRef
+0000df5e   _wBatteryDisChargeCurr
+0000df60   _dwDCCurrIngCtrl3rd
+0000df62   _dwDCCurrIngCtrl4th
+0000df64   _dwDCModuSatErr3rd
+0000df66   _dwDCModuSatErr4th
+0000df68   _dwDeltaDCCurr
+0000df6a   _dwBatteryDischargeVoltIngCtrl
+0000df6c   _dwBatteryChargeVoltSatErr
+0000df6e   _dwDCBusVoltSatErr
+0000df70   _dwBatteryChargeVoltIngCtrl
+0000df72   _dwDCCurrIngCtrl2nd
+0000df74   _dwDCModuSatErr2nd
+0000df76   _dwDCModuSatErr1st
+0000df78   _dwBatteryDischargeVoltSatErr
+0000df7a   _dwDCCurrIngCtrl1st
+0000df7c   _dwDCBusVoltIngCtrl
+0000f000   _uwInvRelayOKCnt
+0000f001   _uwInvRelayBadCnt
+0000f002   _wIsoImp
+0000f003   _fRelayCheckStep
+0000f004   _uwAuxiRelayBadCnt
+0000f005   _fGFCICTStatue
+0000f006   _uwGridRelayBadCnt
+0000f007   _uwAuxiRelayOKCnt
+0000f008   _uwfIsoChkOk
+0000f009   _uwIsoChkCounter
+0000f00a   _uwDeltaGFCIErrClearDelay10s
+0000f00b   _uwfIsoChkFinished
+0000f00c   _uwSteadyErrClearDelay10s
+0000f00d   _uwIsoTimer20msCnt
+0000f00e   _uwGridRelayOKCnt
+0000f00f   _wIsoRlyCloseVngAvgTemp
+0000f010   _uwIsoSumCnt
+0000f011   _uwGFCICTChkStep
+0000f012   _uwfGFCICTChkFinished
+0000f013   _uwfGFCICTChkOk
+0000f014   _wIsoRlyOpenVngAvgTemp
+0000f015   _fDCRelayBurn
+0000f016   _uwGFCIActArrayIndex
+0000f017   _uwGFCIInitArrayIndex
+0000f018   _fDCPWMLost
+0000f019   _wRamSafetyForCheck
+0000f01a   _uwGFCIHighCnt
+0000f01b   _uwDeltaGFCIChkDelay100Prd
+0000f01c   _dwGFCIAvgInitSum
+0000f01e   _dwIsoRlyCloseVngSum
+0000f020   _dwGFCIRmsInitSum
+0000f022   _dwIsoRlyOpenVngSum
+0000f024   _dwGFCIAvgActSum
+0000f026   _dwGFCIRmsActSum
+0000f028   _uwFaultCode
+0000f02d   _wGFCIAvgInitArray
+0000f035   _wGFCIRmsInitArray
+0000f040   _wGFCIRmsActArray
+0000f05e   _wDeltaGFCIAvgArray
+0000f080   _wDeltaGFCIRmsArray
+0000f09e   _wGFCIAvgActArray
+0000f0c0   _tErrFlag
+0000f140   _tEventFlag
+0000f182   _fGFCICurrSumClear
+0000f183   _fGFCIAvgCurrSumClear
+0000f184   _wGFCIAvgCurr
+0000f185   _wGFCICurrRms
+0000f186   _wGFCICurr
+0000f187   _uwGFCIAvgCurrSumCnt
+0000f188   _uwGFCICurrSumCnt
+0000f189   _wIsoVol
+0000f18a   _wBusAvgVol
+0000f18b   _wBatteryOutAvgVol
+0000f18c   _wBatteryInAvgVol
+0000f18d   _wIsoAvgVol
+0000f18e   _fBiDirDCEnOut
+0000f18f   _fStartOrNormal
+0000f190   _fInvEnOut
+0000f191   _fIsoVolClear
+0000f192   _fADCtrSwitch
+0000f193   _uwIsoVolCnt
+0000f194   _dwIsoVolSum
+0000f196   _dwGFCIAvgCurrSum
+0000f198   _dwGFCICurrSum
+0000f19a   _twGridLineRmsVol
+0000f19d   _twInvPhaseRmsVol
+0000f1a0   _twInvPhaseAvgVol
+0000f1a4   _fDCRelayCtrBak
+0000f1a5   _fGridRelayCtr
+0000f1a6   _fDCSoftRelayCtr
+0000f1a7   _fAuxiRelayCtr
+0000f1a8   _fDCRelayPCtr
+0000f1a9   _fDCRelayNCtr
+0000f1aa   _fGridRelayCtrBak
+0000f1ab   _wregister0
+0000f1ac   _wregister1
+0000f1ad   _fAuxiRelayCtrBak
+0000f1ae   _wRegistercheckFlag
+0000f1af   _uwSysMode
+0000f1b0   _fError
+0000f1b2   _dwregister0
+0000f1b4   _dwregister2
+0000f1b6   _dwregister1
+0000f1b8   _fUqUnconvBak
+0000f1b9   _fCPLDShutInvDeal
+0000f1ba   _uwCPLDShutInvDelay
+0000f1bb   _fUqUnconv
+0000f1bc   _fCPLDShutDCDeal
+0000f1bd   _uwCPLDShutDCDelay
+0000f1c0   _fEepromOperateRequire
+0000f200   _wEepromProtectData
+00320000   _cFlashCheckHead
+00320002   code_start
+00320004   .text
+00320004   _InitECanVar
+00320004   ___text__
+00320072   _InitECana
+00320165   _sResetECana
+003201e6   _configeCANAmbx
+0032028c   _sHoldComdDeal
+00320641   _sHoldDataDeal
+00322355   _sInputDataUpdate
+00322793   _sCANDataMange
+00322915   _sCANConfigID
+003229dc   _sRestartVarInit
+00322af7   _InitSysCtrVar
+00322c41   _swModuleEnvTempFit
+00322c84   _swModuleHeatTempFit
+00322cf0   _sFanOpenLoopCtrl
+00322e0a   _sSysRateCoeffChangeInit
+00322f78   _swCalBalanceDegree
+00322fb0   _sCalSignedLongAvg
+00322fd6   _sCalBusVolRef
+00323050   _sBiDirDCModeSwitch
+0032317e   _sDecCapEnergy
+003232ee   _swEfficiencyFit
+003234c6   _sfRunInvAhdChk
+003235f4   _sfRunInvAhdChkByAC
+003237bc   _sPowerFactor
+00323807   _sAdjustPF
+00323950   _suwMidGridFreqExtract
+0032399a   _sIqRefExtract
+003239c3   _suMaxOutputCurrCal
+00323af6   _sCalIdLimit
+00324036   _sCalIqRef
+00324158   _sSysSleepChk
+003241b1   _sfPowerComdCal
+003245d9   _suwInvAndDCPwmKCal
+0032463b   _swGirdDivBatteryVolCoeff
+0032465d   _sBatteryInitiStateJudge
+003246c5   _sBatteryChargeDeal
+00324730   _sfBiDirDCCtrSoftStart
+00324863   _sfBiDirDCCtrSoftStartByAC
+00324a27   _sDC12And34OptSwitch
+00324a70   _sRelayDelayDeal
+00324a93   _sACPowerDeal
+00324adf   _sBatteryDataUpdateChk
+00324b1e   _InitScia
+00324b7c   _InitScib
+00324bd3   _SciaRxIsr
+00324c4a   _SCI_TX
+00324c74   _SciaRxDeal
+003266e7   _sSciTxArray
+003268cf   _SciaTxDeal
+0032692a   _ScibRxIsr
+0032699d   _SCIB_TX
+003269c7   _InitProtectVar
+00326bb1   _sBusVolHighChk
+00326c12   _sBatVolHighChk
+00326c4b   _sBusDiffBatVolChk
+00326c7e   _sVCapHighChk
+00326ce6   _sVCapDiffChk
+00326d4a   _sLineRmsVolChk
+00326ebf   _sFreHighChk
+00326fa3   _sFreLowChk
+00327087   _sAIFreqChk
+003270f1   _sTmpHighChk
+00327162   _sTmpLoseChk
+003271b6   _sOffsetHighChk
+003271f7   _sGridCurrOffsetHighChk
+00327239   _sDCIOffsetHighChk
+0032727a   _sDCIHighChk
+0032730b   _sEepromChk
+0032732e   _sBatRevConnectChk
+0032735e   _sGridVoltBalanceDegreeChk
+003273b6   _sWarrningDeal
+0032741b   _sFaultDeal
+00327699   _sPFChk
+003276df   _sPFDeal
+00327859   _suwGetFaultGrade
+0032785d   _sErrFaultDeal
+00327870   _sFanFdbChk
+00327900   _sACOCPStateChk
+0032792e   _sDCOCPStateChk
+00327960   _sFuseStateChk
+0032798d   _sTZStateClear
+003279d9   _sIGBTHaltStateChk
+00327a06   _sDCPWMChk
+00327a2e   _sDCCurrBalanceChk
+00327afb   _sBatteryCoeffChk
+00327b55   _sDCSoftRelayChk
+00327b81   _sPhaseRmsCurChk
+00327bf7   _sDCRelayChk
+00327c7e   _sDCRelayOpenAct
+00327c92   _sPowerDisMatchChk
+00327ce4   _sfInvVolNormalChk
+00327d55   _sSpdChk
+00327d7f   _sCtrPowerChk
+00327daa   _sCANActiveChk
+00327de0   _sfGFCICTChk
+00327ed4   _sAuxiRelayChk
+00327efe   _sDCSwitchChk
+00327f40   _sDecCapEnergyChk
+00327f76   _sSumCheck
+00327f8b   _sRamChk
+00328062   _sFlashChk
+00328098   _sCPLDOscilChk
+00328104   _InitVar
+00328134   _suwFlashCheck
+00328151   _sBootLoaderSchedule
+00328170   _sSysMode
+003285de   _main
+00328d51   _InitI2cVar
+00328daf   _sInitLCDImptData
+00328dc1   _InitI2c
+00328dd6   _sfI2cTx
+00328e50   _sfI2cRx
+00328eee   _sEepromProtectDataSetDefaultVaule
+00328f1c   _sEepromProtectSupplDataSetDefaultVaule
+00328f33   _sEepromwAdcAdjustDataSetDefaultVaule
+00328f46   _sEepromwHisDataSetDefaultVaule
+00328f59   _sfReadEepromImptdata
+003290dd   _sReadEepromProtectData
+003291da   _sReadEepromProtectDataSuppl
+003292c1   _sReadEepromAdcAdjustData
+00329379   _sReadEepromHisData
+003293eb   _sfEepromReadOnPower
+00329435   _sEepromProtshift
+003294a0   _sEepromProtSupplshift
+00329516   _sEepromAdcshift
+0032958d   _sEepromHisshift
+003295bd   _suEepromCmparWr
+0032961b   _sfEepromRunDataChange
+00329749   _sEepromHandle
+003297a9   _sEEPROMProRangeChk
+0032984e   _InitAdcVar
+00329ad4   _InitAdc
+00329b0a   _suwGetAvg
+00329b3c   _swGetFifoAvg
+00329b74   _sCalSPWMDuty
+00329bcf   _sCalInvActivePowerValue
+00329c64   _sCalInvReactivePowerValue
+00329d70   _sCalInvApparentPowerValue
+00329dd4   _sCalDCPowerValue
+00329e10   _sPowerAdjust
+00329ea0   _sCalRmsPrdValueSum
+00329eeb   _sCalRmsAvgValue
+00329f2c   _sCalRmsFifoAvgValue
+00329f59   _sCalLongAvg
+00329f8a   _sCalPowerAvg
+00329fbc   _sPLLParamInit
+0032a064   _sInvParamInit
+0032a13e   _sSVModu
+0032a49e   _sAiCurrRefCal
+0032a5cc   _INT13_ISR
+0032a5e4   _INT14_ISR
+0032a5ec   _EMUINT_ISR
+0032a5f2   _NMI_ISR
+0032a5f8   _ILLEGAL_ISR
+0032a5fe   _USER1_ISR
+0032a604   _USER2_ISR
+0032a60a   _USER3_ISR
+0032a610   _USER4_ISR
+0032a616   _USER5_ISR
+0032a61c   _USER6_ISR
+0032a622   _USER7_ISR
+0032a628   _USER8_ISR
+0032a62e   _USER9_ISR
+0032a634   _USER10_ISR
+0032a63a   _USER11_ISR
+0032a640   _USER12_ISR
+0032a646   _ADCINT_ISR
+0032a66f   _WAKEINT_ISR
+0032a685   _EPWM1_TZINT_ISR
+0032a69b   _EPWM2_TZINT_ISR
+0032a6b1   _EPWM3_TZINT_ISR
+0032a6c7   _EPWM4_TZINT_ISR
+0032a6dd   _EPWM5_TZINT_ISR
+0032a6f3   _EPWM6_TZINT_ISR
+0032a709   _EPWM1_INT_ISR
+0032a71f   _EPWM2_INT_ISR
+0032a735   _EPWM3_INT_ISR
+0032a74b   _EPWM4_INT_ISR
+0032a761   _EPWM5_INT_ISR
+0032a777   _EPWM6_INT_ISR
+0032a78d   _ECAP1_INT_ISR
+0032a7b6   _EQEP1_INT_ISR
+0032a7cc   _EQEP2_INT_ISR
+0032a7e2   _I2CINT1A_ISR
+0032a7f8   _I2CINT2A_ISR
+0032a80e   _SCIRXINTC_ISR
+0032a824   _SCITXINTC_ISR
+0032a83a   _SCIRXINTA_ISR
+0032a863   _SCITXINTA_ISR
+0032a87a   _SCIRXINTB_ISR
+0032a8a3   _SCITXINTB_ISR
+0032a8b9   _ECAN0INTA_ISR
+0032a8e2   _ECAN1INTA_ISR
+0032a90b   _PIE_RESERVED
+0032a910   _INT_NOTUSED_ISR
+0032a915   _rsvd_ISR
+0032a91a   _InitGpio
+0032ab4c   _InitPWMVar
+0032ab52   _InitEPwm
+0032acd2   _SCI_Boot
+0032ad2e   _CopyData
+0032ad53   _SCIA_AutobaudLock
+0032adb7   _SCIA_GetWordData
+0032add2   _ReadReservedFn
+0032ade2   _GetLongData
+0032adf4   LL$$DIV
+0032ae30   LL$$MOD
+0032ae6a   ULL$$DIV
+0032ae99   ULL$$MOD
+0032aefb   _InitCapVar
+0032af11   _InitECap
+0032af4a   _sfPhaseSequJudge
+0032af80   _suwGetMaxGridFreq
+0032af93   _suwGetMidGridFreq
+0032afd8   _KickDog
+0032afe2   _DisableDog
+0032afea   _InitSysCtrl
+0032b075   FS$$DIV
+0032b0f8   FS$$SUB
+0032b0fd   FS$$ADD
+0032b170   FS$$MPY
+0032b1ca   _sqrt
+0032b21a   _c_int00
+0032b25e   _ldexp
+0032b29f   _sBiDirDCCtrParamInit
+0032b2dd   _InitPieCtrl
+0032b30d   L$$DIV
+0032b31c   L$$MOD
+0032b32a   UL$$DIV
+0032b331   UL$$MOD
+0032b337   FS$$TOL
+0032b360   FS$$TOI
+0032b385   _InitBoot
+0032b3a8   _InitTimer
+0032b3ba   _InitTimerVar
+0032b3c7   _TimerIsr
+0032b3ca   I$$DIV
+0032b3db   I$$MOD
+0032b3ec   FS$$TOUL
+0032b40d   ___memcpy_ff
+0032b42e   LL$$CMP
+0032b440   ULL$$CMP
+0032b44c   FS$$TOU
+0032b469   _InitPieVectTable
+0032b485   __args_main
+0032b4a0   ULL$$TOFS
+0032b4bb   L$$TOFS
+0032b4d5   C$$EXIT
+0032b4d5   _abort
+0032b4d7   _exit
+0032b4ee   FS$$CMP
+0032b505   LL$$MPY
+0032b519   UL$$TOFS
+0032b52c   _DelayUs
+0032b53c   U$$TOFS
+0032b54c   U$$DIV
+0032b551   U$$MOD
+0032b557   __register_unlock
+0032b55b   __register_lock
+0032b55f   __nop
+0032b567   _SetDBGIER
+0032b56a   ___etext__
+0032b56a   _sInvControlRamFuncs_loadstart
+0032b56a   etext
+0032c875   _AdcIsrRamFuncs_loadstart
+0032c875   _sInvControlRamFuncs_loadend
+0032d962   _AdcIsrRamFuncs_loadend
+0032d962   _eCanRamFuncs_loadstart
+0032dfe0   _BiDirDCCtrFuncs_loadstart
+0032dfe0   _eCanRamFuncs_loadend
+0032e4cf   _BiDirDCCtrFuncs_loadend
+0032e4cf   _CAPRamFuncs_loadstart
+0032e818   _CAPRamFuncs_loadend
+0032e818   _ProtectRamFuncs_loadstart
+0032ea45   _ProtectRamFuncs_loadend
+0032ea45   ___cinit__
+0032ea45   cinit
+0032f78c   _wSinTabArray
+0032fa5c   _dwATANArray
+0032fbec   _PieVectTableInit
+0032fcec   _wEepromDefaultProtMaxArrayIEEE1547
+0032fd40   _wEepromDefaultProtMaxArrayRule21
+0032fd94   _wEepromDefaultProtMinArrayIEEE1547
+0032fde8   _wEepromDefaultProtMinArrayRule21
+0032fe3c   _wEepromDefaultProtectArrayIEEE1547
+0032fe90   _wEepromDefaultProtectArrayRule21
+0032fee4   _wEepromDefaultAdcAdjMaxArray
+0032ff2a   _wEepromDefaultAdcAdjMinArray
+0032ff70   _wEepromDefaultAdcAdjustArray
+0032ffb6   _wEepromDefaultProtMaxSupplArray
+0032fffc   _wEepromDefaultProtMinSupplArray
+00330042   _wEepromDefaultProtectSupplArray
+00330088   _wRemoteDataMax
+003300ba   _wRemoteDataMin
+003300ec   _wEepromDefaultHisDataArray
+003300f3   _wEepromDefaultImptMaxArray
+003300fa   _wEepromDefaultImptMinArray
+00330101   _secureRamFuncs_loadstart
+00330120   _secureRamFuncs_loadend
+00338000   _wFlashSafetyCheckCRC
+00338001   _sErroringDeal
+00338078   _sGFCIDynamicHighChk
+003381a3   _swGFCICoeffCal
+003381c9   _sGFCISteadyHighChk
+00338204   _sfRelayChk
+003383e6   _sfIsoChk
+00338573   _CPURegister_check
+003386ba   _RPC_check
+0033bffe   _cFlashCheckTrail
+0033fff8   _CsmPwl
+00380090   _PartIdRegs
+ffffffff   ___binit__
+ffffffff   ___c_args__
+ffffffff   ___pinit__
+ffffffff   binit
+ffffffff   pinit
+
+[1344 symbols]

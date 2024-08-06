@@ -1,0 +1,236 @@
+###############################################################################
+#
+# IAR ANSI C/C++ Compiler V8.32.1.169/W32 for ARM         02/May/2024  10:28:29
+# Copyright 1999-2018 IAR Systems AB.
+#
+#    Cpu mode     =  
+#    Endian       =  little
+#    Source file  =  
+#        E:\code\free_rtos_revision\FreeRTOS_V2022changetonew_IAR\FreeRTOS\Demo\Common\Minimal\integer.c
+#    Command line =  
+#        -f C:\Users\4444\AppData\Local\Temp\EWFA74.tmp
+#        (E:\code\free_rtos_revision\FreeRTOS_V2022changetonew_IAR\FreeRTOS\Demo\Common\Minimal\integer.c
+#        -D VECT_TAB_FLASH -D IAR_ARM_CM3 -lcN
+#        E:\code\free_rtos_revision\FreeRTOS_V2022changetonew_IAR\FreeRTOS\Demo\CORTEX_STM32F103_IAR\Debug\List
+#        --diag_suppress Pa082,pe191 -o
+#        E:\code\free_rtos_revision\FreeRTOS_V2022changetonew_IAR\FreeRTOS\Demo\CORTEX_STM32F103_IAR\Debug\Obj
+#        --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa
+#        --no_clustering --no_scheduling --debug --endian=little
+#        --cpu=Cortex-M3 -e --fpu=None --dlib_config
+#        D:\tool\digital_tool_keil_common_use\keil\IAR\arm\inc\c\DLib_Config_Full.h
+#        -I
+#        E:\code\free_rtos_revision\FreeRTOS_V2022changetonew_IAR\FreeRTOS\Demo\CORTEX_STM32F103_IAR\.\
+#        -I
+#        E:\code\free_rtos_revision\FreeRTOS_V2022changetonew_IAR\FreeRTOS\Demo\CORTEX_STM32F103_IAR\STM32F10xFWLib\inc\
+#        -I
+#        E:\code\free_rtos_revision\FreeRTOS_V2022changetonew_IAR\FreeRTOS\Demo\CORTEX_STM32F103_IAR\..\..\Source\include\
+#        -I
+#        E:\code\free_rtos_revision\FreeRTOS_V2022changetonew_IAR\FreeRTOS\Demo\CORTEX_STM32F103_IAR\..\common\include\
+#        -Ol --use_c++_inline --require_prototypes)
+#    Locale       =  C
+#    List file    =  
+#        E:\code\free_rtos_revision\FreeRTOS_V2022changetonew_IAR\FreeRTOS\Demo\CORTEX_STM32F103_IAR\Debug\List\integer.lst
+#    Object file  =  
+#        E:\code\free_rtos_revision\FreeRTOS_V2022changetonew_IAR\FreeRTOS\Demo\CORTEX_STM32F103_IAR\Debug\Obj\integer.o
+#
+###############################################################################
+
+E:\code\free_rtos_revision\FreeRTOS_V2022changetonew_IAR\FreeRTOS\Demo\Common\Minimal\integer.c
+      1          /*
+      2           * FreeRTOS V202212.01
+      3           * Copyright (C) 2020 Amazon.com, Inc. or its affiliates.  All Rights Reserved.
+      4           *
+      5           * Permission is hereby granted, free of charge, to any person obtaining a copy of
+      6           * this software and associated documentation files (the "Software"), to deal in
+      7           * the Software without restriction, including without limitation the rights to
+      8           * use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
+      9           * the Software, and to permit persons to whom the Software is furnished to do so,
+     10           * subject to the following conditions:
+     11           *
+     12           * The above copyright notice and this permission notice shall be included in all
+     13           * copies or substantial portions of the Software.
+     14           *
+     15           * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+     16           * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
+     17           * FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+     18           * COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
+     19           * IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+     20           * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+     21           *
+     22           * https://www.FreeRTOS.org
+     23           * https://github.com/FreeRTOS
+     24           *
+     25           */
+     26          
+     27          /*
+     28           * Creates one or more tasks that repeatedly perform a set of integer
+     29           * calculations.  The result of each run-time calculation is compared to the
+     30           * known expected result - with a mismatch being indicative of an error in the
+     31           * context switch mechanism.
+     32           */
+     33          
+     34          #include <stdlib.h>
+     35          
+     36          /* Scheduler include files. */
+     37          #include "FreeRTOS.h"
+     38          #include "task.h"
+     39          
+     40          /* Demo program include files. */
+     41          #include "integer.h"
+     42          
+     43          /* The constants used in the calculation. */
+     44          #define intgCONST1             ( ( long ) 123 )
+     45          #define intgCONST2             ( ( long ) 234567 )
+     46          #define intgCONST3             ( ( long ) -3 )
+     47          #define intgCONST4             ( ( long ) 7 )
+     48          #define intgEXPECTED_ANSWER    ( ( ( intgCONST1 + intgCONST2 ) * intgCONST3 ) / intgCONST4 )
+     49          
+     50          #define intgSTACK_SIZE         configMINIMAL_STACK_SIZE
+     51          
+     52          /* As this is the minimal version, we will only create one task. */
+     53          #define intgNUMBER_OF_TASKS    ( 1 )
+     54          
+     55          /* The task function.  Repeatedly performs a 32 bit calculation, checking the
+     56           * result against the expected result.  If the result is incorrect then the
+     57           * context switch must have caused some corruption. */
+     58          static portTASK_FUNCTION_PROTO( vCompeteingIntMathTask, pvParameters );
+     59          
+     60          /* Variables that are set to true within the calculation task to indicate
+     61           * that the task is still executing.  The check task sets the variable back to
+     62           * false, flagging an error if the variable is still false the next time it
+     63           * is called. */
+     64          static BaseType_t xTaskCheck[ intgNUMBER_OF_TASKS ] = { ( BaseType_t ) pdFALSE };
+     65          
+     66          /*-----------------------------------------------------------*/
+     67          
+     68          void vStartIntegerMathTasks( UBaseType_t uxPriority )
+     69          {
+     70              short sTask;
+     71          
+     72              for( sTask = 0; sTask < intgNUMBER_OF_TASKS; sTask++ )
+     73              {
+     74                  xTaskCreate( vCompeteingIntMathTask, "IntMath", intgSTACK_SIZE, ( void * ) &( xTaskCheck[ sTask ] ), uxPriority, ( TaskHandle_t * ) NULL );
+     75              }
+     76          }
+     77          /*-----------------------------------------------------------*/
+     78          
+     79          static portTASK_FUNCTION( vCompeteingIntMathTask, pvParameters )
+     80          {
+     81          /* These variables are all effectively set to constants so they are volatile to
+     82           * ensure the compiler does not just get rid of them. */
+     83              volatile long lValue;
+     84              short sError = pdFALSE;
+     85              volatile BaseType_t * pxTaskHasExecuted;
+     86          
+     87              /* Set a pointer to the variable we are going to set to true each
+     88               * iteration.  This is also a good test of the parameter passing mechanism
+     89               * within each port. */
+     90              pxTaskHasExecuted = ( volatile BaseType_t * ) pvParameters;
+     91          
+     92              /* Keep performing a calculation and checking the result against a constant. */
+     93              for( ; ; )
+     94              {
+     95                  /* Perform the calculation.  This will store partial value in
+     96                   * registers, resulting in a good test of the context switch mechanism. */
+     97                  lValue = intgCONST1;
+     98                  lValue += intgCONST2;
+     99          
+    100                  /* Yield in case cooperative scheduling is being used. */
+    101                  #if configUSE_PREEMPTION == 0
+    102                  {
+    103                      taskYIELD();
+    104                  }
+    105                  #endif
+    106          
+    107                  /* Finish off the calculation. */
+    108                  lValue *= intgCONST3;
+    109                  lValue /= intgCONST4;
+    110          
+    111                  /* If the calculation is found to be incorrect we stop setting the
+    112                   * TaskHasExecuted variable so the check task can see an error has
+    113                   * occurred. */
+    114                  if( lValue != intgEXPECTED_ANSWER ) /*lint !e774 volatile used to prevent this being optimised out. */
+    115                  {
+    116                      sError = pdTRUE;
+    117                  }
+    118          
+    119                  if( sError == pdFALSE )
+    120                  {
+    121                      /* We have not encountered any errors, so set the flag that show
+    122                       * we are still executing.  This will be periodically cleared by
+    123                       * the check task. */
+    124                      portENTER_CRITICAL();
+    125                      *pxTaskHasExecuted = pdTRUE;
+    126                      portEXIT_CRITICAL();
+    127                  }
+    128          
+    129                  /* Yield in case cooperative scheduling is being used. */
+    130                  #if configUSE_PREEMPTION == 0
+    131                  {
+    132                      taskYIELD();
+    133                  }
+    134                  #endif
+    135              }
+    136          }
+    137          /*-----------------------------------------------------------*/
+    138          
+    139          /* This is called to check that all the created tasks are still running. */
+    140          BaseType_t xAreIntegerMathsTaskStillRunning( void )
+    141          {
+    142              BaseType_t xReturn = pdTRUE;
+    143              short sTask;
+    144          
+    145              /* Check the maths tasks are still running by ensuring their check variables
+    146               * are still being set to true. */
+    147              for( sTask = 0; sTask < intgNUMBER_OF_TASKS; sTask++ )
+    148              {
+    149                  if( xTaskCheck[ sTask ] == pdFALSE )
+    150                  {
+    151                      /* The check has not incremented so an error exists. */
+    152                      xReturn = pdFALSE;
+    153                  }
+    154          
+    155                  /* Reset the check variable so we can tell if it has been set by
+    156                   * the next time around. */
+    157                  xTaskCheck[ sTask ] = pdFALSE;
+    158              }
+    159          
+    160              return xReturn;
+    161          }
+
+   Maximum stack usage in bytes:
+
+   .cstack Function
+   ------- --------
+      16   vCompeteingIntMathTask
+        16   -> vPortEnterCritical
+        16   -> vPortExitCritical
+      24   vStartIntegerMathTasks
+        24   -> xTaskCreate
+       4   xAreIntegerMathsTaskStillRunning
+
+
+   Section sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+       4  ??DataTable2
+       4  ??DataTable2_1
+       4  ??DataTable2_2
+       8  ?_0
+      72  vCompeteingIntMathTask
+      48  vStartIntegerMathTasks
+      48  xAreIntegerMathsTaskStillRunning
+       4  xTaskCheck
+
+ 
+   4 bytes in section .bss
+   8 bytes in section .rodata
+ 180 bytes in section .text
+ 
+ 180 bytes of CODE  memory
+   8 bytes of CONST memory
+   4 bytes of DATA  memory
+
+Errors: none
+Warnings: none

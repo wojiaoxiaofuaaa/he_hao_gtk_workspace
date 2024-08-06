@@ -1,0 +1,80 @@
+; Code Composer Project File, Version 2.0 (do not modify or remove this line)
+
+[Project Settings]
+ProjectDir="E:\test_programme\PCS_30kVA_16kHz\"
+ProjectType=Executable
+CPUFamily=TMS320C28XX
+Tool="Compiler"
+Tool="CustomBuilder"
+Tool="DspBiosBuilder"
+Tool="Linker"
+Config="Debug"
+Config="Release"
+
+[Source Files]
+Source="FunSrc\AD.c"
+Source="FunSrc\BiDirDCController.c"
+Source="FunSrc\CAN.c"
+Source="FunSrc\CAP.c"
+Source="FunSrc\F28235_Boot.c"
+Source="FunSrc\I2C.c"
+Source="FunSrc\I2C.h"
+Source="FunSrc\Init_Boot.asm"
+Source="FunSrc\InvController.C"
+Source="FunSrc\MAIN.c"
+Source="FunSrc\PROTECT.c"
+Source="FunSrc\PWM.c"
+Source="FunSrc\SCI.c"
+Source="FunSrc\SYSCTR.c"
+Source="FunSrc\TIMER.c"
+Source="include\F28335_example.h"
+Source="rts2800_ml.lib"
+Source="src\CodeStartBranch.asm"
+Source="src\DelayUs.asm"
+Source="src\DSP2833x_GlobalVariableDefs.c"
+Source="src\DSP2833x_SWPrioritizedDefaultIsr.c"
+Source="src\DSP2833x_SWPrioritizedPieVect.c"
+Source="src\F28register_check.asm"
+Source="src\Gpio.c"
+Source="src\PieCtrl_nonBIOS.c"
+Source="src\SetDBGIER.asm"
+Source="src\SysCtrl.c"
+Source="cmd\F28335_nonBIOS_flash.cmd"
+Source="DSP2833x_headers\cmd\DSP2833x_Headers_nonBIOS.cmd"
+
+["Compiler" Settings: "Debug"]
+Options=-g -pdsw225 -fr"$(Proj_dir)\Debug" -d"_DEBUG" -d"LARGE_MODEL" -ml -v28
+
+["Compiler" Settings: "Release"]
+Options=-pdsw225 -fr"$(Proj_dir)\Release" -d"LARGE_MODEL" -ml -v28
+
+["Linker" Settings: "Debug"]
+Options=-a -c -m".\Debug\grid_invter_hv.map" -o".\Debug\grid_invter_hv.out" -stack0x3a0 -w -x
+
+["Linker" Settings: "Release"]
+Options=-c -m".\Release\grid_invter_hv.map" -o".\Release\grid_invter_hv.out" -stack0x3F0 -w -x
+
+["FunSrc\I2C.h" Settings: "Debug"]
+ExcludeFromBuild=true
+
+["FunSrc\I2C.h" Settings: "Release"]
+ExcludeFromBuild=true
+
+["include\F28335_example.h" Settings: "Debug"]
+ExcludeFromBuild=true
+
+["include\F28335_example.h" Settings: "Release"]
+ExcludeFromBuild=true
+
+["cmd\F28335_nonBIOS_flash.cmd" Settings: "Debug"]
+LinkOrder=1
+
+["cmd\F28335_nonBIOS_flash.cmd" Settings: "Release"]
+LinkOrder=1
+
+["DSP2833x_headers\cmd\DSP2833x_Headers_nonBIOS.cmd" Settings: "Debug"]
+LinkOrder=2
+
+["DSP2833x_headers\cmd\DSP2833x_Headers_nonBIOS.cmd" Settings: "Release"]
+LinkOrder=1
+

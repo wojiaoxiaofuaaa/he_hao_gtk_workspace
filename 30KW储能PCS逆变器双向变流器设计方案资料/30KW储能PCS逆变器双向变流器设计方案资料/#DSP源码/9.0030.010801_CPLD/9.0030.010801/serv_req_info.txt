@@ -1,0 +1,26 @@
+<internal_error>
+	<executable>quartus.exe</executable>
+	<sub_system>ERR</sub_system>
+	<file>q:\quartus\ccl\msg\msg_internal_error.cpp</file>
+	<line>732</line>
+	<callstack>
+	0x7c342ff4: MSVCR71 + 0x2ff4 (memcpy + 0x139)
+	0x00a155ac: SYS_CPT + 0x755ac (??0CPT_AMPP_OSTREAM@@QAE@W4PRODUCT_TYPE@CPT_AMPP_OFSTREAM@@PBV?$vector@V?$basic_string@DU?$char_traits@D@_Dinkum_std@@V?$MEM_STL_ALLOCATOR@D@@@_Dinkum_std@@V?$MEM_STL_ALLOCATOR@V?$basic_string@DU?$char_traits@D@_Dinkum_std@@V?$MEM_STL_ALLOCATOR@D@@@_Dinkum_std@@@@@_Dinkum_std@@@Z + 0x6565c)
+	0x009fcbf0: SYS_CPT + 0x5cbf0 (??0CPT_AMPP_OSTREAM@@QAE@W4PRODUCT_TYPE@CPT_AMPP_OFSTREAM@@PBV?$vector@V?$basic_string@DU?$char_traits@D@_Dinkum_std@@V?$MEM_STL_ALLOCATOR@D@@@_Dinkum_std@@V?$MEM_STL_ALLOCATOR@V?$basic_string@DU?$char_traits@D@_Dinkum_std@@V?$MEM_STL_ALLOCATOR@D@@@_Dinkum_std@@@@@_Dinkum_std@@@Z + 0x4cca0)
+	0x009c2a5d: SYS_CPT + 0x22a5d (??0CPT_AMPP_OSTREAM@@QAE@W4PRODUCT_TYPE@CPT_AMPP_OFSTREAM@@PBV?$vector@V?$basic_string@DU?$char_traits@D@_Dinkum_std@@V?$MEM_STL_ALLOCATOR@D@@@_Dinkum_std@@V?$MEM_STL_ALLOCATOR@V?$basic_string@DU?$char_traits@D@_Dinkum_std@@V?$MEM_STL_ALLOCATOR@D@@@_Dinkum_std@@@@@_Dinkum_std@@@Z + 0x12b0d)
+	0x009c2144: SYS_CPT + 0x22144 (??0CPT_AMPP_OSTREAM@@QAE@W4PRODUCT_TYPE@CPT_AMPP_OFSTREAM@@PBV?$vector@V?$basic_string@DU?$char_traits@D@_Dinkum_std@@V?$MEM_STL_ALLOCATOR@D@@@_Dinkum_std@@V?$MEM_STL_ALLOCATOR@V?$basic_string@DU?$char_traits@D@_Dinkum_std@@V?$MEM_STL_ALLOCATOR@D@@@_Dinkum_std@@@@@_Dinkum_std@@@Z + 0x121f4)
+	0x009c1a73: SYS_CPT + 0x21a73 (??0CPT_AMPP_OSTREAM@@QAE@W4PRODUCT_TYPE@CPT_AMPP_OFSTREAM@@PBV?$vector@V?$basic_string@DU?$char_traits@D@_Dinkum_std@@V?$MEM_STL_ALLOCATOR@D@@@_Dinkum_std@@V?$MEM_STL_ALLOCATOR@V?$basic_string@DU?$char_traits@D@_Dinkum_std@@V?$MEM_STL_ALLOCATOR@D@@@_Dinkum_std@@@@@_Dinkum_std@@@Z + 0x11b23)
+	0x009b2083: SYS_CPT + 0x12083 (??0CPT_AMPP_OSTREAM@@QAE@W4PRODUCT_TYPE@CPT_AMPP_OFSTREAM@@PBV?$vector@V?$basic_string@DU?$char_traits@D@_Dinkum_std@@V?$MEM_STL_ALLOCATOR@D@@@_Dinkum_std@@V?$MEM_STL_ALLOCATOR@V?$basic_string@DU?$char_traits@D@_Dinkum_std@@V?$MEM_STL_ALLOCATOR@D@@@_Dinkum_std@@@@@_Dinkum_std@@@Z + 0x2133)
+	</callstack>
+	<error>*** Fatal Error: Access Violation at 0X7C342FF4
+Current editor: GED, RPW
+Module: quartus.exe</error>
+	<date>Fri Jan 07 16:30:20 2011</date>
+	<version>Quartus II Version 7.2 Build 151 09/26/2007 SJ Full Version</version>
+	<full_error>
+*** Fatal Error: Access Violation at 0X7C342FF4
+Current editor: GED, RPW
+Module: quartus.exe
+Quartus II Version 7.2 Build 151 09/26/2007 SJ Full Version </full_error>
+</internal_error>
+

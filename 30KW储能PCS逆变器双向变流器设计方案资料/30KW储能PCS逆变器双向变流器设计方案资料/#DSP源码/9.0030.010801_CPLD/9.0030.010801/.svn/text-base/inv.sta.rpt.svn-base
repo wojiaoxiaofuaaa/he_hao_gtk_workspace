@@ -1,0 +1,295 @@
+TimeQuest Timing Analyzer report for inv
+Fri Jan 07 16:36:22 2011
+Quartus II Version 7.2 Build 151 09/26/2007 SJ Full Version
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. TimeQuest Timing Analyzer Summary
+  3. SDC File List
+  4. Clocks
+  5. Fmax Summary
+  6. Setup Summary
+  7. Hold Summary
+  8. Recovery Summary
+  9. Removal Summary
+ 10. Minimum Pulse Width
+ 11. Setup Transfers
+ 12. Hold Transfers
+ 13. Recovery Transfers
+ 14. Removal Transfers
+ 15. Report TCCS
+ 16. Report RSKM
+ 17. Unconstrained Paths
+ 18. TimeQuest Timing Analyzer Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2007 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+
+
+
++-----------------------------------------------------------------------+
+; TimeQuest Timing Analyzer Summary                                     ;
++--------------------+--------------------------------------------------+
+; Quartus II Version ; Version 7.2 Build 151 09/26/2007 SJ Full Version ;
+; Revision Name      ; inv                                              ;
+; Device Family      ; MAX II                                           ;
+; Device Name        ; EPM240T100I5                                     ;
+; Timing Models      ; Final                                            ;
+; Delay Model        ; Slow Model                                       ;
+; Rise/Fall Delays   ; Unavailable                                      ;
++--------------------+--------------------------------------------------+
+
+
++---------------------------------------------------+
+; SDC File List                                     ;
++---------------+--------+--------------------------+
+; SDC File Path ; Status ; Read at                  ;
++---------------+--------+--------------------------+
+; inv.sdc       ; OK     ; Fri Jan 07 16:36:21 2011 ;
++---------------+--------+--------------------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Clocks                                                                                                                                                                             ;
++------------+------+--------+------------+-------+-------+------------+-----------+-------------+-------+--------+-----------+------------+----------+--------+--------+------------+
+; Clock Name ; Type ; Period ; Frequency  ; Rise  ; Fall  ; Duty Cycle ; Divide by ; Multiply by ; Phase ; Offset ; Edge List ; Edge Shift ; Inverted ; Master ; Source ; Targets    ;
++------------+------+--------+------------+-------+-------+------------+-----------+-------------+-------+--------+-----------+------------+----------+--------+--------+------------+
+; CLK        ; Base ; 1.000  ; 1000.0 MHz ; 0.000 ; 0.500 ;            ;           ;             ;       ;        ;           ;            ;          ;        ;        ; { CLK }    ;
+; Unlock     ; Base ; 1.000  ; 1000.0 MHz ; 0.000 ; 0.500 ;            ;           ;             ;       ;        ;           ;            ;          ;        ;        ; { Unlock } ;
++------------+------+--------+------------+-------+-------+------------+-----------+-------------+-------+--------+-----------+------------+----------+--------+--------+------------+
+
+
++--------------------------------------------------+
+; Fmax Summary                                     ;
++------------+-----------------+------------+------+
+; Fmax       ; Restricted Fmax ; Clock Name ; Note ;
++------------+-----------------+------------+------+
+; 198.57 MHz ; 198.57 MHz      ; CLK        ;      ;
++------------+-----------------+------------+------+
+This panel reports FMAX for every clock in the design, regardless of the user-specified clock periods.  FMAX is only computed for paths where the source and destination registers or ports are driven by the same clock.  Paths of different clocks, including generated clocks, are ignored.  For paths between a clock and its inversion, FMAX is computed as if the rising and falling edges are scaled along with FMAX, such that the duty cycle (in terms of a percentage) is maintained. Altera recommends that you always use clock constraints and other slack reports for sign-off analysis.
+
+
++--------------------------------+
+; Setup Summary                  ;
++-------+--------+---------------+
+; Clock ; Slack  ; End Point TNS ;
++-------+--------+---------------+
+; CLK   ; -2.018 ; -32.862       ;
++-------+--------+---------------+
+
+
++-------------------------------+
+; Hold Summary                  ;
++-------+-------+---------------+
+; Clock ; Slack ; End Point TNS ;
++-------+-------+---------------+
+; CLK   ; 1.904 ; 0.000         ;
++-------+-------+---------------+
+
+
++--------------------------------+
+; Recovery Summary               ;
++-------+--------+---------------+
+; Clock ; Slack  ; End Point TNS ;
++-------+--------+---------------+
+; CLK   ; -6.106 ; -73.272       ;
++-------+--------+---------------+
+
+
++-------------------------------+
+; Removal Summary               ;
++-------+-------+---------------+
+; Clock ; Slack ; End Point TNS ;
++-------+-------+---------------+
+; CLK   ; 6.552 ; 0.000         ;
++-------+-------+---------------+
+
+
++---------------------------------------------------------------------------------------------------+
+; Minimum Pulse Width                                                                               ;
++--------+--------------+----------------+--------+--------+------------+---------------------------+
+; Slack  ; Actual Width ; Required Width ; Pulse  ; Clock  ; Clock Edge ; Target                    ;
++--------+--------------+----------------+--------+--------+------------+---------------------------+
+; -2.289 ; 1.000        ; 3.289          ; Period ; CLK    ; Rise       ; CLK                       ;
+; -2.289 ; 1.000        ; 3.289          ; Period ; Unlock ; Rise       ; Unlock                    ;
+; 0.234  ; 0.500        ; 0.266          ; High   ; CLK    ; Rise       ; ENINVPWM:inst|ENPWMOUT    ;
+; 0.234  ; 0.500        ; 0.266          ; Low    ; CLK    ; Rise       ; ENINVPWM:inst|ENPWMOUT    ;
+; 0.234  ; 0.500        ; 0.266          ; High   ; CLK    ; Fall       ; ENINVPWM:inst|ENPWMIN_SG  ;
+; 0.234  ; 0.500        ; 0.266          ; Low    ; CLK    ; Fall       ; ENINVPWM:inst|ENPWMIN_SG  ;
+; 0.234  ; 0.500        ; 0.266          ; High   ; CLK    ; Fall       ; ENINVPWM:inst|current_st  ;
+; 0.234  ; 0.500        ; 0.266          ; Low    ; CLK    ; Fall       ; ENINVPWM:inst|current_st  ;
+; 0.234  ; 0.500        ; 0.266          ; High   ; CLK    ; Rise       ; ENINVPWM:inst1|ENPWMOUT   ;
+; 0.234  ; 0.500        ; 0.266          ; Low    ; CLK    ; Rise       ; ENINVPWM:inst1|ENPWMOUT   ;
+; 0.234  ; 0.500        ; 0.266          ; High   ; CLK    ; Fall       ; ENINVPWM:inst1|ENPWMIN_SG ;
+; 0.234  ; 0.500        ; 0.266          ; Low    ; CLK    ; Fall       ; ENINVPWM:inst1|ENPWMIN_SG ;
+; 0.234  ; 0.500        ; 0.266          ; High   ; CLK    ; Rise       ; ENINVPWM:inst2|ENPWMOUT   ;
+; 0.234  ; 0.500        ; 0.266          ; Low    ; CLK    ; Rise       ; ENINVPWM:inst2|ENPWMOUT   ;
+; 0.234  ; 0.500        ; 0.266          ; High   ; CLK    ; Fall       ; ENINVPWM:inst1|current_st ;
+; 0.234  ; 0.500        ; 0.266          ; Low    ; CLK    ; Fall       ; ENINVPWM:inst1|current_st ;
+; 0.234  ; 0.500        ; 0.266          ; High   ; Unlock ; Rise       ; 9                         ;
+; 0.234  ; 0.500        ; 0.266          ; Low    ; Unlock ; Rise       ; 9                         ;
+; 0.234  ; 0.500        ; 0.266          ; High   ; CLK    ; Rise       ; ENINVPWM:inst3|ENPWMOUT   ;
+; 0.234  ; 0.500        ; 0.266          ; Low    ; CLK    ; Rise       ; ENINVPWM:inst3|ENPWMOUT   ;
+; 0.234  ; 0.500        ; 0.266          ; High   ; CLK    ; Fall       ; ENINVPWM:inst2|ENPWMIN_SG ;
+; 0.234  ; 0.500        ; 0.266          ; Low    ; CLK    ; Fall       ; ENINVPWM:inst2|ENPWMIN_SG ;
+; 0.234  ; 0.500        ; 0.266          ; High   ; CLK    ; Fall       ; ENINVPWM:inst2|current_st ;
+; 0.234  ; 0.500        ; 0.266          ; Low    ; CLK    ; Fall       ; ENINVPWM:inst2|current_st ;
+; 0.234  ; 0.500        ; 0.266          ; High   ; CLK    ; Rise       ; ENINVPWM:inst4|ENPWMOUT   ;
+; 0.234  ; 0.500        ; 0.266          ; Low    ; CLK    ; Rise       ; ENINVPWM:inst4|ENPWMOUT   ;
+; 0.234  ; 0.500        ; 0.266          ; High   ; CLK    ; Fall       ; ENINVPWM:inst4|current_st ;
+; 0.234  ; 0.500        ; 0.266          ; Low    ; CLK    ; Fall       ; ENINVPWM:inst4|current_st ;
+; 0.234  ; 0.500        ; 0.266          ; High   ; CLK    ; Fall       ; ENINVPWM:inst4|ENPWMIN_SG ;
+; 0.234  ; 0.500        ; 0.266          ; Low    ; CLK    ; Fall       ; ENINVPWM:inst4|ENPWMIN_SG ;
+; 0.234  ; 0.500        ; 0.266          ; High   ; CLK    ; Fall       ; ENINVPWM:inst3|ENPWMIN_SG ;
+; 0.234  ; 0.500        ; 0.266          ; Low    ; CLK    ; Fall       ; ENINVPWM:inst3|ENPWMIN_SG ;
+; 0.234  ; 0.500        ; 0.266          ; High   ; CLK    ; Fall       ; ENINVPWM:inst3|current_st ;
+; 0.234  ; 0.500        ; 0.266          ; Low    ; CLK    ; Fall       ; ENINVPWM:inst3|current_st ;
+; 0.234  ; 0.500        ; 0.266          ; High   ; CLK    ; Rise       ; ENINVPWM:inst5|ENPWMOUT   ;
+; 0.234  ; 0.500        ; 0.266          ; Low    ; CLK    ; Rise       ; ENINVPWM:inst5|ENPWMOUT   ;
+; 0.234  ; 0.500        ; 0.266          ; High   ; CLK    ; Fall       ; ENINVPWM:inst5|ENPWMIN_SG ;
+; 0.234  ; 0.500        ; 0.266          ; Low    ; CLK    ; Fall       ; ENINVPWM:inst5|ENPWMIN_SG ;
+; 0.234  ; 0.500        ; 0.266          ; High   ; CLK    ; Fall       ; ENINVPWM:inst5|current_st ;
+; 0.234  ; 0.500        ; 0.266          ; Low    ; CLK    ; Fall       ; ENINVPWM:inst5|current_st ;
+; 0.234  ; 0.500        ; 0.266          ; High   ; CLK    ; Rise       ; ENINVPWM:inst3|next_st    ;
+; 0.234  ; 0.500        ; 0.266          ; Low    ; CLK    ; Rise       ; ENINVPWM:inst3|next_st    ;
+; 0.234  ; 0.500        ; 0.266          ; High   ; CLK    ; Rise       ; ENINVPWM:inst|next_st     ;
+; 0.234  ; 0.500        ; 0.266          ; Low    ; CLK    ; Rise       ; ENINVPWM:inst|next_st     ;
+; 0.234  ; 0.500        ; 0.266          ; High   ; CLK    ; Rise       ; ENINVPWM:inst1|next_st    ;
+; 0.234  ; 0.500        ; 0.266          ; Low    ; CLK    ; Rise       ; ENINVPWM:inst1|next_st    ;
+; 0.234  ; 0.500        ; 0.266          ; High   ; CLK    ; Rise       ; ENINVPWM:inst2|next_st    ;
+; 0.234  ; 0.500        ; 0.266          ; Low    ; CLK    ; Rise       ; ENINVPWM:inst2|next_st    ;
+; 0.234  ; 0.500        ; 0.266          ; High   ; CLK    ; Rise       ; ENINVPWM:inst4|next_st    ;
+; 0.234  ; 0.500        ; 0.266          ; Low    ; CLK    ; Rise       ; ENINVPWM:inst4|next_st    ;
+; 0.234  ; 0.500        ; 0.266          ; High   ; CLK    ; Rise       ; ENINVPWM:inst5|next_st    ;
+; 0.234  ; 0.500        ; 0.266          ; Low    ; CLK    ; Rise       ; ENINVPWM:inst5|next_st    ;
++--------+--------------+----------------+--------+--------+------------+---------------------------+
+
+
++-------------------------------------------------------------------+
+; Setup Transfers                                                   ;
++------------+----------+----------+----------+----------+----------+
+; From Clock ; To Clock ; RR Paths ; FR Paths ; RF Paths ; FF Paths ;
++------------+----------+----------+----------+----------+----------+
+; CLK        ; CLK      ; 6        ; 24       ; 6        ; 0        ;
++------------+----------+----------+----------+----------+----------+
+Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
+
+
++-------------------------------------------------------------------+
+; Hold Transfers                                                    ;
++------------+----------+----------+----------+----------+----------+
+; From Clock ; To Clock ; RR Paths ; FR Paths ; RF Paths ; FF Paths ;
++------------+----------+----------+----------+----------+----------+
+; CLK        ; CLK      ; 6        ; 24       ; 6        ; 0        ;
++------------+----------+----------+----------+----------+----------+
+Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
+
+
++-------------------------------------------------------------------+
+; Recovery Transfers                                                ;
++------------+----------+----------+----------+----------+----------+
+; From Clock ; To Clock ; RR Paths ; FR Paths ; RF Paths ; FF Paths ;
++------------+----------+----------+----------+----------+----------+
+; Unlock     ; CLK      ; 12       ; 0        ; 0        ; 0        ;
++------------+----------+----------+----------+----------+----------+
+Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
+
+
++-------------------------------------------------------------------+
+; Removal Transfers                                                 ;
++------------+----------+----------+----------+----------+----------+
+; From Clock ; To Clock ; RR Paths ; FR Paths ; RF Paths ; FF Paths ;
++------------+----------+----------+----------+----------+----------+
+; Unlock     ; CLK      ; 12       ; 0        ; 0        ; 0        ;
++------------+----------+----------+----------+----------+----------+
+Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
+
+
+---------------
+; Report TCCS ;
+---------------
+No LVDS transmitter found in design.
+
+
+---------------
+; Report RSKM ;
+---------------
+No LVDS receiver found in design.
+
+
++------------------------------------------------+
+; Unconstrained Paths                            ;
++---------------------------------+-------+------+
+; Property                        ; Setup ; Hold ;
++---------------------------------+-------+------+
+; Illegal Clocks                  ; 0     ; 0    ;
+; Unconstrained Clocks            ; 0     ; 0    ;
+; Unconstrained Input Ports       ; 31    ; 31   ;
+; Unconstrained Input Port Paths  ; 44    ; 44   ;
+; Unconstrained Output Ports      ; 7     ; 7    ;
+; Unconstrained Output Port Paths ; 7     ; 7    ;
++---------------------------------+-------+------+
+
+
++------------------------------------+
+; TimeQuest Timing Analyzer Messages ;
++------------------------------------+
+Info: *******************************************************************
+Info: Running Quartus II TimeQuest Timing Analyzer
+    Info: Version 7.2 Build 151 09/26/2007 SJ Full Version
+    Info: Processing started: Fri Jan 07 16:36:21 2011
+Info: Command: quartus_sta inv -c inv
+Info: qsta_default_script.tcl version: 25.0.1.4
+Info: Started post-fitting delay annotation
+Info: Delay annotation completed successfully
+Info: Reading SDC File: 'inv.sdc'
+Info: No user constrained base clocks found in the design. Calling "derive_clocks -period 1.0"
+Info: Deriving Clocks
+    Info: create_clock -period 1.000 -waveform {0.000 0.500} -name CLK CLK
+    Info: create_clock -period 1.000 -waveform {0.000 0.500} -name Unlock Unlock
+Critical Warning: Timing requirements not met
+Info: Worst-case setup slack is -2.018
+    Info:     Slack End Point TNS Clock 
+    Info: ========= ============= =====================
+    Info:    -2.018       -32.862 CLK 
+Info: Worst-case hold slack is 1.904
+    Info:     Slack End Point TNS Clock 
+    Info: ========= ============= =====================
+    Info:     1.904         0.000 CLK 
+Info: Worst-case recovery slack is -6.106
+    Info:     Slack End Point TNS Clock 
+    Info: ========= ============= =====================
+    Info:    -6.106       -73.272 CLK 
+Info: Worst-case removal slack is 6.552
+    Info:     Slack End Point TNS Clock 
+    Info: ========= ============= =====================
+    Info:     6.552         0.000 CLK 
+Critical Warning: Found minimum pulse width or period violations. See Report Minimum Pulse Width for details.
+Warning: Advanced I/O Timing is not enabled
+Info: Design is not fully constrained for setup requirements
+Info: Design is not fully constrained for hold requirements
+Info: Quartus II TimeQuest Timing Analyzer was successful. 0 errors, 3 warnings
+    Info: Allocated 113 megabytes of memory during processing
+    Info: Processing ended: Fri Jan 07 16:36:22 2011
+    Info: Elapsed time: 00:00:01
+
+
